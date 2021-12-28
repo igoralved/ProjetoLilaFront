@@ -1,0 +1,19 @@
+  .container {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      height: 100%;  
+      align-items: center;
+      background-color: #a484bc;
+      gap: 10px;
+  }
+button{
+  margin-top:20%;
+  color: #59184f;
+  background-color: #f4dc6c;
+  border-radius: 30px;
+  width: 150px;
+  height: 80%;
+}
+
+

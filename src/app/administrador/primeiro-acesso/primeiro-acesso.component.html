@@ -1,0 +1,32 @@
+<div class="container">
+<div>
+    <h1>
+        Primeiro Acesso
+    </h1>
+    <h2>
+        Informe a Senha para o usuário administrador
+
+    </h2>
+</div>
+<div>
+    <mat-form-field appearance="fill">
+      <mat-label>Digite a Senha</mat-label>
+      <input type="password" matInput placeholder="Senha$12" [formControl]="senha" required ng-pattern="/^(?=.*[A-Z])(?=.*\d)(?=.*[$@$!%*#?&])[A-Za-z\d$@$!%*#?&]{7,30}$/">
+      <mat-error *ngIf="senha.invalid">{{mensagemDeErro()}}</mat-error>
+    </mat-form-field>
+</div>
+<div>
+    <mat-form-field appearance="fill">
+      <mat-label>Confirme a Senha</mat-label>
+      <input type="password" matInput placeholder="Senha$12" [formControl]="confirmaSenha" required ng-pattern="/^(?=.*[A-Z])(?=.*\d)(?=.*[$@$!%*#?&])[A-Za-z\d$@$!%*#?&]{7,30}$/">
+      <mat-error *ngIf="confirmaSenha.invalid">{{mensagemDeErro()}}</mat-error>
+    </mat-form-field>
+</div>
+
+<div >
+    <button mat-raised-button  (click)="validaSenha()">Enviar</button>
+
+</div>
+</div>
+
+  

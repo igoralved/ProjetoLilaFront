@@ -39,11 +39,15 @@ export class AppService {
   }
 
   login(email: any, nome: any){
-    return this.http.post('http://localhost:4200/usuario', {email, nome})
+    return this.http.post('http://localhost:4200/login', {email, nome})
   }
 
   loginAdm(senha: any){
-    return this.http.post('http://localhost:4200/administrador',senha)
+    return this.http.post('http://localhost:4200/login/adm',senha)
+  }
+
+  cancelar(){
+    this.router.navigate([""]);
   }
 
   constructor(private http:HttpClient, private router:Router) { }

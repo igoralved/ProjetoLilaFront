@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { WebSocketConnector } from 'src/websocket/websocket-connector';
 import { Sala } from './sala';
+import { user } from './user';
 
 @Injectable({
   providedIn: 'root'
@@ -33,8 +34,16 @@ export class AppService {
     this.router.navigate([""]);
   }
 
-  login(login: any){
-    return this.http.get('http://localhost:4200/'+login.email+`&senha=`+login.senha)
+  cadastro(user: user){
+    return this.http.post('http://localhost:4200/cadastro', user)
+  }
+
+  login(email: any, nome: any){
+    return this.http.post('http://localhost:4200/usuario', {email, nome})
+  }
+
+  loginAdm(senha: any){
+    return this.http.post('http://localhost:4200/administrador',senha)
   }
 
   constructor(private http:HttpClient, private router:Router) { }

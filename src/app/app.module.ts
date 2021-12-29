@@ -11,6 +11,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HomePageComponent } from './home-page/home-page.component';
 import { AdministradorComponent } from './administrador/administrador.component';
 import { PrimeiroAcessoComponent } from './administrador/primeiro-acesso/primeiro-acesso.component';
+import { AcessibilidadeComponent } from './acessibilidade/acessibilidade.component';
 
 
 @NgModule({
@@ -18,7 +19,8 @@ import { PrimeiroAcessoComponent } from './administrador/primeiro-acesso/primeir
     AppComponent,
     HomePageComponent,
     AdministradorComponent,
-    PrimeiroAcessoComponent
+    PrimeiroAcessoComponent,
+    AcessibilidadeComponent
   ],
   imports: [
     BrowserModule,
@@ -28,7 +30,7 @@ import { PrimeiroAcessoComponent } from './administrador/primeiro-acesso/primeir
     MatInputModule,
     ReactiveFormsModule,
     FormsModule,
-    MatButtonModule    
+    MatButtonModule   
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -40,9 +40,7 @@ $ProjetoLilaFront-theme: mat.define-light-theme(
 @include mat.all-component-themes($ProjetoLilaFront-theme);
 
 /* You can add global styles to this file, and also import other style files */
-
-html,
-body {
+html, body {
   height: 100%;
 }
 body {
@@ -51,19 +49,22 @@ body {
   background-color: var(--background);
 }
 
+//variáveis e valores css default
 :root {
-  --background: white;
-  --font-color: white;
-  --tamanhoFonte: 11pt;
-  --btn-width: 100px;
-  --btn-height: 50px;
-  --btn-bg: #672e8d;
+  --background: #f2f2f2;
+  --font-color: #59184f;
+  --tamanhoFonte: 15pt;
+  --btn-width: 300px;
+  --btn-height: auto;
+  --btn-bg: #f4dc6d;
+  --input-fontColor: black;
 }
 
 .contraste:root {
   --background: black;
   --font-color: rgb(8, 8, 8);
   --btn-bg: #d9f009;
+  --input-fontColor: white;
 }
 
 .fonteMaior:root {
@@ -71,6 +72,7 @@ body {
   --btn-width: 200px;
   --btn-height: 100px;
 }
+
 .mat-form-field-appearance-fill .mat-form-field-flex {
   border-radius: 30px !important;
   width: 300px;

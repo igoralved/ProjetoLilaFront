@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, Validators } from '@angular/forms';
+import { ModalService } from 'src/app/service/modal.service';
 
 @Component({
   selector: 'app-primeiro-acesso',
@@ -7,7 +8,7 @@ import { FormControl, Validators } from '@angular/forms';
   styleUrls: ['./primeiro-acesso.component.scss'],
 })
 export class PrimeiroAcessoComponent implements OnInit {
-  constructor() {}
+  constructor(private modalService: ModalService) {}
 
   ngOnInit(): void {}
 
@@ -25,7 +26,7 @@ export class PrimeiroAcessoComponent implements OnInit {
     ),
   ]);
 
-  enviar() {
+  enviar(id:string) {
     if (
       this.senha.hasError('required') ||
       this.senha.hasError('pattern') ||
@@ -33,7 +34,7 @@ export class PrimeiroAcessoComponent implements OnInit {
       this.senha.value !== this.confirmaSenha.value
     ) {
       /*INSERIR MENSAGEM DE ERRO (MODAL)*/
-      window.alert('deu errado');
+      this.modalService.abrir(id)
     } else {
       /*INSERIR CONEXÃO HTTP POST PARA ENVIAR A SENHA*/
       window.alert('deu certo');
@@ -45,5 +46,9 @@ export class PrimeiroAcessoComponent implements OnInit {
       return 'Você precisa inserir uma senha';
     }
     return this.senha.hasError('pattern') ? 'Formato de Senha Inválida' : '';
+  }
+
+  fecharModal(id: string) {
+    this.modalService.fechar(id);
   }
 }

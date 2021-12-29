@@ -17,7 +17,7 @@
       </div>
 
       <div class="botao-envelope">
-        <button mat-raised-button class="botao" type="submit">Entrar</button>
+        <button mat-raised-button class="botao" type="submit" (click)="validar()">Entrar</button>
       </div>
       <div class="botao-envelope">
         <button mat-raised-button class="botao" type="submit" [routerLink]="['/primeiroacesso']">Primeiro
@@ -27,3 +27,10 @@
     </div>
   </section>
 </section>
+
+<jw-modal id="mensagemErro" alt= "Mensagem de erro">
+  <h2>Senha incorreta</h2>
+  <button mat-raised-button (click)="fecharModal('mensagemErro')">
+      Cancelar
+    </button>
+</jw-modal>

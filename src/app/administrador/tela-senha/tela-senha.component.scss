@@ -36,7 +36,7 @@
   }
 
   &__input {
-    font-size: 18px; 
+    font-size: 18px;
   }
 }
 
@@ -54,5 +54,15 @@
   color: #59184f;
   background-color: #f4dc6c;
   text-transform: uppercase;
+  margin: 10px;
+}
+
+button {
+  margin-top: 20%;
+  color: #59184f;
+  background-color: #f4dc6c;
+  border-radius: 30px;
+  width: 150px;
+  height: 40px;
   margin: 10px;
 }

@@ -1,26 +1,24 @@
-  .container {
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      height: 100%;  
-      align-items: center;
-      background-color: #a484bc;
-      gap: 10px;
-  }
-button{
-  margin-top:20%;
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 100%;
+  align-items: center;
+  background-color: #a484bc;
+  gap: 10px;
+}
+button {
+  margin-top: 20%;
   color: #59184f;
   background-color: #f4dc6c;
   border-radius: 30px;
   width: 150px;
   height: 40px;
-  margin: 0 0 0 5px;
+  margin: 10px;
 }
-h1{
-  padding-left: 5%;
+h1 {
+  padding-left: 14%;
 }
-h2{
-  padding-left: 5%;
+h2 {
+  text-align: center;
 }
-
-

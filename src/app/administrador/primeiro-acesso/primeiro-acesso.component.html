@@ -1,11 +1,10 @@
 <div class="container">
-<div>
-    <h1>
-        Primeiro Acesso
-    </h1>
+    <div>
+        <img src="../../../assets/img/logoLilaSozinho.png" alt="">
+    </div>
+<div>    
     <h2>
-        Informe a Senha para o usuário administrador
-
+        Cadastre a senha para o usuário administrador
     </h2>
 </div>
 <div>
@@ -22,11 +21,9 @@
       <mat-error *ngIf="confirmaSenha.invalid">{{mensagemDeErro()}}</mat-error>
     </mat-form-field>
 </div>
-
-<div >
-    <button mat-raised-button  (click)="validaSenha()">Enviar</button>
-    <button mat-raised-button  >Cancelar</button>
-
+<div>
+    <button mat-raised-button (click)="enviar()">Enviar</button>
+    <button mat-raised-button [routerLink]="['']" >Cancelar</button>
 </div>
 </div>
 

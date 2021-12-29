@@ -18,18 +18,18 @@
   justify-content: center;
   width: 296px;
   height: 48px;
-  background-color: #f5c66b;
+  background-color: #f4dc6c;
   color: #59184f;
   font-weight: 700;
   font-size: 16px;
   line-height: 24px;
   border: none;
   border-bottom: 3px solid rgba(0, 0, 0, 0.5);
-  border-radius: 6px;
+  border-radius: 30px;
   letter-spacing: initial;
   text-transform: initial;
   box-shadow: none;
-  cursor: pointer;
+  
 }
 
 .custom-button {
@@ -55,6 +55,12 @@
 @media (max-width: 616px) {
   .row {
     flex-direction: column;
+    margin-left: -25px;
+    
+  }
+  .custom-button{
+  width: 200px;
+  height: 48px;
   }
   .logo {
     display: flex;

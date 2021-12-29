@@ -1,0 +1,24 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 100%;
+  align-items: center;
+  background-color: #f2f2f2;
+  gap: 10px;
+}
+button {
+  margin-top: 20%;
+  color: #59184f;
+  background-color: #f4dc6c;
+  border-radius: 30px;
+  width: 150px;
+  height: 40px;
+  margin: 10px;
+}
+h1 {
+  padding-left: 14%;
+}
+h2 {
+  text-align: center;
+}

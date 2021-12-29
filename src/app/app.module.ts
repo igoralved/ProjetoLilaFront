@@ -1,17 +1,20 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import {MatFormFieldModule} from '@angular/material/form-field';
-import {MatInputModule} from '@angular/material/input';
-import {MatButtonModule} from '@angular/material/button';
-
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+import { MatButtonModule } from '@angular/material/button';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
+import { MatIconModule } from '@angular/material/icon';
+
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
 import { HomePageComponent } from './home-page/home-page.component';
 import { AdministradorComponent } from './administrador/administrador.component';
 import { PrimeiroAcessoComponent } from './administrador/primeiro-acesso/primeiro-acesso.component';
 import { AcessibilidadeComponent } from './acessibilidade/acessibilidade.component';
+import { TelaSenhaComponent } from './tela-senha/tela-senha.component';
 
 
 @NgModule({
@@ -20,7 +23,8 @@ import { AcessibilidadeComponent } from './acessibilidade/acessibilidade.compone
     HomePageComponent,
     AdministradorComponent,
     PrimeiroAcessoComponent,
-    AcessibilidadeComponent
+    AcessibilidadeComponent,
+    TelaSenhaComponent,
   ],
   imports: [
     BrowserModule,
@@ -30,9 +34,12 @@ import { AcessibilidadeComponent } from './acessibilidade/acessibilidade.compone
     MatInputModule,
     ReactiveFormsModule,
     FormsModule,
-    MatButtonModule   
+    MatButtonModule,
+    MatInputModule,
+    MatButtonModule,
+    MatIconModule,
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

@@ -1,0 +1,58 @@
+.main-container {
+  width: 100%;
+  height: 100%;
+  background: #f2f2f2;
+}
+.host-container {
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+.formulario {
+  padding: 70px;
+  border-radius: 4px;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 80px;
+}
+
+.logo img {
+  background-color: #f2f2f2;
+}
+
+.form-field {
+  width: 100%;
+  margin-top: 15px;
+  margin-bottom: 50px;
+  display: flex;
+  flex-direction: column;
+
+  &__label {
+    font-size: 14px;
+  }
+
+  &__input {
+    font-size: 18px; 
+  }
+}
+
+.botao-envelope {
+  display: flex;
+}
+
+.botao {
+  display: block;
+  flex: 1;
+  border: none;
+  border-radius: 30px;
+  font-size: 14px;
+  padding: 0.5em;
+  color: #59184f;
+  background-color: #f4dc6c;
+  text-transform: uppercase;
+  margin: 10px;
+}

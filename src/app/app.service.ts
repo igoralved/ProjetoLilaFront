@@ -8,11 +8,13 @@ import { user } from './user';
 @Injectable({
   providedIn: 'root'
 })
+
 export class AppService {
-  items: any[] = [];
+
+  itens: any[] = [];
   private webSocketConnector: WebSocketConnector | any;
 
-  connect(id:string){
+  conectar(id:string){
     this.webSocketConnector = new WebSocketConnector(
       'http://localhost:4200',
       '/'+ id,
@@ -21,7 +23,7 @@ export class AppService {
   }
 
   onMessage(message: any): void {
-    this.items.push(message.body);
+    this.itens.push(message.body);
   }
 
   start(sala: Sala) {
@@ -29,21 +31,21 @@ export class AppService {
       .subscribe(response => console.log(response));
   }
 
-  disconnect(){
+  desconectar(){
     this.webSocketConnector.disconnect();
     this.router.navigate([""]);
   }
 
-  cadastro(user: user){
+  cadastroAdm(user: user){
     return this.http.post('http://localhost:4200/cadastro', user)
-  }
-
-  login(email: any, nome: any){
-    return this.http.post('http://localhost:4200/login', {email, nome})
   }
 
   loginAdm(senha: any){
     return this.http.post('http://localhost:4200/login/adm',senha)
+  }
+
+  login(email: any, nome: any){
+    return this.http.post('http://localhost:4200/login', {email, nome})
   }
 
   cancelar(){

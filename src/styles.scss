@@ -40,7 +40,8 @@ $ProjetoLilaFront-theme: mat.define-light-theme(
 @include mat.all-component-themes($ProjetoLilaFront-theme);
 
 /* You can add global styles to this file, and also import other style files */
-html, body {
+html,
+body {
   height: 100%;
 }
 body {
@@ -69,8 +70,8 @@ body {
 
 .fonteMaior:root {
   --tamanhoFonte: 25pt;
-  --btn-width: 200px;
-  --btn-height: 100px;
+  --btn-width: 400px;
+  --btn-height: auto;
 }
 
 .mat-form-field-appearance-fill .mat-form-field-flex {

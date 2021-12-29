@@ -13,6 +13,18 @@ export class AcessibilidadeComponent implements OnInit {
   
 
   ngOnInit(): void {
+    const $html = document.querySelector('html')!
+  
+  const $checkbox = document.querySelector('#switch')!
+  const $checkboxFonte = document.querySelector('#fonte')!
+  
+  $checkbox.addEventListener('change', function(){
+  $html.classList.toggle('contraste')
+  })
+
+  $checkboxFonte.addEventListener('change',function(){
+    $html.classList.toggle('fonteMaior')
+  })
   }
 
 }

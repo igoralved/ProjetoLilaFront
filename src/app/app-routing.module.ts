@@ -1,10 +1,10 @@
-import { ScreenPasswordComponent } from './screen-password/screen-password.component';
+import { TelaSenhaComponent } from './tela-senha/tela-senha.component';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
 const routes: Routes = [
   {
-    path: '', component: ScreenPasswordComponent
+    path: '', component: TelaSenhaComponent
 
   }
 ];

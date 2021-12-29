@@ -40,3 +40,16 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+.mat-form-field-appearance-fill .mat-form-field-flex {
+  background: white !important;
+  border-radius: 30px !important;
+  width: 100% !important;
+}
+
+.mat-form-field-underline {
+  width: 85% !important;
+  margin-left: 8% !important;
+  display: none;
+
+}

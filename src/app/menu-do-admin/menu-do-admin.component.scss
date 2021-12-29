@@ -9,9 +9,16 @@
   width: 100%;
   display: flex;
   justify-content: center;
-  margin-top: 90px;
+  margin-top: 50px;
+  
 }
-
+.titulo{
+  color: var(--font-color);
+  display: flex;
+  justify-content: center;
+  margin-top: 50px;
+  font-weight: bolder;
+}
 .custom-button {
   display: flex;
   align-items: center;
@@ -31,6 +38,7 @@
   box-shadow: none;
   
 }
+
 
 .custom-button {
   margin-bottom: 24px;
@@ -68,5 +76,8 @@
   }
   .imagem {
     max-width: 150px;
+  }
+  .titulo{
+    text-align:center
   }
 }

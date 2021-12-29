@@ -18,8 +18,6 @@ import { AcessibilidadeComponent } from './acessibilidade/acessibilidade.compone
 import { TelaSenhaComponent } from './administrador/tela-senha/tela-senha.component';
 import { MenuDoAdminComponent } from './administrador/menu-do-admin/menu-do-admin.component';
 
-
-
 @NgModule({
   declarations: [
     AppComponent,

@@ -44,10 +44,6 @@ export class AppService {
     return this.http.post('http://localhost:4200/login/adm',senha)
   }
 
-  login(email: any, nome: any){
-    return this.http.post('http://localhost:4200/login', {email, nome})
-  }
-
   cancelar(){
     this.router.navigate([""]);
   }

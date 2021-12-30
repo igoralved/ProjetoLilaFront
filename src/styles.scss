@@ -72,7 +72,7 @@ body {
 
 .fonteMaior:root {
   --tamanhoFonte: 25pt;
-  --btn-width: 400px;
+  --btn-width: 300px;
   --btn-height: auto;
 }
 
@@ -80,7 +80,6 @@ body {
   border-radius: 30px !important;
   width: var(--btn-width);
   background-color: var(--input-backgroundColor);
-
 }
 
 .mat-error {
@@ -90,4 +89,13 @@ body {
 .mat-form-field-underline {
   display: none;
 }
+
+@media (max-width: 616px) {
+  .mat-form-field-appearance-fill .mat-form-field-flex {
+    border-radius: 30px !important;
+    width: var(--btn-width);
+    background-color: var(--input-backgroundColor);
+  }
+}
+
 

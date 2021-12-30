@@ -3,7 +3,7 @@
   flex-direction: column;
   justify-content: center;
   height: 100%;
-  align-items: center;  
+  align-items: center;
   gap: 10px;
 }
 button {
@@ -21,7 +21,14 @@ h2 {
   text-align: center;
 }
 
-.frase{
+.frase {
   color: var(--input-fontColor);
   font-size: var(--tamanhoFonte);
+}
+
+@media (max-width: 616px) {
+  button {
+    font-size: calc(var(--tamanhoFonte) - 32%);
+    width: 300px;
+  }
 }

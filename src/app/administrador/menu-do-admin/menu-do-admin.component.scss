@@ -10,10 +10,9 @@
   width: 100%;
   display: flex;
   justify-content: center;
-  
-  
 }
-.titulo{
+
+.titulo {
   color: var(--font-color);
   display: flex;
   justify-content: center;
@@ -23,19 +22,17 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 296px;
-  height: 48px;
+  width: var(--btn-width);
+  height: var(--btn-height);
   background-color: var(--btn-bg);
   color: var(--font-color);
-  font-weight: 700;
-  font-size: 16px;
-  line-height: 24px;
+  font-size: var(--tamanhoFonte);
   border: none;
   border-bottom: 3px solid rgba(0, 0, 0, 0.5);
   border-radius: 30px;
   letter-spacing: initial;
   text-transform: initial;
-  box-shadow: none;  
+  box-shadow: none;
 }
 
 .custom-button {
@@ -62,12 +59,11 @@
   .row {
     flex-direction: column;
     margin-left: -25px;
-    
   }
-  .custom-button{
-  width: 200px;
-  height: 48px;
-  }
+  .custom-button {
+    font-size: calc(var(--tamanhoFonte) - 32%);
+    width: 300px;
+  }  
   .logo {
     display: flex;
     justify-content: center;
@@ -76,7 +72,7 @@
   .imagem {
     max-width: 150px;
   }
-  .titulo{
-    text-align:center;
+  .titulo {
+    text-align: center;
   }
 }

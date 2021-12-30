@@ -33,6 +33,6 @@ input{
 @media(max-width:600px) {
     .btn{
         font-size: calc(var(--tamanhoFonte) - 32%);
-        width: 200px;
+        width: var(--btn-width);
     }
 }

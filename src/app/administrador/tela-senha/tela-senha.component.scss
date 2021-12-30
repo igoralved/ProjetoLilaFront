@@ -27,34 +27,13 @@
 .form-field {
   display: flex;
   flex-direction: column;
-  width: 100%;
+  width: var(--btn-width);
   height: 40px;
   margin-bottom: 100px;
-
-  &__label {
-    font-size: 14px;
-    color: var(--font-color);
-  }
-
-  &__input {
-    font-size: 18px;
-  }
 }
 
 .botao-envelope {
   display: flex;
-}
-
-.botao {
-  display: block;
-  flex: 1;
-  border: none;
-  border-radius: 30px;
-  font-size: 14px;
-  padding: 0.5em;
-  color: var(--font-color);
-  background-color: var(--btn-bg);
-  text-transform: uppercase;
 }
 
 button {
@@ -62,9 +41,10 @@ button {
   color: var(--font-color);
   background-color: var(--btn-bg);
   border-radius: 30px;
-  width: 100px;
-  height: 40px;
+  width: var(--btn-width);
+  height: var(----btn-height);
   margin: 10px;
+  font-size: var(--tamanhoFonte) ;
 }
 
 @media screen and (max-width: 640px) {
@@ -82,4 +62,32 @@ button {
   .botao {
     min-width: 150px;
   }
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 100%;
+  align-items: center;  
+  gap: 10px;
+}
+button {
+  margin-top: 20%;
+  color: var(--font-color);
+  background-color: var(--btn-bg);
+  border-radius: 30px;
+  width: var(--btn-width);
+  height: var(--btn-height);
+  margin: 10px;
+  font-size: var(--tamanhoFonte);
+}
+
+h2 {
+  text-align: center;
+}
+
+.frase{
+  color: var(--input-fontColor);
+  font-size: var(--tamanhoFonte);
 }

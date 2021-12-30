@@ -11,13 +11,15 @@ import { ModalService } from 'src/app/service/modal.service';
   styleUrls: ['./primeiro-acesso.component.scss'],
 })
 export class PrimeiroAcessoComponent implements OnInit {
-  constructor(private modalService: ModalService,
-             private adminService: AdminService,
-             private router: Router) {
+  constructor(
+    private modalService: ModalService,
+    private adminService: AdminService,
+    private router: Router
+  ) {
     this.admin = {} as Admin;
   }
 
-  ngOnInit(): void { }
+  ngOnInit(): void {}
 
   admin: Admin;
 
@@ -42,22 +44,15 @@ export class PrimeiroAcessoComponent implements OnInit {
       this.senha.value === '' ||
       this.senha.value !== this.confirmaSenha.value
     ) {
-
-      this.modalService.abrir(id)
-
+      this.modalService.abrir(id);
     } else {
-
       this.admin.senha = this.senha.value;
-      this.adminService.cadastroAdmin(this.admin).subscribe(
-        (novoAdmin) => {
-          this.modalService.abrir('mensagemSucesso')
-          this.admin = novoAdmin;
-        });
-        
+      this.adminService.cadastroAdmin(this.admin).subscribe((novoAdmin) => {
+        this.admin = novoAdmin;
+      });
+      this.modalService.abrir('mensagemSucesso');
     }
-
   }
-
 
   mensagemDeErro() {
     if (this.senha.hasError('required')) {

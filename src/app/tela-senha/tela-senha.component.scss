@@ -1,7 +1,7 @@
 .main-container{
     width: 100%;
     height: 100%;
-    background: #F2F2F2;
+    background: var(--background);
   }
   .tela-container {
     max-width: 500px;
@@ -23,7 +23,7 @@
   }
   
   .logo img{
-    background-color: #F2F2F2;
+    background-color:  var(--background);
   }
   
   .form-field {
@@ -37,6 +37,7 @@
    
     &__label {
       font-size: 14px;
+      color: var(--font-color);
     }
   
     &__input{
@@ -57,8 +58,8 @@
     border-radius: 30px;
     font-size: 14px;
     padding: 0.5em;
-    color: #59184f;
-    background-color: #f4dc6c ;
+    color: var(--font-color);
+    background-color: var(--btn-bg) ;
     text-transform: uppercase;
   }
   
@@ -66,8 +67,8 @@
   button {
     
     margin-top: 10%;
-    color: #59184f;
-    background-color: #f4dc6c;
+    color: var(--font-color);
+    background-color: var(--btn-bg) ;
     border-radius: 30px;
     width: 100px;
     height: 40px;

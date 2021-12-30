@@ -53,6 +53,7 @@ body {
   --btn-height:auto;
   --btn-bg:#f4dc6d;
   --input-fontColor:black;
+  --color-acessibilidade:black;
 }
 
 //variáveis e valores css acessível
@@ -61,11 +62,14 @@ body {
   --font-color: rgb(8, 8, 8);
   --btn-bg:white;
   --input-fontColor:white;
+  --color-acessibilidade:white;
+  
 }
 
 .fonteMaior:root{
   --tamanhoFonte: 25px;
   --btn-width:300px;
   --btn-height:auto;
+  
 }
 

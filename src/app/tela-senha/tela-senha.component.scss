@@ -3,14 +3,14 @@
     height: 100%;
     background: #F2F2F2;
   }
-  .host-container {
+  .tela-container {
     max-width: 500px;
     margin: 0 auto;
   }
   
   
   .formulario {
-    padding: 70px;
+    padding: 50px 0 50px 0;
     border-radius: 4px;
   
   }
@@ -19,7 +19,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    margin-bottom: 80px;
+    margin-bottom: 100px;
   }
   
   .logo img{
@@ -27,14 +27,14 @@
   }
   
   .form-field {
-    width: 100%;
-    margin-top: 15px;
-    margin-bottom: 50px;
     display: flex;
     flex-direction: column;
-  
-  
-  
+    width: 100%;
+    height: 40px;
+    margin-bottom: 100px;
+   
+    
+   
     &__label {
       font-size: 14px;
     }
@@ -47,6 +47,7 @@
   
   .botao-envelope {
     display: flex;
+    
   }
   
   .botao {
@@ -61,5 +62,47 @@
     text-transform: uppercase;
   }
   
+
+  button {
+    
+    margin-top: 10%;
+    color: #59184f;
+    background-color: #f4dc6c;
+    border-radius: 30px;
+    width: 100px;
+    height: 40px;
+    margin: 10px;
+    
+    
+  }
+
+
+
+  @media screen and (max-width: 640px) {
+    
+  
+  
+
+  .logo {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 120px;
+    
+  }
+
+ 
+
+  .form-field {
+    margin-top: 40px;
+    min-width: 150px;
+
+}   
+    
+    .botao {
+    min-width: 150px;
+
+    }
+
+}
   
   

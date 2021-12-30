@@ -4,7 +4,8 @@ div{
     margin-left: auto;
     margin-right: auto;
     width: 250px;
-    padding:8px;
+    height: auto;
+    
     background-color: black;
     border-radius: 30px;
     
@@ -14,12 +15,12 @@ div{
 //menu para alteração de fonte e contraste
 
 label{
-    padding: 8px;
+    padding: 2px;
     display: inline-block;
     font-size:15pt;
     margin-right: 10px;
     color:white;
-    border-radius: 12px;
+    
       
     
   }

@@ -59,6 +59,7 @@ body {
   --btn-height:auto;
   --btn-bg:#f4dc6d;
   --input-fontColor:black;
+  --input-backgroundColor:#e5e4e2;
 }
 
 .contraste:root {
@@ -66,6 +67,7 @@ body {
   --font-color: rgb(8, 8, 8);
   --btn-bg: #d9f009;
   --input-fontColor: white;
+  --input-backgroundColor:#e5e4e2;
 }
 
 .fonteMaior:root {
@@ -76,7 +78,9 @@ body {
 
 .mat-form-field-appearance-fill .mat-form-field-flex {
   border-radius: 30px !important;
-  width: 300px;
+  width: var(--btn-width);
+  background-color: var(--input-backgroundColor);
+
 }
 
 .mat-error {
@@ -87,13 +91,3 @@ body {
   display: none;
 }
 
-
-:root{
-  --background:#f2f2f2;
-  --font-color: #59184f;
-  --tamanhoFonte:15pt;
-  --btn-width:300px;
-  --btn-height:auto;
-  --btn-bg:#f4dc6d;
-  --input-fontColor:black;
-}

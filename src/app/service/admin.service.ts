@@ -6,25 +6,25 @@ import { Observable } from 'rxjs';
 import { Autenticacao } from '../model/autenticacao';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class AdminService {
-  
- URLApi : string = "https://development-lila.herokuapp.com/";
- URLAdmin : string  = this.URLApi + "admin";
- URLLogin : string = this.URLApi + "login";
- 
-  constructor(private http:HttpClient ) { }
 
-  cadastroAdmin(admin: Admin): Observable<Admin>{
-    return this.http.post<Admin>(this.URLAdmin, admin)
+  URLApi: string = 'https://development-lila.herokuapp.com/';
+  URLAdmin: string = this.URLApi + 'admin';
+  URLLogin: string = this.URLApi + 'login';
+
+  constructor(private http: HttpClient) {}
+
+  cadastroAdmin(admin: Admin): Observable<Admin> {
+    return this.http.post<Admin>(this.URLAdmin, admin);
   }
 
-  loginAdmin(senha: AdminSenha):Observable<Autenticacao>{
-    return this.http.post<Autenticacao>(this.URLLogin, senha)
+  loginAdmin(senha: AdminSenha): Observable<Autenticacao> {
+    return this.http.post<Autenticacao>(this.URLLogin, senha);
   }
 
-  listarAdmin(): Observable<Admin[]>{
+  listarAdmin(): Observable<Admin[]> {
     return this.http.get<Admin[]>(this.URLAdmin);
   }
 }

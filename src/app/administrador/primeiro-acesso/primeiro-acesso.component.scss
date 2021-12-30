@@ -3,22 +3,27 @@
   flex-direction: column;
   justify-content: center;
   height: 100%;
-  align-items: center;
-  background-color: #f2f2f2;
+  align-items: center;  
   gap: 10px;
 }
 button {
   margin-top: 20%;
-  color: #59184f;
-  background-color: #f4dc6c;
+  color: var(--font-color);
+  background-color: var(--btn-bg);
   border-radius: 30px;
-  width: 150px;
-  height: 40px;
+  width: var(--btn-width);
+  height: var(--btn-height);
   margin: 10px;
+  font-size: var(--tamanhoFonte);
 }
 h1 {
   padding-left: 14%;
 }
 h2 {
   text-align: center;
+}
+
+.frase{
+  color: var(--input-fontColor);
+  font-size: var(--tamanhoFonte);
 }

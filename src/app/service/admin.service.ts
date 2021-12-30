@@ -3,13 +3,14 @@ import { HttpClient } from '@angular/common/http';
 import { AdminSenha } from '../model/adminSenha';
 import { Admin } from '../model/admin';
 import { Observable } from 'rxjs';
+import { Autenticacao } from '../model/autenticacao';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AdminService {
   
- URLApi : string = "http://localhost:8080/";
+ URLApi : string = "https://development-lila.herokuapp.com/";
  URLAdmin : string  = this.URLApi + "admin";
  URLLogin : string = this.URLApi + "login";
  
@@ -19,8 +20,11 @@ export class AdminService {
     return this.http.post<Admin>(this.URLAdmin, admin)
   }
 
-  loginAdmin(senha: AdminSenha){
-    return this.http.post(this.URLLogin, senha)
+  loginAdmin(senha: AdminSenha):Observable<Autenticacao>{
+    return this.http.post<Autenticacao>(this.URLLogin, senha)
   }
 
+  listarAdmin(): Observable<Admin[]>{
+    return this.http.get<Admin[]>(this.URLAdmin);
+  }
 }

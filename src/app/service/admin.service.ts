@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { AdminSenha } from '../model/adminSenha';
 import { Admin } from '../model/admin';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -14,8 +15,8 @@ export class AdminService {
  
   constructor(private http:HttpClient ) { }
 
-  cadastroAdmin(admin: Admin){
-    return this.http.post(this.URLAdmin, admin)
+  cadastroAdmin(admin: Admin): Observable<Admin>{
+    return this.http.post<Admin>(this.URLAdmin, admin)
   }
 
   loginAdmin(senha: AdminSenha){

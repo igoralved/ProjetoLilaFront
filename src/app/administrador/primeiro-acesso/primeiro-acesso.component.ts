@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
+import { Admin } from 'src/app/model/admin';
+import { AdminService } from 'src/app/service/admin.service';
 import { ModalService } from 'src/app/service/modal.service';
 
 @Component({
@@ -8,9 +11,15 @@ import { ModalService } from 'src/app/service/modal.service';
   styleUrls: ['./primeiro-acesso.component.scss'],
 })
 export class PrimeiroAcessoComponent implements OnInit {
-  constructor(private modalService: ModalService) {}
+  constructor(private modalService: ModalService,
+             private adminService: AdminService,
+             private router: Router) {
+    this.admin = {} as Admin;
+  }
 
-  ngOnInit(): void {}
+  ngOnInit(): void { }
+
+  admin: Admin;
 
   senha = new FormControl('', [
     Validators.required,
@@ -26,20 +35,29 @@ export class PrimeiroAcessoComponent implements OnInit {
     ),
   ]);
 
-  enviar(id:string) {
+  enviar(id: string) {
     if (
       this.senha.hasError('required') ||
       this.senha.hasError('pattern') ||
       this.senha.value === '' ||
       this.senha.value !== this.confirmaSenha.value
     ) {
-      /*INSERIR MENSAGEM DE ERRO (MODAL)*/
+
       this.modalService.abrir(id)
+
     } else {
-      /*INSERIR CONEXÃO HTTP POST PARA ENVIAR A SENHA*/
-      window.alert('deu certo');
+
+      this.admin.senha = this.senha.value;
+      this.adminService.cadastroAdmin(this.admin).subscribe(
+        (novoAdmin) => {
+          this.modalService.abrir('mensagemSucesso')
+          this.admin = novoAdmin;
+        });
+        
     }
+
   }
+
 
   mensagemDeErro() {
     if (this.senha.hasError('required')) {

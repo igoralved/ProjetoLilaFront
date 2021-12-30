@@ -1,6 +1,9 @@
 <div class="container">
     <div>
-        <img src="../../../assets/img/logoLilaSozinho.png" alt="">
+        <a [routerLink]="['']">
+            <img src="../../../assets/img/logoLilaSozinho.png" alt="">
+        </a>
+        
     </div>
 <div>    
     <h2 style="color:#59184f;">
@@ -28,8 +31,18 @@
 </div>
 
 <jw-modal id="mensagemErro" alt= "Mensagem de erro">
-    <h2>Senha incorreta</h2>
+    <h2>Senhas Não Estão Iguais</h2>
     <button (click)="fecharModal('mensagemErro')" mat-raised-button>
         Cancelar
       </button>
+  </jw-modal>
+
+  <jw-modal id="mensagemSucesso" alt= "Mensagem de erro">
+    <h2>Cadastrado com Sucesso!</h2>
+    <a [routerLink]="['']">
+        <button  mat-raised-button>
+            Fechar
+        </button>
+    </a>
+   
   </jw-modal>

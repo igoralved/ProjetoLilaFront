@@ -35,18 +35,25 @@
 </div>
 
 <jw-modal id="mensagemErro" alt="Mensagem de erro">
-    <h2>Senha incorreta</h2>
-    <button (click)="fecharModal('mensagemErro')" mat-raised-button>
-        Cancelar
+    <h3>A senha deve conter no mínimo:
+        <ul>
+            <li>8 caracteres</li> 
+            <li>1 número</li> 
+            <li>1 letra maiúscula</li> 
+            <li>1 letra minúscula</li> 
+            <li>1 caractere especial.</li> 
+        </ul>
+        </h3>
+    <button (click)="fecharModal('mensagemErro')" mat-raised-button class="botao-modal">
+        Fechar
     </button>
 </jw-modal>
 
 <jw-modal id="mensagemSucesso" alt="Mensagem de sucesso">
     <h2>Cadastrado com Sucesso!</h2>
     <a [routerLink]="['']">
-        <button mat-raised-button>
+        <button mat-raised-button class="botao-modal">
             Fechar
         </button>
     </a>
-
 </jw-modal>

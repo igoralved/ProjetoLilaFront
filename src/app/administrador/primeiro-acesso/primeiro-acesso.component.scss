@@ -25,10 +25,30 @@ h2 {
   color: var(--input-fontColor);
   font-size: var(--tamanhoFonte);
 }
+li{
+  list-style-type: none;
+}
+ul{
+  padding-inline-start: 0px !important;
+}
 
 @media (max-width: 616px) {
-  button {
-    font-size: calc(var(--tamanhoFonte) - 32%);
-    width: 300px;
+  .botao-modal {
+      margin-top: 20%;
+      color: var(--font-color);
+      background-color: var(--btn-bg);
+      border-radius: 30px;
+      width: 110px;
+      height: var(--btn-height);
+      margin: 10px;
+      font-size: var(--tamanhoFonte);
+    }
+    li{
+      list-style-type: none;
+      list-style-position: initial;
+    }
+    ul{
+      padding-inline-start: 0px !important;
+    }
+    
   }
-}

@@ -17,6 +17,8 @@ import { PrimeiroAcessoComponent } from './administrador/primeiro-acesso/primeir
 import { AcessibilidadeComponent } from './acessibilidade/acessibilidade.component';
 import { TelaSenhaComponent } from './administrador/tela-senha/tela-senha.component';
 import { MenuDoAdminComponent } from './administrador/menu-do-admin/menu-do-admin.component';
+import { CriarMesaComponent } from './mesa/criar-mesa/criar-mesa.component';
+import { MesaCriadaComponent } from './mesa/mesa-criada/mesa-criada.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +28,9 @@ import { MenuDoAdminComponent } from './administrador/menu-do-admin/menu-do-admi
     AcessibilidadeComponent,
     TelaSenhaComponent,
     ModalComponent,
-    MenuDoAdminComponent
+    MenuDoAdminComponent,
+    CriarMesaComponent,
+    MesaCriadaComponent
   ],
   imports: [
     BrowserModule,

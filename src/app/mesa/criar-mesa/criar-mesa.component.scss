@@ -1,0 +1,29 @@
+.container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 90%;     
+}
+  
+.btn {
+    display: inline-block;
+    margin-top: 10px;
+    background-color: var(--btn-bg);
+    color: var(--font-color);
+    width: var(--btn-width);
+    height: var(--btn-height);
+    border-radius: 30px;
+    font-size: var(--tamanhoFonte);
+}
+
+input{
+    background-color: var(--bg-input);
+}
+
+@media(max-width:600px) {
+    .btn{
+        font-size: calc(var(--tamanhoFonte) - 32%);
+        width: var(--btn-width);
+    }
+}

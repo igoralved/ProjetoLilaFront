@@ -1,3 +1,4 @@
+import { EntrarMesaComponent } from './entrar-mesa/entrar-mesa.component';
 import { TelaSenhaComponent } from './administrador/tela-senha/tela-senha.component';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
@@ -21,6 +22,10 @@ const routes: Routes = [
   {
     path: 'menu',
     component: MenuDoAdminComponent,
+  },
+  {
+    path: 'entrarmesa',
+    component: EntrarMesaComponent,
   },
 ];
 

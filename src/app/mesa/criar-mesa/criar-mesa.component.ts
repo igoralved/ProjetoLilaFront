@@ -7,6 +7,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CriarMesaComponent implements OnInit {
 
+  //jogadores: Jogadores[] | undefined;
+
   constructor() { }
 
   ngOnInit(): void {

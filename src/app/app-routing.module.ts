@@ -4,6 +4,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { HomePageComponent } from './home-page/home-page.component';
 import { PrimeiroAcessoComponent } from './administrador/primeiro-acesso/primeiro-acesso.component';
 import { MenuDoAdminComponent } from './administrador/menu-do-admin/menu-do-admin.component';
+import { MontarCartasComponent } from './montar-cartas/montar-cartas.component';
 
 const routes: Routes = [
   {
@@ -21,6 +22,10 @@ const routes: Routes = [
   {
     path: 'menu',
     component: MenuDoAdminComponent,
+  },
+  {
+    path: 'cartas',
+    component: MontarCartasComponent,
   },
 ];
 

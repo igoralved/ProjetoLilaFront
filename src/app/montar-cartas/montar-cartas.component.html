@@ -1,0 +1,34 @@
+<div class="cartas-container">
+    <div class="carta">
+        <div class="titulo">
+            <h2 class="titulo">Definição</h2>
+            <div class="pontos">1</div>
+        </div>
+        <p class="definicao">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quibusdam expedita corporis
+            recusandae rerum, exercitationem facilis dolor aut cum pariatur, incidunt distinctio dolore cupiditate
+        </p>
+        <div class="icones">
+            <div class="coracoes">
+                <div class="coracao" *ngFor="let i of [1, 0, 1]">
+                    <img class="coracao-pequeno" *ngIf="i === 0" src="assets/svg/icone-coracao.svg" alt="Ícone coração">
+                    <img class="coracao-grande" *ngIf="i === 1" src="assets/svg/icone-coracao.svg" alt="Ícone coração">
+                </div>
+            </div>
+            <div class="presentes">
+                <div class="presente-acao" *ngFor="let i of [0]">
+                    <div class="presente-acao" *ngIf="i === 0">
+                        <img class="presente" src="assets/svg/icone-presente.svg" alt="presente">
+                        <img class="presenteInfoAcoes" src="assets/svg/icone-usuario.svg" alt="acao">
+                    </div>
+                    <div class="presente-info" *ngIf="i === 1">
+                        <img class="presente" src="assets/svg/icone-presente.svg" alt="presente">
+                        <img class="presenteInfoAcoes" src="assets/svg/icone-info.svg" alt="info">
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+        <span class="fonte">Fonte:Wikipedia</span>
+    </div>
+</div>

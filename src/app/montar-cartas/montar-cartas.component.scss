@@ -1,0 +1,78 @@
+.cartas-container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+
+  .carta {
+    margin-left: 80px;
+    border: 2px solid black;
+    width: 200px;
+    padding: 16px;
+    
+
+    .titulo {
+      display: flex;
+      justify-content: space-between;
+
+      .pontos {
+        background-color: black;
+        width: 30px;
+        height: 30px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        font-size: 20px;
+        border-radius: 50%;
+      }
+    }
+    .definicao {
+      margin-top: 20px;
+    }
+
+    .icones {
+      margin-top: 20px;
+      display: flex;
+      justify-content: space-between;
+
+      .coracoes {
+        display: flex;
+
+        .coracao:not(:first-child) {
+          margin-left: 8px;
+        }
+
+        .coracao-pequeno {
+          width: 16px;
+          height: 16px;
+        }
+
+        .coracao-grande {
+          width: 24px;
+          height: 24px;
+        }
+      }
+
+      .presentes {
+        position: relative;
+
+        .presente {
+          width: 34px;
+          height: 34px;
+        }
+
+        .presenteInfoAcoes {
+          width: 18px;
+          position: absolute;
+          bottom: 0px;
+          right: -5px;
+        }
+      }
+    }
+
+    .fonte {
+      margin-top: 20px;
+      display: block;
+    }
+  }
+}

@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  API_URL: 'https://development-lila.herokuapp.com/'
+  API_URL: 'http://localhost:8080/'
 };
 
 /*

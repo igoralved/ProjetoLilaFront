@@ -60,4 +60,8 @@ export class MesaService {
     this.items = [];
     this.router.navigate(['']);
   }
+
+  findByHash(hash: string): Observable<Sala>{
+    return this.http.get<Sala>(`${environment.API_URL}/sala/${hash}`);
+  }
 }

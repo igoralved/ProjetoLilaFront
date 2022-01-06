@@ -28,7 +28,7 @@ const routes: Routes = [
     component: CriarMesaComponent,
   },
   {
-    path:'mesa-criada',
+    path:'mesa-criada/:hash',
     component: MesaCriadaComponent,
   }
 ];

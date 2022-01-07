@@ -1,8 +1,9 @@
 import { Baralho } from './baralho';
+import { Jogador } from './jogador';
 
 export interface Sala {
   id: string;
   hash: string;
   baralho: Baralho;
-  jogadores: string[]; // TODO: Lista de Jogadores, arrumar tipo
+  jogadores: Jogador[];
 }

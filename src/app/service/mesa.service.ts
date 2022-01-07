@@ -1,3 +1,4 @@
+import { SalaRequest } from './../model/salaRequest';
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
@@ -31,7 +32,7 @@ export class MesaService {
    */
   conectarNovoJogador(salaRequest: SalaRequest): Observable<Sala> {
     return this.http.post<Sala>(
-      `${environment.API_URL}/api/conectar`,
+      `${environment.API_URL}api/conectar`,
       salaRequest
     );
   }
@@ -60,4 +61,10 @@ export class MesaService {
     this.items = [];
     this.router.navigate(['']);
   }
+
+  findByHash(hash: string): Observable<Sala>{
+    return this.http.get<Sala>(`${environment.API_URL}sala/${hash}`);
+  }
+
+
 }

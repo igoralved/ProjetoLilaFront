@@ -1,8 +1,10 @@
 <div class="container">
-  <div class="url">
-    <h1 class="texto">Mesa criada:</h1>
+  <div class="texto">
+    <h1 class="titulo">Mesa criada:</h1>
+  </div>
     <div>
       <p class="link-da-mesa">{{ link }}</p>
+    
       <button
         class="btn-copiar"
         mat-icon-button
@@ -12,12 +14,12 @@
       >
         <mat-icon>content_copy</mat-icon>
       </button>
-
-      <button class="btn-inicio" mat-raised-button color="primary">
+    </div>
+    <div>
+      <button mat-raised-button class="btn-inicio" color="primary" (click)="conectarWebsocket()">
         Iniciar Jogo
       </button>
     </div>
-  </div>
 
   <div class="area-da-mesa"></div>
 </div>

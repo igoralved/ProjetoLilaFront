@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Sala } from 'src/app/model/sala';
 import { MesaService } from 'src/app/service/mesa.service';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-mesa-criada',
@@ -21,9 +22,14 @@ export class MesaCriadaComponent implements OnInit {
 
   ngOnInit(): void {
     this.hash = String(this.route.snapshot.paramMap.get('hash'));
-    this.link = `www.link.com/${this.hash}`;
+    this.link = `${environment.CLIENT_URL}entrarmesa/${this.hash}`;
     this.mesaService
       .findByHash(this.hash)
       .subscribe((sala) => (this.sala = sala));
+  }
+
+  conectarWebsocket(){
+   this.mesaService.connectWebsocket(this.hash);
+   //TODO: conectar na tela da mesa (US029)
   }
 }

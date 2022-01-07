@@ -8,11 +8,12 @@
     border: 2px solid black;
     width: 200px;
     padding: 16px;
-    
+    background: var(--input-backgroundColor);
 
     .titulo {
       display: flex;
       justify-content: space-between;
+      font-size: var(--tamanhoFonte);
 
       .pontos {
         background-color: black;
@@ -28,6 +29,8 @@
     }
     .definicao {
       margin-top: 20px;
+      font-size: var(--tamanhoFonte);
+      line-height: 30px;
     }
 
     .icones {
@@ -76,18 +79,35 @@
     }
   }
 }
-.carta-objetivo{
+.cartas-objetivo {
   margin-left: 80px;
   border: 2px solid black;
-  width: 300px;
-  height: 170px;
+  width: 330px;
+  height: 200px;
   padding: 16px;
-  .nome{
+  background: var(--input-backgroundColor);
+  .nome {
     color: #38761d;
     text-align: justify;
+    font-size: var(--tamanhoFonte);
   }
-  .texto{
+  .texto {
     margin-bottom: 60px;
     text-align: justify;
+    font-size: var(--tamanhoFonte);
   }
+}
+.cartas-inicio {
+  margin-left: 80px;
+  border: 2px solid black;
+  width: 330px;
+  height: 200px;
+  padding: 16px;
+  background: var(--input-backgroundColor);
+}
+.texto {
+  margin-bottom: 60px;
+  text-align: justify;
+  font-size: var(--tamanhoFonte);
+  line-height: 30px;
 }

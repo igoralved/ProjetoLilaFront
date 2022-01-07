@@ -1,4 +1,4 @@
-export interface carta {
+export interface Carta {
     tipo: string;
     categoria: string;
     bonus: boolean;

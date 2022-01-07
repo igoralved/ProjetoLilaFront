@@ -4,18 +4,15 @@
     <img src="assets/img/logoLilaSozinho.png">
   </div>
 
-  <div class="titulo">
-    <p>Entrar na mesa 	&lt;nome da mesa&gt;</p>
-  </div>
   <mat-form-field appearance="fill">
     <mat-label>Nick:</mat-label>
-    <input matInput type="text">
+    <input [(ngModel)]='nick' matInput type="text">
     </mat-form-field>
 
   <div>
-    <button mat-raised-button type="submit">Entrar na mesa</button>
+    <button mat-raised-button (click)='conectar()' >Entrar na mesa</button>
   </div>
   <div>
-    <button mat-raised-button type="submit">Voltar</button>
+    <button mat-raised-button type="submit" [routerLink]="['']">Voltar</button>
   </div>
 </div>

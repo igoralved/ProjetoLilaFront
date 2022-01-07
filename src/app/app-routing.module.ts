@@ -25,7 +25,7 @@ const routes: Routes = [
     component: MenuDoAdminComponent,
   },
   {
-    path: 'entrarmesa',
+    path: 'entrarmesa/:hash',
     component: EntrarMesaComponent,
   },
 

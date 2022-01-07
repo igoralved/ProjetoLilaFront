@@ -7,7 +7,7 @@ import { environment } from 'src/environments/environment';
 import { Sala } from 'src/app/model/sala';
 import { Jogador } from '../model/jogador';
 import { Observable } from 'rxjs';
-import { SalaRequest } from '../model/salaRequest';
+
 
 @Injectable({
   providedIn: 'root',

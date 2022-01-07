@@ -19,7 +19,7 @@ import { MenuDoAdminComponent } from './administrador/menu-do-admin/menu-do-admi
 import { EntrarMesaComponent } from './entrar-mesa/entrar-mesa.component';
 import { CriarMesaComponent } from './mesa/criar-mesa/criar-mesa.component';
 import { MesaCriadaComponent } from './mesa/mesa-criada/mesa-criada.component';
-
+import {ClipboardModule} from '@angular/cdk/clipboard';
 @NgModule({
   declarations: [
     AppComponent,
@@ -48,7 +48,8 @@ import { MesaCriadaComponent } from './mesa/mesa-criada/mesa-criada.component';
     MatInputModule,
     MatButtonModule,
     MatIconModule,
-    HttpClientModule
+    HttpClientModule,
+    ClipboardModule
   ],
   providers: [],
   bootstrap: [AppComponent],

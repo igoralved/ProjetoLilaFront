@@ -31,7 +31,7 @@ export class MesaService {
    */
   conectarNovoJogador(salaRequest: SalaRequest): Observable<Sala> {
     return this.http.post<Sala>(
-      `${environment.API_URL}/api/conectar`,
+      `${environment.API_URL}api/conectar`,
       salaRequest
     );
   }
@@ -62,6 +62,6 @@ export class MesaService {
   }
 
   findByHash(hash: string): Observable<Sala>{
-    return this.http.get<Sala>(`${environment.API_URL}/sala/${hash}`);
+    return this.http.get<Sala>(`${environment.API_URL}sala/${hash}`);
   }
 }

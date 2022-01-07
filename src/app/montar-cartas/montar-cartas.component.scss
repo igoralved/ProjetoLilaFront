@@ -18,8 +18,8 @@
 
       .pontos {
         background-color: black;
-        width: 30px;
-        height: 30px;
+        width: 1.7em;
+        height: 1.7em;
         display: flex;
         align-items: center;
         justify-content: center;
@@ -29,13 +29,14 @@
 
         .pt {
           margin-top: 15px;
-          font-size: var(--tamanhoFonte);
+          font-size: calc(var(--tamanhoFonte) - 1pt);
+          font-weight: bold;
         }
       }
     }
     .definicao {
       margin-top: 20px;
-      font-size: var(--tamanhoFonte);
+      font-size: calc(var(--tamanhoFonte) - 1.5pt);
       line-height: 30px;
     }
 
@@ -83,7 +84,7 @@
     .fonte {
       margin-top: 20px;
       display: block;
-      font-size: var(--tamanhoFonte);
+      font-size: calc(var(--tamanhoFonte) - 3pt);
     }
   }
 }
@@ -111,6 +112,6 @@
 .texto {
   margin-bottom: 60px;
   text-align: justify;
-  font-size: var(--tamanhoFonte);
+  font-size:  calc(var(--tamanhoFonte) - 1.5pt);
   line-height: 30px;
 }

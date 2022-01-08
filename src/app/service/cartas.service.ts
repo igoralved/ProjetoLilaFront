@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { environment } from 'src/environments/environment';
 import { Carta } from '../model/carta';
 import { CartaInicio } from '../model/cartaInicio';
 import { CartaObjetivo } from '../model/cartaObjetivo';
@@ -9,22 +10,22 @@ import { CartaObjetivo } from '../model/cartaObjetivo';
   providedIn: 'root',
 })
 export class CartaService {
-  URLApi: string = 'https://development-lila.herokuapp.com/';
-  URLCarta: string = this.URLApi + 'cartadojogo';
-  URLCartaObjetivo: string = this.URLApi + 'CartaObjetivo';
-  URLCartaInicio: string = this.URLApi + 'cartaInicio';
+  constructor(private httpClient: HttpClient) {}
 
-  constructor(private http: HttpClient) {}
+  private readonly URLCarta: string = 'cartadojogo';
+  private readonly URLCartaObjetivo: string = 'CartaObjetivo';
+  private readonly URLCartaInicio: string = 'cartaInicio';
 
   getListarCarta(): Observable<Carta[]> {
-    return this.http.get<Carta[]>(this.URLCarta);
+    return this.httpClient.get<Carta[]>(`${environment.API_URL}/${this.URLCarta}`);
+    
   }
 
   getListarCartaInicio(): Observable<CartaInicio[]> {
-    return this.http.get<CartaInicio[]>(this.URLCartaInicio);
+    return this.httpClient.get<CartaInicio[]>(`${environment.API_URL}/${this.URLCartaInicio}`);
   }
 
   getListarCartaObjetivo(): Observable<CartaObjetivo[]> {
-    return this.http.get<CartaObjetivo[]>(this.URLCartaObjetivo);
+    return this.httpClient.get<CartaObjetivo[]>(`${environment.API_URL}/${this.URLCartaObjetivo}`);
   }
 }

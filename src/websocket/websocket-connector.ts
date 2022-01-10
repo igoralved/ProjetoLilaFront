@@ -1,24 +1,28 @@
+import { Client } from '@stomp/stompjs';
 import * as SockJS from 'sockjs-client';
-import * as Stomp from 'stompjs';
+
 export class WebSocketConnector {
 
-    private stompClient: Stomp.Client;
+    private stompClient: Client;
 
     constructor(private webSocketEndPoint: string, private topic: string, private onMessage: Function, private callbackError?: Function) {
         const errorCallback = callbackError || this.onError;
         this.connect(errorCallback);
-        this.stompClient = {} as Stomp.Client;
+        this.stompClient = {} as Client;
     }
 
     private connect(errorCallback: Function) {
-        console.log("Starting a WebSocket connection");
-        const ws = new SockJS(this.webSocketEndPoint);
-        this.stompClient = Stomp.over(ws);
-        this.stompClient.connect({}, frame => {
-            this.stompClient.subscribe(this.topic, event => {
-                this.onMessage(event);
-            });
-        }, errorCallback.bind(this));
+        console.log("Starting a WebSocket connection");  
+         
+        this.stompClient = new Client();
+
+        // this.stompClient.webSocketFactory = function(){
+        //     return new SockJS("http://localhost:8080/gameplay");
+        // }  
+        this.stompClient.brokerURL = this.webSocketEndPoint;    
+
+        this.stompClient.onConnect = frame =>{console.warn("conectado") };
+        this.stompClient.activate();
     };
 
     private onError(error: any) {
@@ -29,9 +33,5 @@ export class WebSocketConnector {
         }, 3000);
     }
 
-    disconnect(){
-        if(this.stompClient != null){
-            this.stompClient.disconnect(() => console.warn("Disconnected."));
-        }
-    }
+
 }

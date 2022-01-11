@@ -32,7 +32,7 @@ export class MesaJogoComponent implements OnInit {
       .subscribe((sala) => (this.sala = sala));
 
     this.topicSubscription = this.rxStompService
-      .watch(`/game-play/game-update${this.hash}`)
+      .watch(`/game-play/game-update/${this.hash}`)
       .subscribe((msg: Message) => {
         this.receivedMessages.push(msg.body);
       });

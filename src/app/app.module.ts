@@ -19,7 +19,15 @@ import { MenuDoAdminComponent } from './administrador/menu-do-admin/menu-do-admi
 import { EntrarMesaComponent } from './entrar-mesa/entrar-mesa.component';
 import { CriarMesaComponent } from './mesa/criar-mesa/criar-mesa.component';
 import { MesaCriadaComponent } from './mesa/mesa-criada/mesa-criada.component';
-import {ClipboardModule} from '@angular/cdk/clipboard';
+import { ClipboardModule } from '@angular/cdk/clipboard';
+import {
+  InjectableRxStompConfig,
+  RxStompService,
+  rxStompServiceFactory,
+} from '@stomp/ng2-stompjs';
+
+import { myRxStompConfig } from './rx-stomp.config';
+import { MesaJogoComponent } from './mesa/mesa-jogo/mesa-jogo.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -31,7 +39,8 @@ import {ClipboardModule} from '@angular/cdk/clipboard';
     MenuDoAdminComponent,
     EntrarMesaComponent,
     CriarMesaComponent,
-    MesaCriadaComponent
+    MesaCriadaComponent,
+    MesaJogoComponent,
   ],
   imports: [
     BrowserModule,
@@ -49,9 +58,19 @@ import {ClipboardModule} from '@angular/cdk/clipboard';
     MatButtonModule,
     MatIconModule,
     HttpClientModule,
-    ClipboardModule
+    ClipboardModule,
   ],
-  providers: [],
+  providers: [
+    {
+      provide: InjectableRxStompConfig,
+      useValue: myRxStompConfig,
+    },
+    {
+      provide: RxStompService,
+      useFactory: rxStompServiceFactory,
+      deps: [InjectableRxStompConfig],
+    },
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

@@ -37,9 +37,10 @@ export class MesaService {
   }
 
   connectWebsocket(hash: string) {
+    console.log(`${environment.API_URL}gameplay`)
     this.webSocketConnector = new WebSocketConnector(
-      environment.API_URL,
-      `topic/${hash}`,
+      `${environment.WEBSOCKET_URL}gameplay`,
+      `/topic/${hash}`,
       //TODO: Linha 43 precisa ser modificada de acordo com a lógica das jogadas
       this.onMessage.bind(this)
     );
@@ -55,11 +56,11 @@ export class MesaService {
     return this.items;
   }
 
-  disconnect() {
-    this.webSocketConnector.disconnect();
-    this.items = [];
-    this.router.navigate(['']);
-  }
+  // disconnect() {
+  //   this.webSocketConnector.disconnect();
+  //   this.items = [];
+  //   this.router.navigate(['']);
+  // }
 
   findByHash(hash: string): Observable<Sala>{
     return this.http.get<Sala>(`${environment.API_URL}sala/${hash}`);

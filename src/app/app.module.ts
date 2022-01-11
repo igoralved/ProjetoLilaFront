@@ -18,6 +18,7 @@ import { AcessibilidadeComponent } from './acessibilidade/acessibilidade.compone
 import { TelaSenhaComponent } from './administrador/tela-senha/tela-senha.component';
 import { MenuDoAdminComponent } from './administrador/menu-do-admin/menu-do-admin.component';
 import { MontarCartasComponent } from './montar-cartas/montar-cartas.component';
+import { AreaDeCompraComponent } from './area-de-compra/area-de-compra.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import { MontarCartasComponent } from './montar-cartas/montar-cartas.component';
     TelaSenhaComponent,
     ModalComponent,
     MenuDoAdminComponent,
-    MontarCartasComponent
+    MontarCartasComponent,
+    AreaDeCompraComponent
   ],
   imports: [
     BrowserModule,

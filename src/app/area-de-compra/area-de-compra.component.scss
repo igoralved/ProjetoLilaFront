@@ -1,0 +1,242 @@
+.tela {
+    align-items: center;
+    background-color: 
+  #f2f2f2;
+    display: flex;
+  }
+  
+  .tela .baralho {
+    background-color: red;
+    height: 186px;
+    margin-top: 383px;
+    width: 130px;
+  }
+  
+  .tela .cartas {
+    align-items: flex-start;
+    display: flex;
+    height: 396px;
+    margin-left: 110px;
+    margin-top: 383px;
+    min-width: 486px;
+  }
+  
+  .tela .carta-container-1 {
+    align-items: flex-start;
+    display: flex;
+    flex-direction: column;
+    min-height: 396px;
+    width: 130px;
+  }
+  
+  .tela .carta {
+    background-color: red;
+    height: 186px;
+    width: 130px;
+  }
+  
+  .tela .carta-1 {
+    background-color: red;
+    height: 186px;
+    margin-top: 24px;
+    width: 130px;
+  }
+  
+  .tela .bonus {
+    background-color: red;
+    height: 58px;
+    margin-top: 13px;
+    width: 60px;
+  }
+  
+  .tela .corgrande-container {
+    align-items: flex-start;
+    display: flex;
+    flex-direction: column;
+    margin-left: 15px;
+    min-height: 128px;
+    width: 60px;
+  }
+  
+  .tela .corgrande {
+    background-color: red;
+    height: 58px;
+    margin-left: 0;
+    width: 60px;
+  }
+  
+  .tela .carta-container {
+    align-items: flex-start;
+    display: flex;
+    flex-direction: column;
+    margin-left: 48px;
+    min-height: 396px;
+    width: 130px;
+  }
+  
+  .tela .flex-col {
+    align-items: flex-start;
+    display: flex;
+    flex-direction: column;
+    margin-left: 102px;
+    margin-top: 324px;
+    min-height: 490px;
+    width: 262px;
+  }
+  
+  .tela .objetivo {
+    align-self: flex-end;
+    background-color: red;
+    height: 139px;
+    width: 252px;
+  }
+  
+  .tela .coracoes {
+    align-items: flex-start;
+    display: flex;
+    height: 128px;
+    margin-top: 223px;
+    min-width: 136px;
+  }
+  
+  .tela .corpeq-container {
+    align-items: flex-start;
+    display: flex;
+    flex-direction: column;
+    min-height: 128px;
+    width: 60px;
+  }
+   
+  .tela .objetivo {
+    align-self: flex-end;
+    background-color: red;
+    height: 139px;
+    width: 252px;
+  }
+  
+  .tela .coracoes {
+    align-items: flex-start;
+    display: flex;
+    height: 128px;
+    margin-top: 223px;
+    min-width: 136px;
+  }
+  
+  .tela .corpeq-container {
+    align-items: flex-start;
+    display: flex;
+    flex-direction: column;
+    min-height: 128px;
+    width: 60px;
+  }
+  
+  .tela .corgrande {
+    background-color: red;
+    height: 58px;
+    margin-left: 0;
+    width: 60px;
+  }
+  
+  .screen a {
+    display: contents;
+    text-decoration: none;
+  }
+  
+  .container-center-horizontal {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    pointer-events: none;
+    width: 100%;
+  }
+  
+  .container-center-horizontal > * {
+    flex-shrink: 0;
+    pointer-events: auto;
+  }
+  
+  .cartas {
+    align-items: flex-start;
+    display: flex;
+    height: 396px;
+    min-width: 486px;
+  }
+  
+  .carta-container-1 {
+    align-items: flex-start;
+    display: flex;
+    flex-direction: column;
+    min-height: 396px;
+    width: 130px;
+  }
+  
+  .carta {
+    background-color: red;
+    height: 186px;
+    width: 130px;
+  }
+  
+  .carta-1 {
+    background-color: red;
+    height: 186px;
+    margin-top: 24px;
+    width: 130px;
+  
+    .carta-1 {
+      background-color: red;
+      height: 186px;
+      margin-top: 24px;
+      width: 130px;
+    }
+  
+    .carta-container {
+      align-items: flex-start;
+      display: flex;
+      flex-direction: column;
+      margin-left: 48px;
+      min-height: 396px;
+      width: 130px;
+    }
+  
+    .coracoes {
+      align-items: flex-start;
+      display: flex;
+      height: 128px;
+      min-width: 136px;
+    }
+    
+    .corpeq-container {
+      align-items: flex-start;
+      display: flex;
+      flex-direction: column;
+      min-height: 128px;
+      width: 60px;
+    }
+    .corpequeno {
+      background-color: rgb(255, 0, 0);
+      height: 58px;
+      width: 60px;
+    }
+    
+    .bonus {
+      background-color: rgb(255, 0, 0);
+      height: 58px;
+      margin-top: 13px;
+      width: 60px;
+    }
+    
+    .corgrande-container {
+      align-items: flex-start;
+      display: flex;
+      flex-direction: column;
+      margin-left: 15px;
+      min-height: 128px;
+      width: 60px;
+  }
+  
+  .corgrande {
+    background-color: red;
+    height: 58px;
+    margin-left: 0;
+    width: 60px;
+  }} 

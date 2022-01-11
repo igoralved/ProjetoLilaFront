@@ -3,7 +3,7 @@ import { JogadorService } from './../service/jogador.service';
 import { MesaService } from './../service/mesa.service';
 import { Sala } from 'src/app/model/sala';
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Jogador } from '../model/jogador';
 
 @Component({
@@ -13,7 +13,7 @@ import { Jogador } from '../model/jogador';
 })
 export class EntrarMesaComponent implements OnInit {
 
-  constructor(private route: ActivatedRoute, private mesaService:MesaService, private jogadorservice: JogadorService) {
+  constructor(private route: ActivatedRoute,private router: Router, private mesaService:MesaService, private jogadorservice: JogadorService) {
     this.sala = {} as Sala;
     this.jogador = {} as Jogador;
   }
@@ -45,8 +45,7 @@ export class EntrarMesaComponent implements OnInit {
 
     this.mesaService.conectarNovoJogador(salarequest);
 
-    this.mesaService.connectWebsocket(this.hash);
-
+    this.router.navigate(['/jogo', this.sala.hash]);
   }
 
 }

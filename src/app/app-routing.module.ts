@@ -6,6 +6,8 @@ import { PrimeiroAcessoComponent } from './administrador/primeiro-acesso/primeir
 import { MenuDoAdminComponent } from './administrador/menu-do-admin/menu-do-admin.component';
 import { CriarMesaComponent } from './mesa/criar-mesa/criar-mesa.component';
 import { MesaCriadaComponent } from './mesa/mesa-criada/mesa-criada.component';
+import { MesaJogoComponent } from './mesa/mesa-jogo/mesa-jogo.component';
+
 const routes: Routes = [
   {
     path: 'primeiroacesso',
@@ -30,6 +32,10 @@ const routes: Routes = [
   {
     path:'mesa-criada/:hash',
     component: MesaCriadaComponent,
+  },
+  {
+    path:'jogo/:hash',
+    component: MesaJogoComponent,
   }
 ];
 

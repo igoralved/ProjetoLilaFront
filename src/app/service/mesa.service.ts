@@ -39,7 +39,7 @@ export class MesaService {
   connectWebsocket(hash: string) {
     this.webSocketConnector = new WebSocketConnector(
       environment.API_URL,
-      `/topic/${hash}`,
+      `topic/${hash}`,
       //TODO: Linha 43 precisa ser modificada de acordo com a lógica das jogadas
       this.onMessage.bind(this)
     );

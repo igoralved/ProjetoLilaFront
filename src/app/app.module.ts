@@ -7,7 +7,6 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
-
 import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -17,6 +16,7 @@ import { PrimeiroAcessoComponent } from './administrador/primeiro-acesso/primeir
 import { AcessibilidadeComponent } from './acessibilidade/acessibilidade.component';
 import { TelaSenhaComponent } from './administrador/tela-senha/tela-senha.component';
 import { MenuDoAdminComponent } from './administrador/menu-do-admin/menu-do-admin.component';
+import { EntrarMesaComponent } from './entrar-mesa/entrar-mesa.component';
 import { CriarMesaComponent } from './mesa/criar-mesa/criar-mesa.component';
 import { MesaCriadaComponent } from './mesa/mesa-criada/mesa-criada.component';
 import { ClipboardModule } from '@angular/cdk/clipboard';
@@ -37,6 +37,7 @@ import { MesaJogoComponent } from './mesa/mesa-jogo/mesa-jogo.component';
     TelaSenhaComponent,
     ModalComponent,
     MenuDoAdminComponent,
+    EntrarMesaComponent,
     CriarMesaComponent,
     MesaCriadaComponent,
     MesaJogoComponent,

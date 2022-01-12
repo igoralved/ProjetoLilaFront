@@ -1,24 +1,10 @@
 .cartas-container {
   margin: 16px;
   padding-bottom: 10px;
-  &-scroll {
-    display: flex;
-    max-width: 100%;
-    overflow-x: auto;
-    padding-bottom: 8px;
-
-    &:not(:first-child) {
-      margin-top: 64px;
-    }
-
-    &::-webkit-scrollbar {
-      height: 4px;
-      background-color: rgba(0, 0, 0, 0.25);
-
-      &-thumb {
-        background-color: black;
-      }
-    }
+  display: flex;
+  max-width: 720px;
+  height: 900px;
+  padding-bottom: 8px;
 
     .carta {
       border: 2px solid black;
@@ -169,7 +155,7 @@
         }
       }
     }
-  }
+  
 
   .carta-inicio {
     border: 2px solid black;
@@ -187,6 +173,7 @@
     }
   }
 }
+
 .cor-texto {
   color: #ffab40;
 }

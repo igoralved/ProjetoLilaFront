@@ -1,242 +1,184 @@
-.tela {
-    align-items: center;
-    background-color: 
-  #f2f2f2;
-    display: flex;
-  }
-  
-  .tela .baralho {
-    background-color: red;
-    height: 186px;
-    margin-top: 383px;
-    width: 130px;
-  }
-  
-  .tela .cartas {
-    align-items: flex-start;
-    display: flex;
-    height: 396px;
-    margin-left: 110px;
-    margin-top: 383px;
-    min-width: 486px;
-  }
-  
-  .tela .carta-container-1 {
-    align-items: flex-start;
-    display: flex;
-    flex-direction: column;
-    min-height: 396px;
-    width: 130px;
-  }
-  
-  .tela .carta {
-    background-color: red;
-    height: 186px;
-    width: 130px;
-  }
-  
-  .tela .carta-1 {
-    background-color: red;
-    height: 186px;
-    margin-top: 24px;
-    width: 130px;
-  }
-  
-  .tela .bonus {
-    background-color: red;
-    height: 58px;
-    margin-top: 13px;
-    width: 60px;
-  }
-  
-  .tela .corgrande-container {
-    align-items: flex-start;
-    display: flex;
-    flex-direction: column;
-    margin-left: 15px;
-    min-height: 128px;
-    width: 60px;
-  }
-  
-  .tela .corgrande {
-    background-color: red;
-    height: 58px;
-    margin-left: 0;
-    width: 60px;
-  }
-  
-  .tela .carta-container {
-    align-items: flex-start;
-    display: flex;
-    flex-direction: column;
-    margin-left: 48px;
-    min-height: 396px;
-    width: 130px;
-  }
-  
-  .tela .flex-col {
-    align-items: flex-start;
-    display: flex;
-    flex-direction: column;
-    margin-left: 102px;
-    margin-top: 324px;
-    min-height: 490px;
-    width: 262px;
-  }
-  
-  .tela .objetivo {
-    align-self: flex-end;
-    background-color: red;
-    height: 139px;
-    width: 252px;
-  }
-  
-  .tela .coracoes {
-    align-items: flex-start;
-    display: flex;
-    height: 128px;
-    margin-top: 223px;
-    min-width: 136px;
-  }
-  
-  .tela .corpeq-container {
-    align-items: flex-start;
-    display: flex;
-    flex-direction: column;
-    min-height: 128px;
-    width: 60px;
-  }
-   
-  .tela .objetivo {
-    align-self: flex-end;
-    background-color: red;
-    height: 139px;
-    width: 252px;
-  }
-  
-  .tela .coracoes {
-    align-items: flex-start;
-    display: flex;
-    height: 128px;
-    margin-top: 223px;
-    min-width: 136px;
-  }
-  
-  .tela .corpeq-container {
-    align-items: flex-start;
-    display: flex;
-    flex-direction: column;
-    min-height: 128px;
-    width: 60px;
-  }
-  
-  .tela .corgrande {
-    background-color: red;
-    height: 58px;
-    margin-left: 0;
-    width: 60px;
-  }
-  
-  .screen a {
-    display: contents;
-    text-decoration: none;
-  }
-  
-  .container-center-horizontal {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    pointer-events: none;
-    width: 100%;
-  }
-  
-  .container-center-horizontal > * {
-    flex-shrink: 0;
-    pointer-events: auto;
-  }
-  
-  .cartas {
-    align-items: flex-start;
-    display: flex;
-    height: 396px;
-    min-width: 486px;
-  }
-  
-  .carta-container-1 {
-    align-items: flex-start;
-    display: flex;
-    flex-direction: column;
-    min-height: 396px;
-    width: 130px;
-  }
-  
+.container {
+  margin: 16px;
+  padding-bottom: 10px;
+  display: flex;
+  min-width: 620px;
+  height: 500px;
+  padding-bottom: 8px;
+
   .carta {
-    background-color: red;
-    height: 186px;
-    width: 130px;
+    border: 2px solid black;
+    padding: 20px;
+    background: var(--input-backgroundColor);
+    word-wrap: break-word;
+    margin-left: 50px;
+
+    &-cartasbaralho {
+      display: flex;
+      flex-wrap: wrap;
+      width: 800px;
+      height: 670px;
+    }
+
+    &-baralho {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      min-width: 150px;
+      max-width: 150px;
+      height: 250px;
+
+      .imagem {
+        &-lila {
+          width: 90px;
+          height: 150px;
+        }
+
+        &-logo {
+          width: 120px;
+          height: 70px;
+        }
+      }
+    }
+    &-vertical {
+      min-width: 150px;
+      max-width: 150px;
+      height: 250px;
+
+      .cabecalho {
+        height: 35px;
+        display: flex;
+        justify-content: space-between;
+
+        .titulo {
+          margin-bottom: 0;
+          line-height: 24px;
+          font-size: calc(var(--tamanhoFonte) - 4pt);
+        }
+
+        .pontos {
+          background-color: black;
+          min-width: 1.7em;
+          min-height: 1.7em;
+          max-width: 1.7em;
+          max-height: 1.7em;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          color: white;
+          font-size: 15px;
+          border-radius: 50%;
+
+          .pt {
+            margin-top: 15px;
+            font-size: calc(var(--tamanhoFonte) - 3pt);
+            font-weight: bold;
+          }
+        }
+      }
+
+      .corpo {
+        margin-top: 10px;
+
+        .definicao {
+          margin-bottom: 0;
+          padding-right: 8px;
+          min-height: 80px;
+          max-height: 80px;
+          overflow-y: auto;
+          font-size: calc(var(--tamanhoFonte) - 4pt);
+        }
+
+        .icones {
+          min-height: 35px;
+          margin-top: 16px;
+          font-size: var(--tamanhoFonte);
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+
+          .coracoes {
+            display: flex;
+            align-items: center;
+
+            .coracao:not(:first-child) {
+              margin-left: 8px;
+            }
+
+            .coracao-pequeno {
+              width: 0.9em;
+              height: 0.9em;
+            }
+
+            .coracao-grande {
+              width: 1.25em;
+              height: 1.25em;
+            }
+          }
+
+          .presentes {
+            position: relative;
+
+            .presente {
+              width: 1.75em;
+              height: 1.75em;
+            }
+
+            .presenteInfoAcoes {
+              width: 1em;
+              position: absolute;
+              bottom: 0px;
+              right: -5px;
+            }
+          }
+        }
+      }
+
+      .rodape {
+        margin-top: 20px;
+
+        .fonte {
+          max-height: 50px;
+          overflow-y: auto;
+          display: block;
+          font-size: calc(var(--tamanhoFonte) - 6pt);
+        }
+      }
+    }
+    &-objetivo {
+      display: flex;
+      min-width: 250px;
+      max-width: 250px;
+      height: 140px;
+
+      &-logotexto {
+        display: flex;
+        flex-direction: column;
+      }
+
+      .imagem {
+        &-logo {
+          height: 70px;
+        }
+
+        &-lila {
+          width: 200px;
+          height: 150px;
+        }
+      }
+      .texto {
+        color: #351c75;
+      }
+    }
   }
-  
-  .carta-1 {
-    background-color: red;
-    height: 186px;
-    margin-top: 24px;
-    width: 130px;
-  
-    .carta-1 {
-      background-color: red;
-      height: 186px;
-      margin-top: 24px;
-      width: 130px;
+}
+.y-scroll {
+  &::-webkit-scrollbar {
+    width: 4px;
+    background-color: rgba(0, 0, 0, 0.25);
+
+    &-thumb {
+      background-color: black;
     }
-  
-    .carta-container {
-      align-items: flex-start;
-      display: flex;
-      flex-direction: column;
-      margin-left: 48px;
-      min-height: 396px;
-      width: 130px;
-    }
-  
-    .coracoes {
-      align-items: flex-start;
-      display: flex;
-      height: 128px;
-      min-width: 136px;
-    }
-    
-    .corpeq-container {
-      align-items: flex-start;
-      display: flex;
-      flex-direction: column;
-      min-height: 128px;
-      width: 60px;
-    }
-    .corpequeno {
-      background-color: rgb(255, 0, 0);
-      height: 58px;
-      width: 60px;
-    }
-    
-    .bonus {
-      background-color: rgb(255, 0, 0);
-      height: 58px;
-      margin-top: 13px;
-      width: 60px;
-    }
-    
-    .corgrande-container {
-      align-items: flex-start;
-      display: flex;
-      flex-direction: column;
-      margin-left: 15px;
-      min-height: 128px;
-      width: 60px;
   }
-  
-  .corgrande {
-    background-color: red;
-    height: 58px;
-    margin-left: 0;
-    width: 60px;
-  }} 
+}

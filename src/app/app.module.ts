@@ -18,6 +18,7 @@ import { AcessibilidadeComponent } from './acessibilidade/acessibilidade.compone
 import { TelaSenhaComponent } from './administrador/tela-senha/tela-senha.component';
 import { MenuDoAdminComponent } from './administrador/menu-do-admin/menu-do-admin.component';
 import { MesaJogoComponent } from './mesa/mesa-jogo/mesa-jogo.component';
+import { MaoJogadorComponent } from './mesa/mao-jogador/mao-jogador.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import { MesaJogoComponent } from './mesa/mesa-jogo/mesa-jogo.component';
     TelaSenhaComponent,
     ModalComponent,
     MenuDoAdminComponent,
-    MesaJogoComponent
+    MesaJogoComponent,
+    MaoJogadorComponent
   ],
   imports: [
     BrowserModule,

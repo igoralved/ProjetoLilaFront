@@ -4,7 +4,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { HomePageComponent } from './home-page/home-page.component';
 import { PrimeiroAcessoComponent } from './administrador/primeiro-acesso/primeiro-acesso.component';
 import { MenuDoAdminComponent } from './administrador/menu-do-admin/menu-do-admin.component';
-import { MesaJogoComponent } from './mesa/mesa-jogo/mesa-jogo.component';
+import { MaoJogadorComponent } from './mesa/mao-jogador/mao-jogador.component';
 
 const routes: Routes = [
   {
@@ -24,8 +24,8 @@ const routes: Routes = [
     component: MenuDoAdminComponent,
   },
   {
-    path:'mesa',
-    component: MesaJogoComponent
+    path:'mao/:{hash}',
+    component: MaoJogadorComponent
   }
 ];
 

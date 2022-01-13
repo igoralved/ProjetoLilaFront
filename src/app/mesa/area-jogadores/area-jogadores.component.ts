@@ -7,22 +7,29 @@ import { ModalService } from 'src/app/service/modal.service';
 @Component({
   selector: 'app-area-jogadores',
   templateUrl: './area-jogadores.component.html',
-  styleUrls: ['./area-jogadores.component.scss']
+  styleUrls: ['./area-jogadores.component.scss'],
 })
 export class AreaJogadoresComponent implements OnInit {
-
   jogadores: Jogador[] = new Array();
   sala: Sala = {} as Sala;
+  jogadorPrincipal: Jogador = {} as Jogador;
 
-  constructor(private modal: ModalService, private mesaJogoService: MesaJogoService) {
-  }
+  constructor(
+    private modal: ModalService,
+    private mesaJogoService: MesaJogoService
+  ) {}
 
   ngOnInit(): void {
     this.mesaJogoService
-      .getEmitObservable()
-      .subscribe((sala) => (this.sala = sala));
+      .getemitSalaObservable()
+      .subscribe((sala) => {this.sala = sala; console.warn(sala);});
+
+    this.mesaJogoService
+      .getemitJogadorObservable()
+      .subscribe((jogador) => {this.jogadorPrincipal = jogador; console.warn(jogador);});
 
     this.jogadores = this.sala.jogadores;
+
     // //mock para testes
     // let jog1 = { nome: "Joao" } as Jogador;
     // let jog2 = { nome: "Felipe" } as Jogador;
@@ -35,14 +42,15 @@ export class AreaJogadoresComponent implements OnInit {
     // this.jogadores.push(jog3);
     // this.jogadores.push(jog4);
     // this.jogadores.push(jog5);
-
   }
 
   abrirModal() {
-    this.modal.abrir("mao-jogador");
+    this.modal.abrir('mao-jogador');
+    console.warn(this.jogadorPrincipal);
+    console.warn(this.sala);
   }
 
   fecharModal() {
-    this.modal.fechar("mao-jogador");
+    this.modal.fechar('mao-jogador');
   }
 }

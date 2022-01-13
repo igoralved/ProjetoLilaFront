@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Jogador } from 'src/app/model/jogador';
 import { Sala } from 'src/app/model/sala';
+import { MesaJogoService } from 'src/app/service/mesa-jogo.service';
 import { MesaService } from 'src/app/service/mesa.service';
 
 @Component({
@@ -12,12 +13,18 @@ import { MesaService } from 'src/app/service/mesa.service';
 export class CriarMesaComponent implements OnInit {
   private jogador: Jogador;
   private sala: Sala;
+  private jogadorPrincipal: Jogador;
   nick: string;
 
-  constructor(private mesaService: MesaService, private router: Router) {
+  constructor(
+    private mesaService: MesaService,
+    private router: Router,
+    private mesaJogoService: MesaJogoService
+  ) {
     this.jogador = {} as Jogador;
     this.sala = {} as Sala;
     this.nick = '';
+    this.jogadorPrincipal = {} as Jogador;
   }
 
   click() {
@@ -37,14 +44,22 @@ export class CriarMesaComponent implements OnInit {
   }
 
   criarMesa() {
-    this.mesaService
-      .iniciarHost(this.jogador)
-      .subscribe((sala) => ((this.sala = sala), this.roteamento()));
+    this.mesaService.iniciarHost(this.jogador).subscribe((salaResp) => {
+      this.sala = salaResp.sala;
+      this.jogadorPrincipal = salaResp.jogador;
+      this.roteamento();
+    });
   }
 
   roteamento() {
+    this.emit();
     this.router.navigate(['/mesa-criada', this.sala.hash]);
   }
 
   ngOnInit(): void {}
+
+  emit() {
+    this.mesaJogoService.getemitSalaSubject().next(this.sala);
+    this.mesaJogoService.getemitJogadorSubject().next(this.jogadorPrincipal);
+  }
 }

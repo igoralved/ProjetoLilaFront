@@ -6,7 +6,7 @@ import { environment } from 'src/environments/environment';
 import { Sala } from 'src/app/model/sala';
 import { Jogador } from '../model/jogador';
 import { Observable } from 'rxjs';
-
+import { SalaResponse } from '../model/salaResponse';
 
 @Injectable({
   providedIn: 'root',
@@ -14,30 +14,29 @@ import { Observable } from 'rxjs';
 export class MesaService {
   private items: any[] = [];
 
-  constructor(private http: HttpClient, private router: Router) {
-  }
+  constructor(private http: HttpClient, private router: Router) {}
 
   /* Envia a informação do primeiro jogador para o back end.
    * Recebe as informações da sala criada.
    */
-  iniciarHost(jogador: Jogador): Observable<Sala> {
-    return this.http.post<Sala>(`${environment.API_URL}api/iniciar`, jogador);
+  iniciarHost(jogador: Jogador): Observable<SalaResponse> {
+    return this.http.post<SalaResponse>(
+      `${environment.API_URL}api/iniciar`,
+      jogador
+    );
   }
 
   /* O novo jogador se conecta através desta requisição
    *
    */
-  conectarNovoJogador(salaRequest: SalaRequest): Observable<Sala> {
-    return this.http.post<Sala>(
+  conectarNovoJogador(salaRequest: SalaRequest): Observable<SalaResponse> {
+    return this.http.post<SalaResponse>(
       `${environment.API_URL}api/conectar`,
       salaRequest
     );
   }
 
-
-  findByHash(hash: string): Observable<Sala>{
+  findByHash(hash: string): Observable<Sala> {
     return this.http.get<Sala>(`${environment.API_URL}sala/${hash}`);
   }
-
-
 }

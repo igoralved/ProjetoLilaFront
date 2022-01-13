@@ -22,6 +22,7 @@ export class EntrarMesaComponent implements OnInit {
   ) {
     this.sala = {} as Sala;
     this.jogador = {} as Jogador;
+    this.jogadorPrincipal = {} as Jogador;
   }
 
   ngOnInit(): void {
@@ -36,6 +37,7 @@ export class EntrarMesaComponent implements OnInit {
   sala: Sala;
   nick = '';
   jogador: Jogador;
+  jogadorPrincipal: Jogador;
 
   conectar() {
     this.jogador.nome = this.nick;
@@ -46,16 +48,20 @@ export class EntrarMesaComponent implements OnInit {
       hash: this.hash,
     } as SalaRequest;
 
-    this.mesaService.conectarNovoJogador(salarequest).subscribe((sala)=>this.sala = sala);
+    this.mesaService.conectarNovoJogador(salarequest).subscribe((salaResp) => {
+      this.sala = salaResp.sala;
+      this.jogadorPrincipal = salaResp.jogador;
+      this.emit();
+    });
     this.roteamento();
   }
 
   roteamento() {
-    this.emit();
     this.router.navigate(['/jogo', this.sala.hash]);
   }
 
   emit() {
-    this.mesaJogoService.getEmitSubject().next(this.sala);
+    this.mesaJogoService.getemitSalaSubject().next(this.sala);
+    this.mesaJogoService.getemitJogadorSubject().next(this.jogadorPrincipal);
   }
 }

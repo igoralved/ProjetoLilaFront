@@ -23,27 +23,29 @@ export class MaoJogadorComponent implements OnInit {
   public cartaDoJogoDoJogador: CartaDoJogo = {} as CartaDoJogo;
   public cartaObjetivo: CartaObjetivo = {} as CartaObjetivo;
 
-  
+
   constructor(
     private cartaService: CartaService,
     private mesaService: MesaService
-  ) {    
-  }
-
-    
-  ngOnInit(): void {   
-    
-    this.getListarCartas();
-    this.getListarCartasInicio();
-    this.getListarCartasObjetivo();
-    this.getJogador();    
-    this.mesaService
-      .findByHash('6g-Rg8V5')
-      .subscribe((sala) => (this.sala = sala));
+  ) {
   }
 
 
-  
+  ngOnInit(): void {
+
+      this.getListarCartas();
+      this.getListarCartasInicio();
+      this.getListarCartasObjetivo();
+      this.getJogador();
+      this.mesaService
+        .findByHash('6g-Rg8V5')
+        .subscribe(val => {
+          this.sala = val;
+            console.log(this.sala);
+        }
+      );
+  }
+
 
   private getListarCartas(): void {
     this.cartaService
@@ -68,23 +70,27 @@ export class MaoJogadorComponent implements OnInit {
       });
   }
 
-  
+
 
   private getJogador(){
-    
-    for (let i = 0; this.sala.jogadores.length < i; i++) {
-      this.listaJogador.push(this.sala.jogadores[i]);
+
+
+    var count= 0;
+    for(var i in this.sala.jogadores) {
+          this.listaJogador.push(this.sala.jogadores[i]);
+            count++;
     }
     return this.listaJogador;
+
   }
 
   private mostrarCartasDoJogo(){
     this.getJogador();
-    for (let i =0; this.listaJogador.length < i; i++){
+    for (let i =0; this.listaJogador?.length < i; i++){
       this.listaJogador[i] = this.jogador
     }
     this.jogador.cartasDoJogo.push(this.cartaDoJogoDoJogador)
     return this.cartaDoJogoDoJogador;
   }
-  
+
 }

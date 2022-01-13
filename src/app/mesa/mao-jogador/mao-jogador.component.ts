@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { CartaDoJogo } from 'src/app/model/cartaDoJogo';
 import { CartaInicio } from 'src/app/model/cartaInicio';
 import { CartaObjetivo } from 'src/app/model/cartaObjetivo';
@@ -26,17 +27,19 @@ export class MaoJogadorComponent implements OnInit {
 
   constructor(
     private cartaService: CartaService,
-    private mesaService: MesaService
+    private mesaService: MesaService,
+    private route: ActivatedRoute
   ) {
   }
 
 
   ngOnInit(): void {
+      this.hash = String(this.route.snapshot.paramMap.get('hash'));
 
       this.getListarCartas();
       this.getListarCartasInicio();
-      this.getListarCartasObjetivo();
-      this.getJogador();
+      this.getListarCartasObjetivo();   
+      
       this.mesaService
         .findByHash('6g-Rg8V5')
         .subscribe(val => {
@@ -72,22 +75,6 @@ export class MaoJogadorComponent implements OnInit {
 
 
 
-  private getJogador(){
-    var count= 0;
-    for(var i in this.sala.jogadores) {
-          this.listaJogador.push(this.sala.jogadores[i]);
-            count++;
-    }
-    return this.listaJogador;
-  }
-
-  private mostrarCartasDoJogo(){
-    this.getJogador();
-    for (let i =0; this.listaJogador?.length < i; i++){
-      this.listaJogador[i] = this.jogador
-    }
-    this.jogador.cartasDoJogo.push(this.cartaDoJogoDoJogador)
-    return this.cartaDoJogoDoJogador;
-  }
+ 
 
 }

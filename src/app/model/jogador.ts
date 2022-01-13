@@ -5,9 +5,8 @@ import { CartaObjetivo } from "./cartaObjetivo";
 export interface Jogador{
     id: string;
     nome: string,
-    cartasDoJogo: CartaDoJogo[],
-    cartasObjetivo: CartaObjetivo[],
-    cartasInicio: CartaInicio[],
+    listaDeCartas: CartaDoJogo[],
+    listaDeObjetivos: CartaObjetivo[],
     pontos: number,
     coracaoPeq: number,
     coracaoGra: number,

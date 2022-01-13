@@ -36,11 +36,7 @@ export class MesaService {
 
 
   findByHash(hash: string): Observable<Sala>{
-<<<<<<< HEAD
-    return this.http.get<Sala>(`${environment.API_URL}sala/${hash}`);
-=======
     return this.http.get<Sala>(`${environment.API_URL}/sala/${hash}`);
->>>>>>> cc42f1195a8c1b625b408fddb504cdd47c34e393
   }
 
 

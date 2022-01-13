@@ -3,13 +3,12 @@ import { CartaInicio } from "./cartaInicio";
 import { CartaObjetivo } from "./cartaObjetivo";
 
 export interface Jogador{
-    id: string;
     nome: string,
     listaDeCartas: CartaDoJogo[],
-    listaDeObjetivos: CartaObjetivo[],
+    listaDeObjetivos: CartaObjetivo[],   
     pontos: number,
     coracaoPeq: number,
     coracaoGra: number,
     bonusCoracaoPeq: number,
-    bonusCoracaoGra: number    
+    bonusCoracaoGra: number
 }

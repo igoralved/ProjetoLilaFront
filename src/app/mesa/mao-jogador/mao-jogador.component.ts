@@ -14,15 +14,12 @@ import { MesaService } from 'src/app/service/mesa.service';
   styleUrls: ['./mao-jogador.component.scss'],
 })
 export class MaoJogadorComponent implements OnInit {
-  public listaCartas: CartaDoJogo[] = [];
-  public listaCartasInicio: CartaInicio[] = [];
-  public listaCartasObjetivo: CartaObjetivo[] = [];
+  
   private hash = '';
   public sala: Sala = {} as Sala;
   public listaJogador: Jogador[] = [];
   public jogador: Jogador= {} as Jogador;
-  public cartaDoJogoDoJogador: CartaDoJogo = {} as CartaDoJogo;
-  public cartaObjetivo: CartaObjetivo = {} as CartaObjetivo;
+  
 
 
   constructor(
@@ -34,11 +31,7 @@ export class MaoJogadorComponent implements OnInit {
 
 
   ngOnInit(): void {
-      this.hash = String(this.route.snapshot.paramMap.get('hash'));
-
-      this.getListarCartas();
-      this.getListarCartasInicio();
-      this.getListarCartasObjetivo();   
+      this.hash = String(this.route.snapshot.paramMap.get('hash'));      
       
       this.mesaService
         .findByHash('6g-Rg8V5')
@@ -48,33 +41,4 @@ export class MaoJogadorComponent implements OnInit {
         }
       );
   }
-
-
-  private getListarCartas(): void {
-    this.cartaService
-      .getListarCarta()
-      .subscribe((listaCartas: CartaDoJogo[]) => {
-        this.listaCartas = listaCartas;
-      });
-  }
-
-  private getListarCartasInicio(): void {
-    this.cartaService
-      .getListarCartaInicio()
-      .subscribe((listaCartasInicio: CartaInicio[]) => {
-        this.listaCartasInicio = listaCartasInicio;
-      });
-  }
-  private getListarCartasObjetivo(): void {
-    this.cartaService
-      .getListarCartaObjetivo()
-      .subscribe((listaCartasObjetivo: CartaObjetivo[]) => {
-        this.listaCartasObjetivo = listaCartasObjetivo;
-      });
-  }
-
-
-
- 
-
 }

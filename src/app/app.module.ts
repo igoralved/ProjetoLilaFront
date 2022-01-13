@@ -19,6 +19,14 @@ import { TelaSenhaComponent } from './administrador/tela-senha/tela-senha.compon
 import { MenuDoAdminComponent } from './administrador/menu-do-admin/menu-do-admin.component';
 import { MesaJogoComponent } from './mesa/mesa-jogo/mesa-jogo.component';
 import { MaoJogadorComponent } from './mesa/mao-jogador/mao-jogador.component';
+import { CriarMesaComponent } from './mesa/criar-mesa/criar-mesa.component';
+import { MesaCriadaComponent } from './mesa/mesa-criada/mesa-criada.component';
+import { ClipboardModule } from '@angular/cdk/clipboard';
+import {
+  InjectableRxStompConfig,
+  RxStompService,
+  rxStompServiceFactory,
+} from '@stomp/ng2-stompjs';
 
 @NgModule({
   declarations: [
@@ -30,7 +38,9 @@ import { MaoJogadorComponent } from './mesa/mao-jogador/mao-jogador.component';
     ModalComponent,
     MenuDoAdminComponent,
     MesaJogoComponent,
-    MaoJogadorComponent
+    MaoJogadorComponent,
+    CriarMesaComponent,
+    MesaCriadaComponent
   ],
   imports: [
     BrowserModule,
@@ -47,7 +57,8 @@ import { MaoJogadorComponent } from './mesa/mao-jogador/mao-jogador.component';
     MatInputModule,
     MatButtonModule,
     MatIconModule,
-    HttpClientModule
+    HttpClientModule,
+    ClipboardModule
   ],
   providers: [],
   bootstrap: [AppComponent],

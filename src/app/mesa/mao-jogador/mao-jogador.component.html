@@ -5,10 +5,10 @@
 
         <div class="linha-3">
             <div class="centro">
-                <button class="botao-sair"  mat-raised-button [routerLink]="['/']" >Sair do jogo</button>
+                <button class="botao-sair" mat-raised-button [routerLink]="['/']">Sair do jogo</button>
             </div>
             <div class="centro"><img class="avatar" src="../../../assets/avatar" alt=""></div>
-            <div class="centro">{{jogador.nome}}</div>            
+            <div class="centro">{{jogador.nome}}</div>
         </div>
 
         <div class="carta-coracoes">
@@ -75,11 +75,10 @@
                 </div>
             </div>
         </div>
-        <div>
+        <div class="centraliza">
             <h2>Pontos:
-            <br>
-            {{jogador.pontos}}
+                <br>
+                {{jogador.pontos}}
             </h2>
-            
         </div>
     </div>

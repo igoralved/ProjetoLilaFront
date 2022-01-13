@@ -4,17 +4,17 @@
   width: 100%;
   display: grid;
   grid-template-rows: 15% auto 30%;
-  grid-gap: 10px;
-  
+  grid-gap: 10px;  
 }
 
 .mao {
   display: grid;
-  grid-template-columns: 10% 10% 50% 15% 5%;
+  grid-template-columns: 10% 10% 50% 21% 8%;
   grid-gap: 5px;
   align-items: center;
-  width: 100%;  
+  width: 98%;  
   border: 2px solid black;
+  margin: 15px;
 }
 
 .botao-sair{
@@ -22,10 +22,15 @@
   background-color: var(--btn-bg);
   font-size: var(--tamanhoFonte);  
 }
+
 .centro{
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+.centraliza{
+  text-align: center;
 }
 
 .linha-3{
@@ -65,7 +70,7 @@
     .carta {
       border: 2px solid black;
       margin-left:5px;
-      padding: 20px;
+      padding: 10px;
       background: var(--input-backgroundColor);
       word-wrap: break-word;
 
@@ -176,8 +181,7 @@
       }
 
       &-horizontal {
-        min-width: 200px;
-        max-width: 200px;
+        width: 190px;
         height: 110px;
 
         &.carta-sem-titulo {

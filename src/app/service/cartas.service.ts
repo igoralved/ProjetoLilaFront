@@ -17,14 +17,14 @@ export class CartaService {
   private readonly URLCartaInicio: string = 'cartainicio';
 
   getListarCarta(): Observable<CartaDoJogo[]> {
-    return this.httpClient.get<CartaDoJogo[]>( environment.API_URL + '/' + this.URLCarta);    
+    return this.httpClient.get<CartaDoJogo[]>( environment.API_URL + this.URLCarta);    
   }
 
   getListarCartaInicio(): Observable<CartaInicio[]> {
-    return this.httpClient.get<CartaInicio[]>( environment.API_URL + '/' + this.URLCartaInicio);
+    return this.httpClient.get<CartaInicio[]>( environment.API_URL +  this.URLCartaInicio);
   }
 
   getListarCartaObjetivo(): Observable<CartaObjetivo[]> {
-    return this.httpClient.get<CartaObjetivo[]>( environment.API_URL + '/' + this.URLCartaObjetivo);
+    return this.httpClient.get<CartaObjetivo[]>( environment.API_URL +  this.URLCartaObjetivo);
   }
 }

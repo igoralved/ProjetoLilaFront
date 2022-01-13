@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Sala } from 'src/app/model/sala';
+import { MesaJogoService } from 'src/app/service/mesa-jogo.service';
 import { MesaService } from 'src/app/service/mesa.service';
 import { environment } from 'src/environments/environment';
 
@@ -14,7 +15,7 @@ export class MesaCriadaComponent implements OnInit {
   hash: string;
   link: string;
 
-  constructor(private route: ActivatedRoute, private mesaService: MesaService, private router: Router) {
+  constructor(private route: ActivatedRoute, private mesaService: MesaService, private router: Router,private mesaJogoService:MesaJogoService) {
     this.sala = {} as Sala;
     this.hash = '';
     this.link = '';
@@ -30,7 +31,11 @@ export class MesaCriadaComponent implements OnInit {
   }
 
   roteamento() {
+    this.emit();
     this.router.navigate(['/jogo', this.sala.hash]);
   }
 
+  emit() {
+    this.mesaJogoService.getEmitSubject().next(this.sala);
+  }
 }

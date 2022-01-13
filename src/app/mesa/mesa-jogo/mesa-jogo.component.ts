@@ -4,6 +4,7 @@ import { RxStompService } from '@stomp/ng2-stompjs';
 import { Message } from '@stomp/stompjs';
 import { Subscription } from 'rxjs';
 import { Sala } from 'src/app/model/sala';
+import { MesaJogoService } from 'src/app/service/mesa-jogo.service';
 import { MesaService } from 'src/app/service/mesa.service';
 
 @Component({
@@ -18,7 +19,7 @@ export class MesaJogoComponent implements OnInit {
   private hash = "";
   private topicSubscription: Subscription = Subscription.EMPTY;
 
-  constructor(private rxStompService:RxStompService, private mesaService: MesaService, private route: ActivatedRoute) {
+  constructor(private rxStompService:RxStompService, private mesaService: MesaService, private mesaJogoService: MesaJogoService, private route: ActivatedRoute) {
     this.sala = {} as Sala;
    }
 
@@ -36,11 +37,16 @@ export class MesaJogoComponent implements OnInit {
       .subscribe((msg: Message) => {
         this.receivedMessages.push(msg.body);
       });
+
+
   }
 
   ngOnDestroy(): void {
     this.topicSubscription.unsubscribe();
   }
+
+
+
 
   onPlayCard() {
     //TODO: Logica do Jogo

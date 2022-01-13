@@ -6,13 +6,13 @@ import { MesaService } from './mesa.service';
   providedIn: 'root',
 })
 export class MesaJogoService {
-  private emit$ = new BehaviorSubject<Sala | null >(null);
+  private emit$ = new BehaviorSubject<Sala >({} as Sala);
 
   constructor(private mesaService: MesaService) {
     
   }
 
-  getEmitObservable(): Observable<Sala | null> {
+  getEmitObservable(): Observable<Sala> {
     return this.emit$.asObservable();
   }
 

@@ -14,6 +14,8 @@ export class AreaDeCompraComponent implements OnInit {
   public listaCartasInicio: Array<CartaInicio> = [];
   public listaCartasObjetivo: Array<CartaObjetivo> = [];
   public listaCartasDisponiveis: Array<Carta> = [];
+  public listaCartasDisponiveisObjetivo: Array<CartaObjetivo> = [];
+  public listaCartasMao: Array<Carta> = [];
 
   constructor(private cartaService: CartaService) {}
 
@@ -22,8 +24,18 @@ export class AreaDeCompraComponent implements OnInit {
     this.getListarCartasInicio();
     this.getListarCartasObjetivo();
   }
+ 
+  public setcartasObjetivo(): void {
+    const cartasFaltantes: number = 1 - this.listaCartasDisponiveisObjetivo.length;
 
-  public setcartasObjetivo(): void {}
+    for (let i = 0; i < cartasFaltantes; i++) {
+      const indiceRandomico: number = Math.round(
+        Math.random() * (this.listaCartasObjetivo.length - 1 - 0) + 0
+      );
+      this.listaCartasDisponiveisObjetivo.push(this.listaCartasObjetivo[indiceRandomico]);
+      this.listaCartasObjetivo.splice(indiceRandomico, 1);
+    }
+  }
 
   public setCartasDisponiveis(): void {
     const cartasFaltantes: number = 6 - this.listaCartasDisponiveis.length;
@@ -35,6 +47,11 @@ export class AreaDeCompraComponent implements OnInit {
       this.listaCartasDisponiveis.push(this.listaCartas[indiceRandomico]);
       this.listaCartas.splice(indiceRandomico, 1);
     }
+  }
+
+  public comprarCarta(indice: number): void {
+    this.listaCartasMao.push(this.listaCartasDisponiveis[indice]);
+    this.listaCartasDisponiveis.splice(indice, 1);
   }
 
   private getListarCartas(): void {

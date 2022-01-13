@@ -1,20 +1,73 @@
 .container {
   display: flex;
-  flex-wrap: wrap;
-  margin: 16px;
-  padding-bottom: 10px;
-  justify-content: space-around;
-  padding-bottom: 8px;
+  align-items: center;
+  justify-content: center;
+  height: calc(100% - 27px);
 
-  .cartas-disponiveis {
+  .compra-container {
+    width: 900px;
     display: flex;
-    flex-direction: column;
+    justify-content: space-around;
 
-    .grupo-cartas {
+    .cartas-disponiveis {
       display: flex;
+      flex-direction: column;
 
-      &:not(:first-child) {
+      .grupo-cartas {
+        display: flex;
+
+        &:not(:first-child) {
+          margin-top: 24px;
+        }
+      }
+    }
+
+    .informacoes-gerais {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+
+      .coracoes {
+        display: flex;
+        flex-direction: column;
         margin-top: 24px;
+
+        .grupo-coracoes {
+          display: flex;
+          margin-top: 24px;
+
+          .coracao {
+            width: 34px;
+            height: 34px;
+            border: 2px solid black;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            &-grande {
+              height: 20px;
+              width: 20px;
+            }
+            &-pequeno {
+              height: 14px;
+              width: 14px;
+            }
+            .coracao-bannerg {
+              position: relative;
+              height: 30px;
+              width: 30px;
+              margin-left: -25px;
+            }
+            .coracao-bannerp {
+              position: relative;
+              height: 19.5px;
+              width: 19.5px;
+              margin-left: -16.7px;
+            }
+            &:not(:first-child) {
+              margin-left: 24px;
+            }
+          }
+        }
       }
     }
   }
@@ -24,6 +77,7 @@
     padding: 20px;
     background: var(--input-backgroundColor);
     word-wrap: break-word;
+    cursor: pointer;
 
     &:not(:first-child) {
       margin-left: 24px;
@@ -35,75 +89,73 @@
       align-items: center;
       flex: 1;
       justify-content: space-around;
-      min-width: 150px;
-      max-width: 150px;
-      height: 250px;
-      cursor: pointer;
+      min-width: 100px;
+      max-width: 100px;
+      height: 150px;
 
       .imagem {
         &-lila {
-          width: 90px;
-          height: 150px;
+          width: 80px;
+          height: 130px;
         }
 
         &-logo {
-          width: 120px;
-          height: 70px;
+          width: 100px;
+          height: 60px;
         }
       }
     }
 
     &-vertical {
-      min-width: 150px;
-      max-width: 150px;
-      height: 250px;
+      min-width: 100px;
+      max-width: 100px;
+      height: 150px;
 
       .cabecalho {
-        height: 35px;
+        height: 15px;
         display: flex;
         justify-content: space-between;
 
         .titulo {
           margin-bottom: 0;
-          line-height: 24px;
-          font-size: calc(var(--tamanhoFonte) - 4pt);
+          line-height: 10px;
+          font-size: calc(var(--tamanhoFonte) - 6pt);
+          align-self: flex-end;
         }
-
         .pontos {
           background-color: black;
-          min-width: 1.7em;
-          min-height: 1.7em;
-          max-width: 1.7em;
-          max-height: 1.7em;
+          min-width: 1.1em;
+          min-height: 1.1em;
+          max-width: 1.1em;
+          max-height: 1.1em;
           display: flex;
           align-items: center;
           justify-content: center;
           color: white;
           font-size: 15px;
           border-radius: 50%;
-
           .pt {
-            margin-top: 15px;
-            font-size: calc(var(--tamanhoFonte) - 3pt);
+            margin-top: 13px;
+            font-size: calc(var(--tamanhoFonte) - 6pt);
             font-weight: bold;
           }
         }
       }
-
       .corpo {
         margin-top: 10px;
 
         .definicao {
           margin-bottom: 0;
           padding-right: 8px;
-          min-height: 80px;
-          max-height: 80px;
+          min-height: 60px;
+          max-height: 60px;
           overflow-y: auto;
-          font-size: calc(var(--tamanhoFonte) - 4pt);
+          font-size: calc(var(--tamanhoFonte) - 7pt);
+          line-height: 15px;
         }
 
         .icones {
-          min-height: 35px;
+          min-height: 15px;
           margin-top: 16px;
           font-size: var(--tamanhoFonte);
           display: flex;
@@ -115,17 +167,17 @@
             align-items: center;
 
             .coracao:not(:first-child) {
-              margin-left: 8px;
+              margin-left: 5px;
             }
 
             .coracao-pequeno {
-              width: 0.9em;
-              height: 0.9em;
+              width: 0.6em;
+              height: 0.6em;
             }
 
             .coracao-grande {
-              width: 1.25em;
-              height: 1.25em;
+              width: 1em;
+              height: 1em;
             }
           }
 
@@ -133,12 +185,12 @@
             position: relative;
 
             .presente {
-              width: 1.75em;
-              height: 1.75em;
+              width: 1em;
+              height: 1em;
             }
 
             .presenteInfoAcoes {
-              width: 1em;
+              width: 0.6em;
               position: absolute;
               bottom: 0px;
               right: -5px;
@@ -148,22 +200,22 @@
       }
 
       .rodape {
-        margin-top: 20px;
+        margin-top: 10px;
 
         .fonte {
-          max-height: 50px;
+          max-height: 25px;
           overflow-y: auto;
           display: block;
-          font-size: calc(var(--tamanhoFonte) - 6pt);
+          font-size: calc(var(--tamanhoFonte) - 9pt);
         }
       }
     }
 
     &-objetivo {
       display: flex;
-      min-width: 250px;
-      max-width: 250px;
-      height: 140px;
+      min-width: 150px;
+      max-width: 150px;
+      height: 90px;
 
       &-logotexto {
         display: flex;
@@ -172,102 +224,61 @@
 
       .imagem {
         &-logo {
-          height: 70px;
+          height: 40px;
         }
 
         &-lila {
-          width: 200px;
-          height: 150px;
+          width: 100px;
+          height: 90px;
+          align-self: flex-end;
         }
       }
 
       .texto {
+        font-size: 10px;
         color: #351c75;
       }
     }
-  }
 
-  .informacoes-gerais {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+    &-horizontal {
+      min-width: 150px;
+      max-width: 150px;
+      height: 80px;
+      .corpo .definicao {
+        min-height: unset;
+        max-height: unset;
+        margin: 0;
+      }
 
-    .coracoes {
-      display: flex;
-      flex-direction: column;
-      margin-top: 24px;
+      .cabecalho {
+        .titulo {
+          color: #38761d;
+          font-size: calc(var(--tamanhoFonte) - 7pt);
+          line-height: 15px;
+        }
+      }
 
-      .grupo-coracoes {
-        display: flex;
-        margin-top: 24px;
-
-        .coracao {
-          width: 64px;
-          height: 64px;
-          border: 2px solid black;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          &-grande{
-            height: 40px;
-            width: 40px;
-          }
-          &-pequeno{
-            height: 24px;
-            width: 24px;
-          }
-          .coracao-bannerg{
-            position: relative;
-            height: 50px;
-            width: 50px;
-            margin-left: -45px;
-          }
-          .coracao-bannerp{
-            position: relative;
-            height: 30px;
-            width: 30px;
-            margin-left: -26.9px;
-          }
-          &:not(:first-child) {
-            margin-left: 24px;
-          }
+      .corpo {
+        .definicao {
+          max-height: 40px;
+          font-size: calc(var(--tamanhoFonte) - 7pt);
+          line-height: 20px;
+          overflow-y: auto;
         }
       }
     }
   }
-}
-
-.y-scroll {
-  &::-webkit-scrollbar {
-    width: 4px;
-    background-color: rgba(0, 0, 0, 0.25);
-
-    &-thumb {
-      background-color: black;
-    }
+  .mao {
+    align-self: flex-end;
+    justify-self: flex-start;
   }
-}
+  .y-scroll {
+    &::-webkit-scrollbar {
+      width: 4px;
+      background-color: rgba(0, 0, 0, 0.25);
 
-@media (max-width: 1200px) {
-  .container {
-    flex-direction: column;
-    justify-content: unset;
-    align-items: center;
-
-    .cartas-disponiveis,
-    .informacoes-gerais {
-      margin-top: 32px;
-    }
-  }
-}
-
-@media (max-width: 670px) {
-  .cartas-disponiveis {
-    .grupo-cartas {
-      flex-direction: column;
-
-      .carta {
-        margin: 32px 0 0;
+      &-thumb {
+        background-color: black;
       }
     }
   }

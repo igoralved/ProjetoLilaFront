@@ -1,10 +1,24 @@
 .cartas-container {
   margin: 16px;
   padding-bottom: 10px;
-  display: flex;
-  max-width: 720px;
-  height: 900px;
-  padding-bottom: 8px;
+  &-scroll {
+    display: flex;
+    max-width: 100%;
+    overflow-x: auto;
+    padding-bottom: 8px;
+
+    &:not(:first-child) {
+      margin-top: 64px;
+    }
+
+    &::-webkit-scrollbar {
+      height: 4px;
+      background-color: rgba(0, 0, 0, 0.25);
+
+      &-thumb {
+        background-color: black;
+      }
+    }
 
     .carta {
       border: 2px solid black;
@@ -119,9 +133,9 @@
       }
 
       &-horizontal {
-        min-width: 290px;
-        max-width: 290px;
-        height: 210px;
+        min-width: 200px;
+        max-width: 200px;
+        height: 110px;
 
         &.carta-sem-titulo {
           display: flex;
@@ -137,25 +151,24 @@
         .cabecalho {
           .titulo {
             color: #38761d;
-            font-size: var(--tamanhoFonte);
-            height: 70px;
-            line-height: 24px;
+            font-size: calc(var(--tamanhoFonte) - 6pt);
+            line-height: 20px;
           }
         }
 
         .corpo {
           .definicao {
-            min-height: 120px;
-            max-height: 120px;
-            margin-bottom: 60px;
-            font-size: calc(var(--tamanhoFonte) - 1.5pt);
-            line-height: 24px;
+            min-height: 50px;
+            max-height: 60px;
+            width: 200px;
+            font-size: calc(var(--tamanhoFonte) - 7pt);
+            line-height: 20px;
             overflow-y: auto;
           }
         }
       }
     }
-  
+  }
 
   .carta-inicio {
     border: 2px solid black;
@@ -173,7 +186,6 @@
     }
   }
 }
-
 .cor-texto {
   color: #ffab40;
 }

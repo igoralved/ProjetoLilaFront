@@ -1,5 +1,5 @@
-<ng-template let-carta="carta" #cartaTemplate>
-  <div class="carta carta-vertical">
+<ng-template let-carta="carta" let-index="index" #cartaTemplate>
+  <div class="carta carta-vertical" (click)="comprarCarta(index)">
     <div class="cabecalho">
       <h2 class="titulo">{{ carta.tipo }}</h2>
       <div class="pontos">
@@ -40,49 +40,61 @@
 </ng-template>
 
 <div class="container">
-  <div (click)="setCartasDisponiveis()" class="carta carta-baralho">
-    <img class="imagem-logo" src="assets/img/logoLilaSozinho.png" alt="logo">
-    <img class="imagem-lila" src="assets/img/lilaSozinha.png" alt="lila">
-  </div>
-  <div class="cartas-disponiveis">
-    <div class="grupo-cartas">
-      <ng-container *ngFor="let carta of listaCartasDisponiveis.slice(0, 3); let i = index">
-        <ng-container *ngTemplateOutlet="cartaTemplate; context: { carta }"></ng-container>
-      </ng-container>
-    </div>
-    <div class="grupo-cartas">
-      <ng-container *ngFor="let carta of listaCartasDisponiveis.slice(3, 6); let i = index">
-        <ng-container *ngTemplateOutlet="cartaTemplate; context: { carta }"></ng-container>
-      </ng-container>
-    </div>
-  </div>
-  <div class="informacoes-gerais">
-    <div class="carta carta-objetivo">
-      <div class="carta-logotexto">
-        <img class="imagem-logo" src="assets/img/logoLilaSozinho.png" alt="logo">
-        <p class="texto">Compre 1 carta por 1 coração de qualquer tamanho</p>
-      </div>
+  <div class="compra-container">
+    <div (click)="setCartasDisponiveis()" class="carta carta-baralho">
+      <img class="imagem-logo" src="assets/img/logoLilaSozinho.png" alt="logo">
       <img class="imagem-lila" src="assets/img/lilaSozinha.png" alt="lila">
     </div>
-    <div class="coracoes">
-      <div class="grupo-coracoes">
-        <div class="coracao grande">
-          <img class = "coracao-grande" src="assets/svg/icone-coracao.svg" alt="coracao grande">
-        </div>
-        <div class="coracao pequeno">
-          <img class = "coracao-pequeno" src="assets/svg/icone-coracao.svg" alt="coracao pequeno">
-        </div>
+    <div class="cartas-disponiveis">
+      <div class="grupo-cartas">
+        <ng-container *ngFor="let carta of listaCartasDisponiveis.slice(0, 3); let i = index">
+          <ng-container *ngTemplateOutlet="cartaTemplate; context: { carta, index: i }"></ng-container>
+        </ng-container>
       </div>
-      <div class="grupo-coracoes">
-        <div class="coracao bonus-g">
-          <img class = "coracao-grande" src="assets/svg/icone-coracao.svg" alt="bonus grande">
-          <img class = "coracao-bannerg" src="assets/svg/banner.svg" >
+      <div class="grupo-cartas">
+        <ng-container *ngFor="let carta of listaCartasDisponiveis.slice(3, 6); let i = index">
+          <ng-container *ngTemplateOutlet="cartaTemplate; context: { carta, index: (i + 3) }"></ng-container>
+        </ng-container>
+      </div>
+    </div>
+    <div class="informacoes-gerais">
+      <div (click)="setcartasObjetivo()" class="carta carta-objetivo">
+        <div class="carta-logotexto">
+          <img class="imagem-logo" src="assets/img/logoLilaSozinho.png" alt="logo">
+          <p class="texto">Compre 1 carta por 1 coração de qualquer tamanho</p>
         </div>
-        <div class="coracao bonus-p">
-          <img class = "coracao-pequeno" src="assets/svg/icone-coracao.svg" alt="bonus pequeno">
-          <img class = "coracao-bannerp" src="assets/svg/banner.svg" >
+        <img class="imagem-lila" src="assets/img/lilaSozinha.png" alt="lila">
+      </div>
+      <div class="coracoes">
+        <div class="grupo-coracoes">
+          <div class="coracao grande">
+            <img class="coracao-grande" src="assets/svg/icone-coracao.svg" alt="coracao grande">
+          </div>
+          <div class="coracao pequeno">
+            <img class="coracao-pequeno" src="assets/svg/icone-coracao.svg" alt="coracao pequeno">
+          </div>
+        </div>
+        <div class="grupo-coracoes">
+          <div class="coracao bonus-g">
+            <img class="coracao-grande" src="assets/svg/icone-coracao.svg" alt="bonus grande">
+            <img class="coracao-bannerg" src="assets/svg/banner.svg">
+          </div>
+          <div class="coracao bonus-p">
+            <img class="coracao-pequeno" src="assets/svg/icone-coracao.svg" alt="bonus pequeno">
+            <img class="coracao-bannerp" src="assets/svg/banner.svg">
+          </div>
         </div>
       </div>
     </div>
   </div>
 </div>
+<div class="mao">
+  <div class="carta carta-horizontal" *ngFor="let cartaObjetivo of listaCartasDisponiveisObjetivo; let i = index">
+    <div class="cabecalho">
+      <h2 class="titulo">{{cartaObjetivo.descricao}}</h2>
+    </div>
+  </div>
+</div>
+<ng-container *ngFor="let carta of listaCartasMao">
+  {{ carta.tipo }}
+</ng-container>

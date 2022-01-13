@@ -25,7 +25,7 @@ export class MaoJogadorComponent implements OnInit {
   ngOnInit(): void {
     this.hash = String(this.route.snapshot.paramMap.get('hash'));
 
-    this.mesaService.findByHash('6g-Rg8V5').subscribe((val) => {
+    this.mesaService.findByHash(this.hash).subscribe((val) => {
       this.sala = val;
       console.log(this.sala);
     });

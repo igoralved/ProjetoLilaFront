@@ -44,7 +44,7 @@ const routes: Routes = [
     component: MesaJogoComponent,
   },
   {
-    path:'mao/:{hash}',
+    path:'mao/:hash',
     component: MaoJogadorComponent
   }
 ];

@@ -4,15 +4,16 @@
   width: 100%;
   display: grid;
   grid-template-rows: 15% auto 30%;
-  grid-gap: 10px;  
+  grid-gap: 10px;
 }
 
 .mao {
   display: grid;
+  height: 100%;
   grid-template-columns: 10% 10% 50% 21% 8%;
   grid-gap: 5px;
   align-items: center;
-  width: 98%;  
+  width: 98%;
   border: 2px solid black;
   margin: 15px;
 }
@@ -20,7 +21,7 @@
 .botao-sair{
   color: var(--font-color);
   background-color: var(--btn-bg);
-  font-size: var(--tamanhoFonte);  
+  font-size: var(--tamanhoFonte);
 }
 
 .centro{
@@ -215,7 +216,7 @@
     }
   }
 
-  
+
 
 
 }
@@ -238,7 +239,7 @@
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-  
+
 
   .carta-coracao {
     width: 40%;
@@ -257,6 +258,6 @@
       height: 55%;
       width: 55%;
     }
-  
+
   }
 }

@@ -58,7 +58,7 @@
       </div>
     </div>
     <div class="informacoes-gerais">
-      <div (click)="setcartasObjetivo()" class="carta carta-objetivo">
+      <div (click)="setCartasObjetivo()" class="carta carta-objetivo">
         <div class="carta-logotexto">
           <img class="imagem-logo" src="assets/img/logoLilaSozinho.png" alt="logo">
           <p class="texto">Compre 1 carta por 1 coração de qualquer tamanho</p>
@@ -88,13 +88,4 @@
     </div>
   </div>
 </div>
-<div class="mao">
-  <div class="carta carta-horizontal" *ngFor="let cartaObjetivo of listaCartasDisponiveisObjetivo; let i = index">
-    <div class="cabecalho">
-      <h2 class="titulo">{{cartaObjetivo.descricao}}</h2>
-    </div>
-  </div>
-</div>
-<ng-container *ngFor="let carta of listaCartasMao">
-  {{ carta.tipo }}
-</ng-container>
+

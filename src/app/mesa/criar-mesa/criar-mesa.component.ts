@@ -23,13 +23,14 @@ export class CriarMesaComponent implements OnInit {
   click() {
     this.jogador = {
       nome: this.nick,
-      cartas: [],
+      cartasDoJogo: [],
+      cartasObjetivo: [],
+      cartasInicio: [],
       pontos: 0,
       coracaoPeq: 2,
       coracaoGra: 0,
       bonusCoracaoPeq: 0,
       bonusCoracaoGra: 0,
-      cartas_objetivo: [],
     };
 
     this.criarMesa();

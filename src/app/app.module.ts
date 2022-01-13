@@ -28,6 +28,8 @@ import {
 
 import { myRxStompConfig } from './rx-stomp.config';
 import { MesaJogoComponent } from './mesa/mesa-jogo/mesa-jogo.component';
+import { AreaJogadoresComponent } from './mesa/area-jogadores/area-jogadores.component';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -41,6 +43,7 @@ import { MesaJogoComponent } from './mesa/mesa-jogo/mesa-jogo.component';
     CriarMesaComponent,
     MesaCriadaComponent,
     MesaJogoComponent,
+    AreaJogadoresComponent,
   ],
   imports: [
     BrowserModule,

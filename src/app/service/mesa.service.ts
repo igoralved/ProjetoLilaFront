@@ -21,7 +21,7 @@ export class MesaService {
    * Recebe as informações da sala criada.
    */
   iniciarHost(jogador: Jogador): Observable<Sala> {
-    return this.http.post<Sala>(`${environment.API_URL}api/iniciar`, jogador);
+    return this.http.post<Sala>(`${environment.API_URL}/api/iniciar`, jogador);
   }
 
   /* O novo jogador se conecta através desta requisição
@@ -29,14 +29,18 @@ export class MesaService {
    */
   conectarNovoJogador(salaRequest: SalaRequest): Observable<Sala> {
     return this.http.post<Sala>(
-      `${environment.API_URL}api/conectar`,
+      `${environment.API_URL}/api/conectar`,
       salaRequest
     );
   }
 
 
   findByHash(hash: string): Observable<Sala>{
+<<<<<<< HEAD
     return this.http.get<Sala>(`${environment.API_URL}sala/${hash}`);
+=======
+    return this.http.get<Sala>(`${environment.API_URL}/sala/${hash}`);
+>>>>>>> cc42f1195a8c1b625b408fddb504cdd47c34e393
   }
 
 

@@ -20,13 +20,15 @@ export class AreaJogadoresComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.mesaJogoService
-      .getemitSalaObservable()
-      .subscribe((sala) => {this.sala = sala; console.warn(sala);});
+    this.mesaJogoService.getemitSalaObservable().subscribe((sala) => {
+      this.sala = sala;
+      console.warn(sala);
+    });
 
-    this.mesaJogoService
-      .getemitJogadorObservable()
-      .subscribe((jogador) => {this.jogadorPrincipal = jogador; console.warn(jogador);});
+    this.mesaJogoService.getemitJogadorObservable().subscribe((jogador) => {
+      this.jogadorPrincipal = jogador;
+      console.warn(jogador);
+    });
 
     this.jogadores = this.sala.jogadores;
 
@@ -46,8 +48,6 @@ export class AreaJogadoresComponent implements OnInit {
 
   abrirModal() {
     this.modal.abrir('mao-jogador');
-    console.warn(this.jogadorPrincipal);
-    console.warn(this.sala);
   }
 
   fecharModal() {

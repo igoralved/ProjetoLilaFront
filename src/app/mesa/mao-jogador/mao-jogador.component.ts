@@ -70,8 +70,7 @@ export class MaoJogadorComponent implements OnInit {
 
   
 
-  private getJogador(){
-    
+  private getJogador(){    
     for (let i = 0; this.sala.jogadores.length < i; i++) {
       this.listaJogador.push(this.sala.jogadores[i]);
     }

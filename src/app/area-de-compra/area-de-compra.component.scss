@@ -1,32 +1,44 @@
 .container {
+  display: flex;
+  flex-wrap: wrap;
   margin: 16px;
   padding-bottom: 10px;
-  display: flex;
-  min-width: 620px;
-  height: 500px;
+  justify-content: space-around;
   padding-bottom: 8px;
+
+  .cartas-disponiveis {
+    display: flex;
+    flex-direction: column;
+
+    .grupo-cartas {
+      display: flex;
+
+      &:not(:first-child) {
+        margin-top: 24px;
+      }
+    }
+  }
 
   .carta {
     border: 2px solid black;
     padding: 20px;
     background: var(--input-backgroundColor);
     word-wrap: break-word;
-    margin-left: 50px;
 
-    &-cartasbaralho {
-      display: flex;
-      flex-wrap: wrap;
-      width: 800px;
-      height: 670px;
+    &:not(:first-child) {
+      margin-left: 24px;
     }
 
     &-baralho {
       display: flex;
       flex-direction: column;
       align-items: center;
+      flex: 1;
+      justify-content: space-around;
       min-width: 150px;
       max-width: 150px;
       height: 250px;
+      cursor: pointer;
 
       .imagem {
         &-lila {
@@ -40,6 +52,7 @@
         }
       }
     }
+
     &-vertical {
       min-width: 150px;
       max-width: 150px;
@@ -145,6 +158,7 @@
         }
       }
     }
+
     &-objetivo {
       display: flex;
       min-width: 250px;
@@ -166,12 +180,41 @@
           height: 150px;
         }
       }
+
       .texto {
         color: #351c75;
       }
     }
   }
+
+  .informacoes-gerais {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    .coracoes {
+      display: flex;
+      flex-direction: column;
+      margin-top: 24px;
+
+      .grupo-coracoes {
+        display: flex;
+        margin-top: 24px;
+
+        .coracao {
+          width: 64px;
+          height: 64px;
+          border: 2px solid black;
+
+          &:not(:first-child) {
+            margin-left: 24px;
+          }
+        }
+      }
+    }
+  }
 }
+
 .y-scroll {
   &::-webkit-scrollbar {
     width: 4px;
@@ -179,6 +222,31 @@
 
     &-thumb {
       background-color: black;
+    }
+  }
+}
+
+@media (max-width: 1200px) {
+  .container {
+    flex-direction: column;
+    justify-content: unset;
+    align-items: center;
+
+    .cartas-disponiveis,
+    .informacoes-gerais {
+      margin-top: 32px;
+    }
+  }
+}
+
+@media (max-width: 670px) {
+  .cartas-disponiveis {
+    .grupo-cartas {
+      flex-direction: column;
+
+      .carta {
+        margin: 32px 0 0;
+      }
     }
   }
 }

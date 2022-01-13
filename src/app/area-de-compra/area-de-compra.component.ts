@@ -7,17 +7,14 @@ import { CartaService } from '../service/cartas.service';
 @Component({
   selector: 'app-area-de-compra',
   templateUrl: './area-de-compra.component.html',
-  styleUrls: ['./area-de-compra.component.scss']
+  styleUrls: ['./area-de-compra.component.scss'],
 })
 export class AreaDeCompraComponent implements OnInit {
-
   public listaCartas: Array<Carta> = [];
   public listaCartasInicio: Array<CartaInicio> = [];
   public listaCartasObjetivo: Array<CartaObjetivo> = [];
-  public listaRandomicaCartas: Array<Carta> = [];
+  public listaCartasDisponiveis: Array<Carta> = [];
 
-   
- 
   constructor(private cartaService: CartaService) {}
 
   ngOnInit() {
@@ -26,17 +23,16 @@ export class AreaDeCompraComponent implements OnInit {
     this.getListarCartasObjetivo();
   }
 
-  public setcartasObjetivo(): void{
-    
+  public setcartasObjetivo(): void {}
 
-  }
+  public setCartasDisponiveis(): void {
+    const cartasFaltantes: number = 6 - this.listaCartasDisponiveis.length;
 
-  public setListaRandomica(): void {
-    const cartasFaltantes: number = 6 - this.listaRandomicaCartas.length;
-    
     for (let i = 0; i < cartasFaltantes; i++) {
-      const indiceRandomico: number = Math.round(Math.random() * ((this.listaCartas.length - 1) - 0) + 0);
-      this.listaRandomicaCartas.push(this.listaCartas[indiceRandomico]);
+      const indiceRandomico: number = Math.round(
+        Math.random() * (this.listaCartas.length - 1 - 0) + 0
+      );
+      this.listaCartasDisponiveis.push(this.listaCartas[indiceRandomico]);
       this.listaCartas.splice(indiceRandomico, 1);
     }
   }
@@ -44,8 +40,10 @@ export class AreaDeCompraComponent implements OnInit {
   private getListarCartas(): void {
     this.cartaService.getListarCarta().subscribe((listaCartas: Carta[]) => {
       this.listaCartas = listaCartas;
+      this.setCartasDisponiveis();
     });
   }
+
   private getListarCartasInicio(): void {
     this.cartaService
       .getListarCartaInicio()
@@ -53,6 +51,7 @@ export class AreaDeCompraComponent implements OnInit {
         this.listaCartasInicio = listaCartasInicio;
       });
   }
+
   private getListarCartasObjetivo(): void {
     this.cartaService
       .getListarCartaObjetivo()

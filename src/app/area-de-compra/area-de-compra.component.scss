@@ -205,7 +205,29 @@
           width: 64px;
           height: 64px;
           border: 2px solid black;
-
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          &-grande{
+            height: 40px;
+            width: 40px;
+          }
+          &-pequeno{
+            height: 24px;
+            width: 24px;
+          }
+          .coracao-bannerg{
+            position: relative;
+            height: 50px;
+            width: 50px;
+            margin-left: -45px;
+          }
+          .coracao-bannerp{
+            position: relative;
+            height: 30px;
+            width: 30px;
+            margin-left: -26.9px;
+          }
           &:not(:first-child) {
             margin-left: 24px;
           }

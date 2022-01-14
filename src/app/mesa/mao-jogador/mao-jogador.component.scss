@@ -1,15 +1,6 @@
-
-.container {
-  height: 96%;
-  width: 100%;
-  display: grid;
-  grid-template-rows: 15% auto 30%;
-  grid-gap: 10px;
-}
-
 .mao {
   display: grid;
-  height: 100%;
+  height: 95%;
   grid-template-columns: 10% 10% 50% 21% 8%;
   grid-gap: 5px;
   align-items: center;

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { RxStompService } from '@stomp/ng2-stompjs';
+import { Message } from '@stomp/stompjs';
 import { Subscription } from 'rxjs';
 import { Sala } from 'src/app/model/sala';
 import { MesaJogoService } from 'src/app/service/mesa-jogo.service';
@@ -31,31 +32,26 @@ export class MesaJogoComponent implements OnInit {
       .findByHash(this.hash)
       .subscribe((sala) => (this.sala = sala));
 
-    // this.topicSubscription = this.rxStompService
-    //   .watch(`/game-play/game-update/${this.hash}`)
-    //   .subscribe((msg: Message) => {
-    //     this.receivedMessages.push(msg.body);
-    //   });
-
-
+    this.topicSubscription = this.rxStompService
+      .watch(`/game-play/game-update/${this.hash}`)
+      .subscribe((msg: Message) => {
+        this.receivedMessages.push(msg.body);
+      });
   }
 
   ngOnDestroy(): void {
     this.topicSubscription.unsubscribe();
   }
 
-
-
-
-  // onPlayCard() {
-  //   //TODO: Logica do Jogo
-  //   const message = {
-  //     player: 'Player Number 1'
-  //   };
-  //   this.rxStompService.publish({
-  //     destination: '/game-app/play-card',
-  //     body: JSON.stringify(message)
-  //   });
-  // }
+  onPlayCard() {
+    //TODO: Logica do Jogo
+    const message = {
+      player: 'Player Number 1'
+    };
+    this.rxStompService.publish({
+      destination: '/game-app/play-card',
+      body: JSON.stringify(message)
+    });
+  }
 
 }

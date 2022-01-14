@@ -27,6 +27,8 @@ import {
   RxStompService,
   rxStompServiceFactory,
 } from '@stomp/ng2-stompjs';
+import { myRxStompConfig } from './rx-stomp.config';
+import { MesaJogoService } from './service/mesa-jogo.service';
 
 @NgModule({
   declarations: [
@@ -60,7 +62,18 @@ import {
     HttpClientModule,
     ClipboardModule
   ],
-  providers: [],
+  providers: [
+    {
+      provide: InjectableRxStompConfig,
+      useValue: myRxStompConfig,
+    },
+    {
+      provide: RxStompService,
+      useFactory: rxStompServiceFactory,
+      deps: [InjectableRxStompConfig],
+    },
+    MesaJogoService
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

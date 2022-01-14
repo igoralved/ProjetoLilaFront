@@ -1,4 +1,5 @@
 import { EntrarMesaComponent } from './entrar-mesa/entrar-mesa.component';
+import { AreaDeCompraComponent } from './area-de-compra/area-de-compra.component';
 import { TelaSenhaComponent } from './administrador/tela-senha/tela-senha.component';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
@@ -52,7 +53,11 @@ const routes: Routes = [
   {
     path:'mao/:hash',
     component: MaoJogadorComponent
-  }
+  },
+  {
+    path: 'areacompra',
+    component: AreaDeCompraComponent,
+  },
 ];
 
 @NgModule({

@@ -30,20 +30,20 @@ export class AreaJogadoresComponent implements OnInit {
       console.warn(jogador);
     });
 
-    this.jogadores = this.sala.jogadores;
+    // this.jogadores = this.sala.jogadores;
 
     // //mock para testes
-    // let jog1 = { nome: "Joao" } as Jogador;
-    // let jog2 = { nome: "Felipe" } as Jogador;
-    // let jog3 = { nome: "Gabriel" } as Jogador;
-    // let jog4 = { nome: "Carol" } as Jogador;
-    // let jog5 = { nome: "Lila" } as Jogador;
+    let jog1 = { nome: "Joao" } as Jogador;
+    let jog2 = { nome: "Felipe" } as Jogador;
+    let jog3 = { nome: "Gabriel" } as Jogador;
+    let jog4 = { nome: "Carol" } as Jogador;
+    let jog5 = { nome: "Lila" } as Jogador;
 
-    // this.jogadores.push(jog1);
-    // this.jogadores.push(jog2);
-    // this.jogadores.push(jog3);
-    // this.jogadores.push(jog4);
-    // this.jogadores.push(jog5);
+    this.jogadores.push(jog1);
+    this.jogadores.push(jog2);
+    this.jogadores.push(jog3);
+    this.jogadores.push(jog4);
+    this.jogadores.push(jog5);
   }
 
   abrirModal() {

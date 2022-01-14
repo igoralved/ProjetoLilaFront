@@ -1,18 +1,21 @@
 .mao {
   display: grid;
-  height: 95%;
-  grid-template-columns: 10% 10% 50% 21% 8%;
+  height: 85%;
+  grid-template-columns: 15% 10% 45% 21% 8%;
   grid-gap: 5px;
   align-items: center;
-  width: 98%;
+  max-width: 95%;
   border: 2px solid black;
   margin: 15px;
 }
 
+
 .botao-sair{
   color: var(--font-color);
   background-color: var(--btn-bg);
-  font-size: var(--tamanhoFonte);
+  font-size: calc(var(--tamanhoFonte) - 3px);
+  width: 50%;
+  height: 35px;
 }
 
 .centro{
@@ -27,15 +30,16 @@
 
 .linha-3{
   display: grid;
-  grid-template-rows: 20% 70% 10%;
+  grid-template-rows: 20% 60% 20%;
   align-items: center;
   justify-content: center;
   font-size: var(--tamanhoFonte);
+  height: 90%;
 }
 
 .avatar {
-  height: 80%;
-  width: 80%;
+  height: 50%;
+  width: 50%;
 }
 
 .cartas-container {

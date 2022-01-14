@@ -30,9 +30,8 @@ export class CriarMesaComponent implements OnInit {
   click() {
     this.jogador = {
       nome: this.nick,
-      cartasDoJogo: [],
-      cartasObjetivo: [],
-      cartasInicio: [],
+      listaDeCartas: [],
+      listaDeObjetivos: [],
       pontos: 0,
       coracaoPeq: 2,
       coracaoGra: 0,

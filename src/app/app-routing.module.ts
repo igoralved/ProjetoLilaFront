@@ -9,6 +9,7 @@ import { MontarCartasComponent } from './montar-cartas/montar-cartas.component';
 import { CriarMesaComponent } from './mesa/criar-mesa/criar-mesa.component';
 import { MesaCriadaComponent } from './mesa/mesa-criada/mesa-criada.component';
 import { MesaJogoComponent } from './mesa/mesa-jogo/mesa-jogo.component';
+import { MaoJogadorComponent } from './mesa/mao-jogador/mao-jogador.component';
 
 const routes: Routes = [
   {
@@ -41,13 +42,17 @@ const routes: Routes = [
     component: CriarMesaComponent,
   },
   {
-    path: 'mesa-criada/:hash',
+    path:'mesa-criada/:hash',
     component: MesaCriadaComponent,
   },
   {
-    path: 'jogo/:hash',
+    path:'jogo/:hash',
     component: MesaJogoComponent,
   },
+  {
+    path:'mao/:hash',
+    component: MaoJogadorComponent
+  }
 ];
 
 @NgModule({

@@ -18,6 +18,7 @@ import { TelaSenhaComponent } from './administrador/tela-senha/tela-senha.compon
 import { MenuDoAdminComponent } from './administrador/menu-do-admin/menu-do-admin.component';
 import { MontarCartasComponent } from './montar-cartas/montar-cartas.component';
 import { EntrarMesaComponent } from './entrar-mesa/entrar-mesa.component';
+import { MaoJogadorComponent } from './mesa/mao-jogador/mao-jogador.component';
 import { CriarMesaComponent } from './mesa/criar-mesa/criar-mesa.component';
 import { MesaCriadaComponent } from './mesa/mesa-criada/mesa-criada.component';
 import { ClipboardModule } from '@angular/cdk/clipboard';
@@ -47,6 +48,7 @@ import { MesaJogoService } from './service/mesa-jogo.service';
     MesaCriadaComponent,
     MesaJogoComponent,
     AreaJogadoresComponent,
+    MaoJogadorComponent,
   ],
   imports: [
     BrowserModule,
@@ -76,7 +78,7 @@ import { MesaJogoService } from './service/mesa-jogo.service';
       useFactory: rxStompServiceFactory,
       deps: [InjectableRxStompConfig],
     },
-    MesaJogoService
+    MesaJogoService,
   ],
   bootstrap: [AppComponent],
 })

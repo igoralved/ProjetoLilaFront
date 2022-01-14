@@ -10,18 +10,22 @@ import { MesaService } from 'src/app/service/mesa.service';
 @Component({
   selector: 'app-mesa-jogo',
   templateUrl: './mesa-jogo.component.html',
-  styleUrls: ['./mesa-jogo.component.scss']
+  styleUrls: ['./mesa-jogo.component.scss'],
 })
 export class MesaJogoComponent implements OnInit {
-
   public receivedMessages: string[] = [];
   private sala: Sala;
-  private hash = "";
+  private hash = '';
   private topicSubscription: Subscription = Subscription.EMPTY;
 
-  constructor(private rxStompService:RxStompService, private mesaService: MesaService, private mesaJogoService: MesaJogoService, private route: ActivatedRoute) {
+  constructor(
+    private rxStompService: RxStompService,
+    private mesaService: MesaService,
+    private mesaJogoService: MesaJogoService,
+    private route: ActivatedRoute
+  ) {
     this.sala = {} as Sala;
-   }
+  }
 
   ngOnInit(): void {
     //Salva o hash recebido por parâmetro
@@ -37,26 +41,20 @@ export class MesaJogoComponent implements OnInit {
       .subscribe((msg: Message) => {
         this.receivedMessages.push(msg.body);
       });
-
-
   }
 
   ngOnDestroy(): void {
     this.topicSubscription.unsubscribe();
   }
 
-
-
-
   onPlayCard() {
     //TODO: Logica do Jogo
     const message = {
-      player: 'Player Number 1'
+      player: 'Player Number 1',
     };
     this.rxStompService.publish({
       destination: '/game-app/play-card',
-      body: JSON.stringify(message)
+      body: JSON.stringify(message),
     });
   }
-
 }

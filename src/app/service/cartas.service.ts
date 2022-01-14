@@ -13,8 +13,8 @@ export class CartaService {
   constructor(private httpClient: HttpClient) {}
 
   private readonly URLCarta: string = 'cartadojogo';
-  private readonly URLCartaObjetivo: string = 'CartaObjetivo';
-  private readonly URLCartaInicio: string = 'cartaInicio';
+  private readonly URLCartaObjetivo: string = 'cartaobjetivo';
+  private readonly URLCartaInicio: string = 'cartainicio';
 
   getListarCarta(): Observable<Carta[]> {
     return this.httpClient.get<Carta[]>(`${environment.API_URL}${this.URLCarta}`);

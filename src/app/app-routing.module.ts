@@ -1,3 +1,4 @@
+import { EntrarMesaComponent } from './entrar-mesa/entrar-mesa.component';
 import { TelaSenhaComponent } from './administrador/tela-senha/tela-senha.component';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
@@ -5,6 +6,9 @@ import { HomePageComponent } from './home-page/home-page.component';
 import { PrimeiroAcessoComponent } from './administrador/primeiro-acesso/primeiro-acesso.component';
 import { MenuDoAdminComponent } from './administrador/menu-do-admin/menu-do-admin.component';
 import { MontarCartasComponent } from './montar-cartas/montar-cartas.component';
+import { CriarMesaComponent } from './mesa/criar-mesa/criar-mesa.component';
+import { MesaCriadaComponent } from './mesa/mesa-criada/mesa-criada.component';
+import { MesaJogoComponent } from './mesa/mesa-jogo/mesa-jogo.component';
 
 const routes: Routes = [
   {
@@ -26,6 +30,23 @@ const routes: Routes = [
   {
     path: 'cartas',
     component: MontarCartasComponent,
+  },
+  {
+    path: 'entrarmesa/:hash',
+    component: EntrarMesaComponent,
+  },
+
+  {
+    path: 'mesa',
+    component: CriarMesaComponent,
+  },
+  {
+    path: 'mesa-criada/:hash',
+    component: MesaCriadaComponent,
+  },
+  {
+    path: 'jogo/:hash',
+    component: MesaJogoComponent,
   },
 ];
 

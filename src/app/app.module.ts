@@ -7,7 +7,6 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
-
 import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -18,6 +17,20 @@ import { AcessibilidadeComponent } from './acessibilidade/acessibilidade.compone
 import { TelaSenhaComponent } from './administrador/tela-senha/tela-senha.component';
 import { MenuDoAdminComponent } from './administrador/menu-do-admin/menu-do-admin.component';
 import { MontarCartasComponent } from './montar-cartas/montar-cartas.component';
+import { EntrarMesaComponent } from './entrar-mesa/entrar-mesa.component';
+import { CriarMesaComponent } from './mesa/criar-mesa/criar-mesa.component';
+import { MesaCriadaComponent } from './mesa/mesa-criada/mesa-criada.component';
+import { ClipboardModule } from '@angular/cdk/clipboard';
+import {
+  InjectableRxStompConfig,
+  RxStompService,
+  rxStompServiceFactory,
+} from '@stomp/ng2-stompjs';
+
+import { myRxStompConfig } from './rx-stomp.config';
+import { MesaJogoComponent } from './mesa/mesa-jogo/mesa-jogo.component';
+import { AreaJogadoresComponent } from './mesa/area-jogadores/area-jogadores.component';
+import { MesaJogoService } from './service/mesa-jogo.service';
 
 @NgModule({
   declarations: [
@@ -28,7 +41,12 @@ import { MontarCartasComponent } from './montar-cartas/montar-cartas.component';
     TelaSenhaComponent,
     ModalComponent,
     MenuDoAdminComponent,
-    MontarCartasComponent
+    MontarCartasComponent,
+    EntrarMesaComponent,
+    CriarMesaComponent,
+    MesaCriadaComponent,
+    MesaJogoComponent,
+    AreaJogadoresComponent,
   ],
   imports: [
     BrowserModule,
@@ -45,9 +63,21 @@ import { MontarCartasComponent } from './montar-cartas/montar-cartas.component';
     MatInputModule,
     MatButtonModule,
     MatIconModule,
-    HttpClientModule
+    HttpClientModule,
+    ClipboardModule,
   ],
-  providers: [],
+  providers: [
+    {
+      provide: InjectableRxStompConfig,
+      useValue: myRxStompConfig,
+    },
+    {
+      provide: RxStompService,
+      useFactory: rxStompServiceFactory,
+      deps: [InjectableRxStompConfig],
+    },
+    MesaJogoService
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

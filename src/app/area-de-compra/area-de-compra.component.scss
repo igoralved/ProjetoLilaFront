@@ -74,8 +74,8 @@
   }
 
   .carta {
-    border: 2px solid black;
-    padding: 20px;
+    border: 1.5px solid black;
+    padding: 8px;
     background: var(--input-backgroundColor);
     word-wrap: break-word;
     cursor: pointer;
@@ -90,9 +90,9 @@
       align-items: center;
       flex: 1;
       justify-content: space-around;
-      min-width: 100px;
-      max-width: 100px;
-      height: 150px;
+      min-width: 120px;
+      max-width: 120px;
+      height: 160px;
 
       .imagem {
         &-lila {
@@ -108,9 +108,9 @@
     }
 
     &-vertical {
-      min-width: 100px;
-      max-width: 100px;
-      height: 150px;
+      min-width: 120px;
+      max-width: 120px;
+      height: 160px;
 
       .cabecalho {
         height: 15px;
@@ -143,21 +143,24 @@
         }
       }
       .corpo {
-        margin-top: 10px;
+       
+        margin-top: 5px;
 
         .definicao {
           margin-bottom: 0;
           padding-right: 8px;
-          min-height: 60px;
-          max-height: 60px;
+          min-height: 90px;
+          max-height: 90px;
+          width: 117px;
           overflow-y: auto;
           font-size: calc(var(--tamanhoFonte) - 7pt);
           line-height: 15px;
+          text-align: justify;
         }
 
         .icones {
           min-height: 15px;
-          margin-top: 16px;
+          margin-top: 5px;
           font-size: var(--tamanhoFonte);
           display: flex;
           justify-content: space-between;
@@ -201,22 +204,26 @@
       }
 
       .rodape {
-        margin-top: 10px;
+        margin-top: 5px;
 
         .fonte {
-          max-height: 25px;
+          word-break: break-all;
+          min-height: 30px;
+          max-height: 30px;
+          width: 117px;
           overflow-y: auto;
           display: block;
-          font-size: calc(var(--tamanhoFonte) - 9pt);
+          font-size: calc(var(--tamanhoFonte) - 8pt);
+          line-height: 8px;
         }
       }
     }
 
     &-objetivo {
       display: flex;
-      min-width: 150px;
-      max-width: 150px;
-      height: 90px;
+      min-width: 170px;
+      max-width: 170px;
+      height: 100px;
 
       &-logotexto {
         display: flex;

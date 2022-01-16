@@ -1,12 +1,17 @@
 {
   "name": "projeto-lila-front",
   "version": "0.0.0",
+  "engines": {
+    "node": "14.17.4",
+    "npm": "6.14.14"
+  },
   "scripts": {
     "ng": "ng",
-    "start": "ng serve",
+    "start": "node server.js",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
-    "test": "ng test"
+    "test": "ng test",
+    "heroku-postbuild": "ng build"
   },
   "private": true,
   "dependencies": {
@@ -21,6 +26,7 @@
     "@angular/platform-browser-dynamic": "~13.1.0",
     "@angular/router": "~13.1.0",
     "@stomp/ng2-stompjs": "^8.0.0",
+    "express": "^4.17.2",
     "net": "^1.0.2",
     "rxjs": "~7.4.0",
     "sockjs-client": "^1.5.2",

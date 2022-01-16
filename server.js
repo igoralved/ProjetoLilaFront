@@ -6,7 +6,7 @@ const express = require('express');
 const app = express();
 
 //nome da pasta no dist que será feito o build
-const appName = 'frontend';
+const appName = 'projeto-lila-front';
 
 //local onde o build ira gerar os arquivos
 //dirname busca a raiz no heroku

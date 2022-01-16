@@ -4,8 +4,8 @@
 
 export const environment = {
   production: false,
-  API_URL: 'https://backendlila.herokuapp.com/',
-  CLIENT_URL: 'https://dev-coracoes-da-lila.netlify.app/',
+  API_URL: 'http://localhost:8080/',
+  CLIENT_URL: 'http://localhost:4200/',
   WEBSOCKET_URL: 'ws://localhost:8080/'
 };
 

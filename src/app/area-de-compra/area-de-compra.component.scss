@@ -73,6 +73,7 @@
     }
   }
 
+
   .carta {
     border: 1.5px solid black;
     padding: 8px;
@@ -80,9 +81,16 @@
     word-wrap: break-word;
     cursor: pointer;
 
+    // -- isto desabilita as cartas
+    .desabilitarCarta{
+      pointer-events:none;
+      opacity: 0.2;
+    }
+
     &:not(:first-child) {
       margin-left: 24px;
     }
+
 
     &-baralho {
       display: flex;
@@ -143,7 +151,7 @@
         }
       }
       .corpo {
-       
+
         margin-top: 5px;
 
         .definicao {

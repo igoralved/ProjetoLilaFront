@@ -42,6 +42,7 @@ export class AreaDeCompraComponent implements OnInit {
       const indiceRandomico: number = Math.round(
         Math.random() * (this.listaCartas.length - 1 - 0) + 0
       );
+    
       this.listaCartasDisponiveis.push(this.listaCartas[indiceRandomico]);
       this.listaCartas.splice(indiceRandomico, 1);
     }
@@ -50,6 +51,7 @@ export class AreaDeCompraComponent implements OnInit {
   public comprarCarta(indice: number): void {
     this.listaCartasMao.push(this.listaCartasDisponiveis[indice]);
     this.listaCartasDisponiveis.splice(indice, 1);
+    this.setCartasDisponiveis();
   }
 
   private getListarCartas(): void {

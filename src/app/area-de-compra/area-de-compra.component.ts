@@ -1,8 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit} from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { Carta } from '../model/carta';
 import { CartaInicio } from '../model/cartaInicio';
 import { CartaObjetivo } from '../model/cartaObjetivo';
+import { Sala } from '../model/sala';
 import { CartaService } from '../service/cartas.service';
+import { MaoJogadorService } from '../service/mao-jogador.service';
 
 @Component({
   selector: 'app-area-de-compra',
@@ -10,6 +13,8 @@ import { CartaService } from '../service/cartas.service';
   styleUrls: ['./area-de-compra.component.scss'],
 })
 export class AreaDeCompraComponent implements OnInit {
+  private hash = '';
+  public sala: Sala = {} as Sala;
   public listaCartas: Array<Carta> = [];
   public listaCartasInicio: Array<CartaInicio> = [];
   public listaCartasObjetivo: Array<CartaObjetivo> = [];
@@ -19,9 +24,14 @@ export class AreaDeCompraComponent implements OnInit {
   public listaCartasMaoObjetivo: Array<CartaObjetivo> = [];
   public coracoes: Array<any> = [];
 
-  constructor(private cartaService: CartaService) {}
+  public isDisabled: boolean = false;
+
+
+  constructor(private cartaService: CartaService, private route: ActivatedRoute, private maoJogador: MaoJogadorService) {
+  }
 
   ngOnInit() {
+    this.hash = String(this.route.snapshot.paramMap.get('hash'));
     this.getListarCartas();
     this.getListarCartasInicio();
     this.getListarCartasObjetivo();
@@ -75,5 +85,11 @@ export class AreaDeCompraComponent implements OnInit {
       .subscribe((listaCartasObjetivo: CartaObjetivo[]) => {
         this.listaCartasObjetivo = listaCartasObjetivo;
       });
+  }
+
+  desabilitaCoracoesPeq() {
+    if(this.maoJogador.verificarCoracoes()){
+      this.isDisabled = true;
+    }
   }
 }

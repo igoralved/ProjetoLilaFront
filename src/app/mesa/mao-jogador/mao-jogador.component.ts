@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Jogador } from 'src/app/model/jogador';
 import { Sala } from 'src/app/model/sala';
-import { CartaService } from 'src/app/service/cartas.service';
 import { MesaJogoService } from 'src/app/service/mesa-jogo.service';
 import { MesaService } from 'src/app/service/mesa.service';
 
@@ -33,4 +32,5 @@ export class MaoJogadorComponent implements OnInit {
       console.log(this.sala);
     });
   }
+
 }

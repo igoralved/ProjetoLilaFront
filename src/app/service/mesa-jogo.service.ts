@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
+import { Baralho } from '../model/baralho';
 import { Jogador } from '../model/jogador';
 import { Sala } from '../model/sala';
 import { MesaService } from './mesa.service';

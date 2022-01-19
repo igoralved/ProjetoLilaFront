@@ -8,7 +8,6 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 
-
 import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -35,6 +34,7 @@ import { MesaJogoComponent } from './mesa/mesa-jogo/mesa-jogo.component';
 import { AreaJogadoresComponent } from './mesa/area-jogadores/area-jogadores.component';
 import { MesaJogoService } from './service/mesa-jogo.service';
 import { AreaDeCompraComponent } from './area-de-compra/area-de-compra.component';
+import { HabilitaDadoComponent } from './mesa/habilita-dado/habilita-dado.component';
 
 @NgModule({
   declarations: [
@@ -52,7 +52,8 @@ import { AreaDeCompraComponent } from './area-de-compra/area-de-compra.component
     MesaJogoComponent,
     AreaJogadoresComponent,
     MaoJogadorComponent,
-    AreaDeCompraComponent
+    AreaDeCompraComponent,
+    HabilitaDadoComponent
   ],
   imports: [
     BrowserModule,

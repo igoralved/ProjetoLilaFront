@@ -11,7 +11,7 @@ import { CriarMesaComponent } from './mesa/criar-mesa/criar-mesa.component';
 import { MesaCriadaComponent } from './mesa/mesa-criada/mesa-criada.component';
 import { MesaJogoComponent } from './mesa/mesa-jogo/mesa-jogo.component';
 import { MaoJogadorComponent } from './mesa/mao-jogador/mao-jogador.component';
-
+import { IniciaPartidaComponent } from './mesa/inicia-partida/inicia-partida.component';
 const routes: Routes = [
   {
     path: 'primeiroacesso',
@@ -57,6 +57,9 @@ const routes: Routes = [
   {
     path: 'areacompra',
     component: AreaDeCompraComponent,
+  },  {
+    path: 'iniciaPartida',
+    component: IniciaPartidaComponent,
   },
 ];
 

@@ -22,12 +22,10 @@ export class AreaJogadoresComponent implements OnInit {
   ngOnInit(): void {
     this.mesaJogoService.getemitSalaObservable().subscribe((sala) => {
       this.sala = sala;
-      console.warn(sala);
     });
 
     this.mesaJogoService.getemitJogadorObservable().subscribe((jogador) => {
       this.jogadorPrincipal = jogador;
-      console.warn(jogador);
     });
 
     // this.jogadores = this.sala.jogadores;

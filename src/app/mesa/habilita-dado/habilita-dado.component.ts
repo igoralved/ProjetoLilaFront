@@ -16,6 +16,7 @@ export class HabilitaDadoComponent implements OnInit {
 
   rollDice() {
     const node = this.dado?.nativeElement;
+    //Aqui vai o método que recebemos do back//
     const number = this.getRandomNumber(1, 6).toString();
     if (node instanceof HTMLElement) {
       this.toggleClasses(node);

@@ -21,11 +21,11 @@
         </div>
         <div class="presentes">
           <div class="presente-acao">
-            <div class="presente-acao" *ngIf="carta.tipo === 'Informação'">
+            <div class="presente-acao" *ngIf="carta.tipo === 'Informação' && carta.bonus== true">
               <img class="presente" src="assets/svg/icone-presente.svg" alt="presente">
               <img class="presenteInfoAcoes" src="assets/svg/icone-usuario.svg" alt="acao">
             </div>
-            <div class="presente-info" *ngIf="carta.tipo === 'Ação'">
+            <div class="presente-info" *ngIf="carta.tipo === 'Ação' && carta.bonus== true">
               <img class="presente" src="assets/svg/icone-presente.svg" alt="presente">
               <img class="presenteInfoAcoes" src="assets/svg/icone-info.svg" alt="info">
             </div>
@@ -41,10 +41,16 @@
 
 <div class="container">
   <div class="compra-container">
-    <div (click)="setCartasDisponiveis()" class="carta carta-baralho">
-      <img class="imagem-logo" src="assets/img/logoLilaSozinho.png" alt="logo">
-      <img class="imagem-lila" src="assets/img/lilaSozinha.png" alt="lila">
+    <div class="linha3">
+      <div (click)="setCartasDisponiveis()" class="carta carta-baralho">
+        <img class="imagem-logo" src="assets/img/logoLilaSozinho.png" alt="logo">
+        <img class="imagem-lila" src="assets/img/lilaSozinha.png" alt="lila">
+      </div>
+      <div class="dado" *ngIf="verificaBonus()">
+        <app-habilita-dado></app-habilita-dado>
+      </div>
     </div>
+
     <div class="cartas-disponiveis">
       <div class="grupo-cartas">
         <ng-container *ngFor="let carta of listaCartasDisponiveis.slice(0, 3); let i = index">
@@ -74,9 +80,6 @@
             <img class="coracao-pequeno" src="assets/svg/icone-coracao.svg" alt="coracao pequeno">
           </div>
         </div>
-      </div>
-      <div *ngIf="verificaBonus()">
-        <app-habilita-dado></app-habilita-dado>
       </div>
     </div>
   </div>

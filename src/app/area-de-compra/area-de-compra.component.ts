@@ -1,10 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Baralho } from '../model/baralho';
-import { Carta } from '../model/carta';
 import { CartaDoJogo } from '../model/cartaDoJogo';
 import { CartaInicio } from '../model/cartaInicio';
 import { CartaObjetivo } from '../model/cartaObjetivo';
-import { CartaService } from '../service/cartas.service';
 import { MesaJogoService } from '../service/mesa-jogo.service';
 
 @Component({
@@ -20,11 +18,9 @@ export class AreaDeCompraComponent implements OnInit {
   public listaCartasDisponiveisObjetivo: Array<CartaObjetivo> = [];
   public listaCartasMao: Array<CartaDoJogo> = [];
   public listaCartasMaoObjetivo: Array<CartaObjetivo> = [];
-  public coracoes: Array<any> = [];
   public baralho = {} as Baralho;
 
   constructor(
-    private cartaService: CartaService,
     private mesaJogoService: MesaJogoService
   ) {}
 
@@ -73,6 +69,6 @@ export class AreaDeCompraComponent implements OnInit {
         return existe = true;       
       }            
     }
-    return false;
+    return existe;
   }
 }

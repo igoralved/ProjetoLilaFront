@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 
 @Component({
   selector: 'app-habilita-dado',
@@ -6,28 +6,24 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./habilita-dado.component.scss'],
 })
 export class HabilitaDadoComponent implements OnInit {
+  public dice: number = 0;
+  @ViewChild('dice')
+  public dado: ElementRef<Element> | null = null;
+
   constructor() {}
 
   ngOnInit(): void {}
 
-  public dice: number = 0;
-
-  diceNumber(min: number, max: number) {
-    this.dice = Math.floor(Math.random() * (max - min + 1)) + min;
-    return this.dice;
-  }
-
   rollDice() {
-    const dice = [document.querySelectorAll('.die-list')];
-    dice.forEach((die) => {
-      this.toggleClasses(die);
-      this.getRandomNumber(1, 6);
-      console.log(die);
-    });
+    const node = this.dado?.nativeElement;
+    const number = this.getRandomNumber(1, 6).toString();
+    if (node instanceof HTMLElement) {
+      this.toggleClasses(node);
+      node.dataset['roll'] = number;
+    }
   }
 
-  toggleClasses(die: any) {
-    die.classList.toggle('odd-roll');
+  toggleClasses(die: HTMLElement) {   
     die.classList.toggle('even-roll');
   }
 

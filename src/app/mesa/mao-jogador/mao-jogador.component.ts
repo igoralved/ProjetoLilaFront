@@ -1,9 +1,14 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Injectable, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Jogador } from 'src/app/model/jogador';
 import { Sala } from 'src/app/model/sala';
+import { CartaService } from 'src/app/service/cartas.service';
 import { MesaJogoService } from 'src/app/service/mesa-jogo.service';
 import { MesaService } from 'src/app/service/mesa.service';
+
+@Injectable({
+  providedIn: 'root'
+})
 
 @Component({
   selector: 'app-mao-jogador',
@@ -28,9 +33,12 @@ export class MaoJogadorComponent implements OnInit {
     this.mesaJogoService.getemitJogadorObservable().subscribe((jogador)=> this.jogador = jogador)   
 
     this.mesaService.findByHash(this.hash).subscribe((val) => {
-      this.sala = val;
-      console.log(this.sala);
+      this.sala = val;     
     });
   }
 
+  public verificarCoracoesPeq(): Boolean{
+    this.mesaJogoService.getemitJogadorObservable().subscribe((jogador) => this.jogador.coracaoPeq = jogador.coracaoPeq); 
+    return this.jogador.coracaoPeq >= 4;
+  }
 }

@@ -58,7 +58,7 @@
       </div>
     </div>
     <div class="informacoes-gerais">
-      <div (click)="setCartasObjetivo()" class="carta carta-objetivo">
+      <div class="carta carta-objetivo">
         <div class="carta-logotexto">
           <img class="imagem-logo" src="assets/img/logoLilaSozinho.png" alt="logo">
           <p class="texto">Compre 1 carta por 1 coração de qualquer tamanho</p>
@@ -68,15 +68,13 @@
       <div class="coracoes">
         <div class="grupo-coracoes">
           <div class="coracao grande">
-            
-              <img class="coracao-grande" src="assets/svg/icone-coracao.svg" alt="coracao grande">
-           
+            <img class="coracao-grande" src="assets/svg/icone-coracao.svg" alt="coracao grande">
           </div>
+          <button class="btn-coracao" [disabled]="desabilitarCoracoesPeq()">
           <div class="coracao pequeno">
-            <button  [disabled]="desabilitaCoracoesPeq()">
-              <img class="coracao-pequeno" src="assets/svg/icone-coracao.svg" alt="coracao pequeno">
-            </button>
+            <img class="coracao-pequeno" src="assets/svg/icone-coracao.svg" alt="coracao pequeno">
           </div>
+          </button>
         </div>
       </div>
     </div>

@@ -81,9 +81,8 @@
     word-wrap: break-word;
     cursor: pointer;
 
-    // -- isto desabilita as cartas
-    .desabilitarCarta{
-      pointer-events:none;
+    &.desabilitar-carta {
+      pointer-events: none;
       opacity: 0.2;
     }
 

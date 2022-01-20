@@ -1,8 +1,11 @@
 import { Component, OnInit } from '@angular/core';
+import { Baralho } from '../model/baralho';
 import { Carta } from '../model/carta';
+import { CartaDoJogo } from '../model/cartaDoJogo';
 import { CartaInicio } from '../model/cartaInicio';
 import { CartaObjetivo } from '../model/cartaObjetivo';
 import { CartaService } from '../service/cartas.service';
+import { MesaJogoService } from '../service/mesa-jogo.service';
 
 @Component({
   selector: 'app-area-de-compra',
@@ -10,34 +13,42 @@ import { CartaService } from '../service/cartas.service';
   styleUrls: ['./area-de-compra.component.scss'],
 })
 export class AreaDeCompraComponent implements OnInit {
-  public listaCartas: Array<Carta> = [];
+  public listaCartas: Array<CartaDoJogo> = [];
   public listaCartasInicio: Array<CartaInicio> = [];
   public listaCartasObjetivo: Array<CartaObjetivo> = [];
-  public listaCartasDisponiveis: Array<Carta> = [];
+  public listaCartasDisponiveis: Array<CartaDoJogo> = [];
   public listaCartasDisponiveisObjetivo: Array<CartaObjetivo> = [];
-  public listaCartasMao: Array<Carta> = [];
+  public listaCartasMao: Array<CartaDoJogo> = [];
   public listaCartasMaoObjetivo: Array<CartaObjetivo> = [];
   public coracoes: Array<any> = [];
+  public baralho = {} as Baralho;
 
-  constructor(private cartaService: CartaService) {}
+  constructor(
+    private cartaService: CartaService,
+    private mesaJogoService: MesaJogoService
+  ) {}
 
   ngOnInit() {
-    this.getListarCartas();
-    this.getListarCartasInicio();
-    this.getListarCartasObjetivo();
+    this.mesaJogoService.getemitSalaObservable().subscribe((sala) => {
+      this.baralho = sala.baralho;
+      this.listaCartas = this.baralho.cartasDoJogo;
+      this.listaCartasObjetivo = this.baralho.cartasObjetivo;      
+      this.setCartasDisponiveis();
+    });
   }
- 
+
   public setCartasObjetivo(): void {
-      const indiceRandomico: number = Math.round(
-        Math.random() * (this.listaCartasObjetivo.length - 1 - 0) + 0
-      );
-      this.listaCartasDisponiveisObjetivo.push(this.listaCartasObjetivo[indiceRandomico]);
-      this.listaCartasObjetivo.splice(indiceRandomico, 1);
+    const indiceRandomico: number = Math.round(
+      Math.random() * (this.listaCartasObjetivo.length - 1 - 0) + 0
+    );
+    this.listaCartasDisponiveisObjetivo.push(
+      this.listaCartasObjetivo[indiceRandomico]
+    );
+    this.listaCartasObjetivo.splice(indiceRandomico, 1);
   }
- 
+
   public setCartasDisponiveis(): void {
     const cartasFaltantes: number = 6 - this.listaCartasDisponiveis.length;
-
     for (let i = 0; i < cartasFaltantes; i++) {
       const indiceRandomico: number = Math.round(
         Math.random() * (this.listaCartas.length - 1 - 0) + 0
@@ -50,28 +61,18 @@ export class AreaDeCompraComponent implements OnInit {
   public comprarCarta(indice: number): void {
     this.listaCartasMao.push(this.listaCartasDisponiveis[indice]);
     this.listaCartasDisponiveis.splice(indice, 1);
+    this.setCartasDisponiveis();
+    this.verificaBonus();
   }
 
-  private getListarCartas(): void {
-    this.cartaService.getListarCarta().subscribe((listaCartas: Carta[]) => {
-      this.listaCartas = listaCartas;
-      this.setCartasDisponiveis();
-    });
-  }
-
-  private getListarCartasInicio(): void {
-    this.cartaService
-      .getListarCartaInicio()
-      .subscribe((listaCartasInicio: CartaInicio[]) => {
-        this.listaCartasInicio = listaCartasInicio;
-      });
-  }
-
-  private getListarCartasObjetivo(): void {
-    this.cartaService
-      .getListarCartaObjetivo()
-      .subscribe((listaCartasObjetivo: CartaObjetivo[]) => {
-        this.listaCartasObjetivo = listaCartasObjetivo;
-      });
+  public verificaBonus() {
+    let existe = false;
+    if (this.listaCartasMao.length > 0) {
+      let ultimaCarta = this.listaCartasMao.length - 1;     
+      if (this.listaCartasMao[ultimaCarta].bonus == true) {
+        return existe = true;       
+      }            
+    }
+    return false;
   }
 }

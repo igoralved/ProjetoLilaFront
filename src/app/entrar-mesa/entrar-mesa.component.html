@@ -9,8 +9,11 @@
     <input [(ngModel)]='nick' matInput type="text">
     </mat-form-field>
 
-  <div>
+  <div *ngIf="!salaCheia">
     <button mat-raised-button (click)='conectar()' >Entrar na mesa</button>
+  </div>
+  <div *ngIf="salaCheia">
+    <p>Sala já está cheia.</p>
   </div>
   <div>
     <button mat-raised-button type="submit" [routerLink]="['']">Voltar</button>

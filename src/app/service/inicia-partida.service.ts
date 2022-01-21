@@ -13,8 +13,8 @@ export class IniciaPartidaService {
  
   constructor(private http:HttpClient) { }
 
-  getQuantidadeJogadores(hash : string){
-    return this.http.get(
+  getQuantidadeJogadores(hash : string): Observable<number>{
+    return this.http.get<number>(
       `${environment.API_URL}numeroJogadores`+
       hash
     );

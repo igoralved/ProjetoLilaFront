@@ -6,6 +6,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Jogador } from '../model/jogador';
 import { MesaJogoService } from '../service/mesa-jogo.service';
+import { IniciaPartidaService } from '../service/inicia-partida.service';
 
 @Component({
   selector: 'app-entrar-mesa',
@@ -18,7 +19,8 @@ export class EntrarMesaComponent implements OnInit {
     private mesaJogoService: MesaJogoService,
     private router: Router,
     private mesaService: MesaService,
-    private jogadorservice: JogadorService
+    private jogadorservice: JogadorService,
+    private iniciaPartidaService: IniciaPartidaService,
   ) {
     this.sala = {} as Sala;
     this.jogador = {} as Jogador;
@@ -31,6 +33,9 @@ export class EntrarMesaComponent implements OnInit {
     this.mesaService
       .findByHash(this.hash)
       .subscribe((sala) => (this.sala = sala));
+
+    this.verificaSalaCheia(this.hash);
+
   }
 
   hash = '';
@@ -38,6 +43,7 @@ export class EntrarMesaComponent implements OnInit {
   nick = '';
   jogador: Jogador;
   jogadorPrincipal: Jogador;
+  salaCheia: boolean = false;
 
   conectar() {
     this.jogador.nome = this.nick;
@@ -63,5 +69,16 @@ export class EntrarMesaComponent implements OnInit {
   emit() {
     this.mesaJogoService.getemitSalaSubject().next(this.sala);
     this.mesaJogoService.getemitJogadorSubject().next(this.jogadorPrincipal);
+  }
+
+  verificaSalaCheia(hash: string) {
+    this.iniciaPartidaService.getQuantidadeJogadores(hash)
+      .subscribe(jogadores => {
+        if (jogadores >= 6) {
+          this.salaCheia = true;
+        }
+      });
+
+
   }
 }

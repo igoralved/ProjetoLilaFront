@@ -11,25 +11,29 @@ import { shareReplay } from 'rxjs';
   styleUrls: ['./inicia-partida.component.scss']
 })
 export class IniciaPartidaComponent implements OnInit {
-jogadores: any;
+jogadores:number=0;
 desabilitaBtn=true;
 sala : Sala;
 jogadorPrincipal: Jogador;
-hash:string;
+hash ='';
 
   constructor(private iniciaPartidaService: IniciaPartidaService,
               private mesaJogoService: MesaJogoService) {
 
     this.sala = {} as Sala;
     this.jogadorPrincipal = {} as Jogador;
-    this.hash = this.sala.hash;
+    
    }
 
   verificaQuantidadeJogadores(hash:string){
-    this.jogadores = this.iniciaPartidaService.getQuantidadeJogadores(hash); 
-    if(this.jogadores >=2){
-      this.desabilitaBtn=false;
-    }
+    this.iniciaPartidaService.getQuantidadeJogadores(hash)
+    .subscribe(jogadores => 
+      {this.jogadores = jogadores;
+        if(this.jogadores >=2){
+          this.desabilitaBtn=false;
+        }
+      }); 
+    
      
   }
 
@@ -41,7 +45,7 @@ hash:string;
 
   ngOnInit(): void {
     this.verificaQuantidadeJogadores(this.hash);
-    this.mesaJogoService.getemitSalaObservable().subscribe(sala => this.sala = sala);
+    this.mesaJogoService.getemitSalaObservable().subscribe(sala =>{ this.sala = sala, this.hash = this.sala.hash});
     // this.mesaJogoService.getemitJogadorObservable().subscribe(jogador => this.jogadorPrincipal = jogador);
     this.jogadorPrincipal = {
       nome:"Lila",

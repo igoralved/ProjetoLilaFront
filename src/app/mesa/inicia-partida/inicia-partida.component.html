@@ -1,4 +1,6 @@
 <div class="div-aguarde">
-<h4 class="mensagem-aguarde">Aguardando início da partida</h4>
-<button class="btn-aguarde" [disabled]="">Iniciar partida</button>
+    <p  class="mensagem-aguarde">Aguardando início da partida</p>
+    <div class='div-btn-aguarde' *ngIf="jogadorPrincipal.isHost == true">
+     <button mat-raised-button class="btn-aguarde btn" [disabled]="desabilitaBtn" (click)="enviaStatus()">Iniciar partida</button>
+    </div>
 </div>

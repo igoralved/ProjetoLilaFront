@@ -35,6 +35,7 @@ export class CriarMesaComponent implements OnInit {
       pontos: 0,
       coracaoPeq: 2,
       coracaoGra: 0,
+      isHost: true,
       bonusCoracaoPeq: 0,
       bonusCoracaoGra: 0,
     };

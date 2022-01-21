@@ -73,6 +73,7 @@ import { IniciaPartidaComponent } from './mesa/inicia-partida/inicia-partida.com
     MatIconModule,
     HttpClientModule,
     ClipboardModule,
+    
   ],
   providers: [
     {

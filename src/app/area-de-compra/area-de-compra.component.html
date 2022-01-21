@@ -21,11 +21,11 @@
         </div>
         <div class="presentes">
           <div class="presente-acao">
-            <div class="presente-acao" *ngIf="carta.tipo === 'Informação'">
+            <div class="presente-acao" *ngIf="carta.tipo === 'Informação' && carta.bonus == true">
               <img class="presente" src="assets/svg/icone-presente.svg" alt="presente">
               <img class="presenteInfoAcoes" src="assets/svg/icone-usuario.svg" alt="acao">
             </div>
-            <div class="presente-info" *ngIf="carta.tipo === 'Ação'">
+            <div class="presente-info" *ngIf="carta.tipo === 'Ação' && carta.bonus == true">
               <img class="presente" src="assets/svg/icone-presente.svg" alt="presente">
               <img class="presenteInfoAcoes" src="assets/svg/icone-info.svg" alt="info">
             </div>
@@ -67,9 +67,11 @@
       </div>
       <div class="coracoes">
         <div class="grupo-coracoes">
+          <button class="btn-coracao">
           <div class="coracao grande">
             <img class="coracao-grande" src="assets/svg/icone-coracao.svg" alt="coracao grande">
           </div>
+        </button>
           <button class="btn-coracao" [disabled]="desabilitarCoracoesPeq()">
           <div class="coracao pequeno">
             <img class="coracao-pequeno" src="assets/svg/icone-coracao.svg" alt="coracao pequeno">

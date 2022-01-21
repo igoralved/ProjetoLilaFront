@@ -3,6 +3,7 @@ import { Sala } from 'src/app/model/sala';
 import { Jogador } from 'src/app/model/jogador';
 import { IniciaPartidaService } from 'src/app/service/inicia-partida.service';
 import { MesaJogoService } from 'src/app/service/mesa-jogo.service';
+import { shareReplay } from 'rxjs';
 
 @Component({
   selector: 'app-inicia-partida',
@@ -10,20 +11,22 @@ import { MesaJogoService } from 'src/app/service/mesa-jogo.service';
   styleUrls: ['./inicia-partida.component.scss']
 })
 export class IniciaPartidaComponent implements OnInit {
-jogadores=0;
+jogadores: any;
 desabilitaBtn=true;
 sala : Sala;
 jogadorPrincipal: Jogador;
+hash:string;
 
   constructor(private iniciaPartidaService: IniciaPartidaService,
               private mesaJogoService: MesaJogoService) {
 
     this.sala = {} as Sala;
     this.jogadorPrincipal = {} as Jogador;
+    this.hash = this.sala.hash;
    }
 
-  verificaQuantidadeJogadores(){
-    this.jogadores = this.iniciaPartidaService.getQuantidadeJogadores(); 
+  verificaQuantidadeJogadores(hash:string){
+    this.jogadores = this.iniciaPartidaService.getQuantidadeJogadores(hash); 
     if(this.jogadores >=2){
       this.desabilitaBtn=false;
     }
@@ -37,7 +40,7 @@ jogadorPrincipal: Jogador;
  
 
   ngOnInit(): void {
-    this.verificaQuantidadeJogadores();
+    this.verificaQuantidadeJogadores(this.hash);
     this.mesaJogoService.getemitSalaObservable().subscribe(sala => this.sala = sala);
     // this.mesaJogoService.getemitJogadorObservable().subscribe(jogador => this.jogadorPrincipal = jogador);
     this.jogadorPrincipal = {

@@ -13,8 +13,11 @@ export class IniciaPartidaService {
  
   constructor(private http:HttpClient) { }
 
-  getQuantidadeJogadores(){
-    return 2;
+  getQuantidadeJogadores(hash : string){
+    return this.http.get(
+      `${environment.API_URL}numeroJogadores`+
+      hash
+    );
     
   }
 

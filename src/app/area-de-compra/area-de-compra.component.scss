@@ -73,9 +73,19 @@
     }
   }
 
-  .btn-coracao {
+  .btn {
     border: none;
     color: #fff;
+  }
+
+  .btn-coracao {
+    cursor: pointer;
+  }
+
+  .btn-coracao:active {
+    position: relative;
+    top: 4px;
+    box-shadow: none;
   }
 
   .carta {

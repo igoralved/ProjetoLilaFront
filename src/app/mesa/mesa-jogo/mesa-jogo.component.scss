@@ -24,3 +24,15 @@ header, nav:first-of-type, footer {
   grid-column-start: 1; 
   grid-column-end: 4; 
 }
+
+.btn-superior{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: row;  
+}
+.centro{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

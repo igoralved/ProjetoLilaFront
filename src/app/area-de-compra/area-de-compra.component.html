@@ -67,12 +67,23 @@
       </div>
       <div class="coracoes">
         <div class="grupo-coracoes">
-          <div class="coracao grande">
+          <div class="coracao grande" >
             <img class="coracao-grande" src="assets/svg/icone-coracao.svg" alt="coracao grande">
           </div>
+          <button class="btn btn-coracao" [disabled]="desabilitarCoracoes()">
+            <div class="coracao grande">
+              <img class="coracao-grande" src="assets/svg/icone-coracao.svg" alt="coracao grande">
+            </div>
+          </button>
+
           <div class="coracao pequeno">
             <img class="coracao-pequeno" src="assets/svg/icone-coracao.svg" alt="coracao pequeno">
           </div>
+        <button class="btn btn-coracao" [disabled]="desabilitarCoracoesPeq()", [disabled]="desabilitarCoracoes()">
+        <div class="coracao pequeno">
+          <img class="coracao-pequeno" src="assets/svg/icone-coracao.svg" alt="coracao pequeno">
+        </div>
+        </button>
         </div>
       </div>
     </div>

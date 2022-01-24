@@ -26,11 +26,27 @@ export class MaoJogadorComponent implements OnInit {
   ngOnInit(): void {
     // caminho para acessar a partir de outros componentes
     this.hash = String(this.route.snapshot.paramMap.get('hash'));
-    this.mesaJogoService.getemitJogadorObservable().subscribe((jogador)=> this.jogador = jogador)   
+    this.mesaJogoService.getemitJogadorObservable().subscribe((jogador)=> this.jogador = jogador)
 
     this.mesaService.findByHash(this.hash).subscribe((val) => {
       this.sala = val;
       console.log(this.sala);
     });
   }
+
+  public verificarCoracoesPeq(): Boolean{
+    this.mesaJogoService.getemitJogadorObservable().subscribe((jogador) => this.jogador.coracaoPeq = jogador.coracaoPeq);
+    return this.jogador.coracaoPeq >= 4;
+  }
+
+  public verificarCoracoesQualquerTamanho(): Boolean {
+    let coracoes = this.jogador.coracaoGra + this.jogador.coracaoPeq + this.jogador.bonusCoracaoGra + this.jogador.bonusCoracaoPeq;
+
+    this.mesaJogoService.getemitJogadorObservable().subscribe((jogador) => coracoes);
+    return coracoes <= 5;
+
+  }
+
+
+
 }

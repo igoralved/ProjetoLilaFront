@@ -34,4 +34,8 @@ export class MesaJogoService {
   getDadoJogada(): Observable<Sala>{
     return this.http.get<Sala>(environment.API_URL + '/')
   }
+
+  comprarCarta(sala: Sala): Observable<Sala>{
+    return this.http.put<Sala>(environment.API_URL + '/jogada/comprarcarta', sala)
+  }
 }

@@ -3,6 +3,7 @@ import { Baralho } from '../model/baralho';
 import { CartaDoJogo } from '../model/cartaDoJogo';
 import { CartaInicio } from '../model/cartaInicio';
 import { CartaObjetivo } from '../model/cartaObjetivo';
+import { Sala } from '../model/sala';
 import { MesaJogoService } from '../service/mesa-jogo.service';
 
 @Component({
@@ -19,6 +20,7 @@ export class AreaDeCompraComponent implements OnInit {
   public listaCartasMao: Array<CartaDoJogo> = [];
   public listaCartasMaoObjetivo: Array<CartaObjetivo> = [];
   public baralho = {} as Baralho;
+  public sala: Sala = {} as Sala;
 
   constructor(
     private mesaJogoService: MesaJogoService
@@ -55,10 +57,18 @@ export class AreaDeCompraComponent implements OnInit {
   }
 
   public comprarCarta(indice: number): void {
+    if(this.listaCartasDisponiveis[indice].bonus){
+      this.listaCartasMao.push(this.listaCartasDisponiveis[indice]);
+      this.listaCartasDisponiveis.splice(indice, 1);
+      this.setCartasDisponiveis();
+      this.verificaBonus();
+    }else {
     this.listaCartasMao.push(this.listaCartasDisponiveis[indice]);
     this.listaCartasDisponiveis.splice(indice, 1);
     this.setCartasDisponiveis();
     this.verificaBonus();
+    this.mesaJogoService.comprarCarta(this.sala)
+    }
   }
 
   public verificaBonus() {

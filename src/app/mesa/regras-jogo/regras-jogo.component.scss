@@ -29,7 +29,7 @@ button {
   height: 100px;
 }
 
-.dado{
+.dado {
   width: 110px;
   height: 100px;
 }
@@ -70,30 +70,40 @@ p {
 .corpo {
   text-align: justify;
   text-justify: inter-word;
-  margin: 5% 15% 0% 15%
+  margin: 5% 15% 0% 15%;
 }
 
-.subtitulo{
+.subtitulo {
   font-weight: bold;
   font-size: 30px;
   text-align: center;
   margin: 15px;
 }
 
-li{
+li {
   margin-bottom: 5px;
 }
 
-.negrito{
+.negrito {
   font-weight: bold;
 }
 
-.alinhar-imagem{
+.alinhar-imagem {
   display: flex;
   align-items: center;
 }
 
-.col2{
+.col2 {
   display: grid;
   grid-template-columns: 25% 75%;
+}
+
+.tamanho-modal {
+  height: 600px;
+}
+
+.conteudo {
+  height: 100%;
+  overflow: auto;
+  background: #fff;
 }

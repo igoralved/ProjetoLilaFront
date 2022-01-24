@@ -41,8 +41,8 @@ export class AreaDeCompraComponent implements OnInit {
     this.hash = String(this.route.snapshot.paramMap.get('hash'));
     this.mesaJogoService.getemitSalaObservable().subscribe(sala => {
       this.baralho = sala.baralho;
-      this.listaCartas = this.baralho.cartaDoJogo;
-      this.listaCartasObjetivo = this.baralho.cartaObjetivo;
+      this.listaCartas = this.baralho.cartasDoJogo;
+      this.listaCartasObjetivo = this.baralho.cartasObjetivo;
       this.setCartasDisponiveis();
     })
     //this.getListarCartas();
@@ -83,13 +83,20 @@ export class AreaDeCompraComponent implements OnInit {
     }
     return false;
   }
+public desabilitarCoracoesGra(): boolean{
+  if(this.maoJogador.verificarCoracoesGra()){
+    return true;
+  }
+  return false;
+}
 
   public desabilitarCoracoes(): boolean {
     if(this.maoJogador.verificarCoracoesQualquerTamanho()){
-      return false;
+      return true;
     }
-    return true;
+    return false;
   }
+
 
 
 

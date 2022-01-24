@@ -1,10 +1,15 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Injectable, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { ConnectableObservable } from 'rxjs';
 import { Jogador } from 'src/app/model/jogador';
 import { Sala } from 'src/app/model/sala';
 import { CartaService } from 'src/app/service/cartas.service';
 import { MesaJogoService } from 'src/app/service/mesa-jogo.service';
 import { MesaService } from 'src/app/service/mesa.service';
+
+@Injectable({
+  providedIn: 'root'
+})
 
 @Component({
   selector: 'app-mao-jogador',
@@ -30,7 +35,6 @@ export class MaoJogadorComponent implements OnInit {
 
     this.mesaService.findByHash(this.hash).subscribe((val) => {
       this.sala = val;
-      console.log(this.sala);
     });
   }
 
@@ -40,13 +44,17 @@ export class MaoJogadorComponent implements OnInit {
   }
 
   public verificarCoracoesQualquerTamanho(): Boolean {
-    let coracoes = this.jogador.coracaoGra + this.jogador.coracaoPeq + this.jogador.bonusCoracaoGra + this.jogador.bonusCoracaoPeq;
+    let coracoes = 0;
 
-    this.mesaJogoService.getemitJogadorObservable().subscribe((jogador) => coracoes);
-    return coracoes <= 5;
+    this.mesaJogoService.getemitJogadorObservable().subscribe((jogador) => coracoes = jogador.coracaoGra +
+    jogador.coracaoPeq + jogador.bonusCoracaoGra + jogador.bonusCoracaoPeq);
+    return coracoes >=5;
 
   }
 
-
+  public verificarCoracoesGra():Boolean{
+    this.mesaJogoService.getemitJogadorObservable().subscribe((jogador) => this.jogador.coracaoGra = jogador.coracaoGra);
+    return this.jogador.coracaoGra >= 4;
+  }
 
 }

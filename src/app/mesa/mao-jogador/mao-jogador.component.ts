@@ -30,7 +30,6 @@ export class MaoJogadorComponent implements OnInit {
 
     this.mesaService.findByHash(this.hash).subscribe((val) => {
       this.sala = val;
-      console.log(this.sala);
     });
   }
 }

@@ -15,7 +15,7 @@ export class IniciaPartidaService {
 
   getQuantidadeJogadores(hash : string): Observable<number>{
     return this.http.get<number>(
-      `${environment.API_URL}numeroJogadores`+
+      `${environment.API_URL}sala/numeroJogadores/`+
       hash
     );
     

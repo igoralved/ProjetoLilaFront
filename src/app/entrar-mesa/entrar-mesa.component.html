@@ -13,7 +13,7 @@
     <button mat-raised-button (click)='conectar()' >Entrar na mesa</button>
   </div>
   <div *ngIf="salaCheia">
-    <p>Sala já está cheia.</p>
+    <p class="aviso">Sala já está cheia.</p>
   </div>
   <div>
     <button mat-raised-button type="submit" [routerLink]="['']">Voltar</button>

@@ -14,7 +14,7 @@ import { MesaService } from 'src/app/service/mesa.service';
 })
 export class MesaJogoComponent implements OnInit {
   public receivedMessages: string[] = [];
-  private sala: Sala;
+  sala: Sala;
   private hash = '';
   private topicSubscription: Subscription = Subscription.EMPTY;
 
@@ -31,14 +31,16 @@ export class MesaJogoComponent implements OnInit {
     //Salva o hash recebido por parâmetro
     this.hash = String(this.route.snapshot.paramMap.get('hash'));
 
-    //Usa o hash para procurar a sala no back e salvar no componente
-    this.mesaService
-      .findByHash(this.hash)
-      .subscribe((sala) => (this.sala = sala));
-
+    //busca a sala no mesaJogo Service para receber a sala mais atualizada
+    this.mesaJogoService.getemitSalaObservable().subscribe((sala) => {
+      this.sala = sala;
+    });
+    //faz o subscribe no endereço do websocket
     this.topicSubscription = this.rxStompService
-      .watch(`/game-play/game-update/${this.hash}`)
+      .watch(`/gameplay/game-update/${this.hash}`)
       .subscribe((msg: Message) => {
+        console.warn(msg.body);
+        this.sala = JSON.parse(msg.body);
         this.receivedMessages.push(msg.body);
       });
   }

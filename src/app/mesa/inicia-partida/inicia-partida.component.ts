@@ -24,41 +24,37 @@ export class IniciaPartidaComponent implements OnInit {
     this.jogadorPrincipal = {} as Jogador;
   }
 
-  verificaQuantidadeJogadores(hash: string) {
-    this.iniciaPartidaService
-      .getQuantidadeJogadores(hash)
-      .subscribe((jogadores) => {
-        this.jogadores = jogadores;
-        if (this.jogadores >= 2) {
-          this.desabilitaBtn = false;
-        }
-      });
+  verificaQuantidadeJogadores() {
+    // this.iniciaPartidaService
+    //   .getQuantidadeJogadores(hash)
+    //   .subscribe((jogadores) => {
+    //     this.jogadores = jogadores;
+    //     if (this.jogadores >= 2) {
+    //       this.desabilitaBtn = false;
+    //     }
+    //   });
+
+    if(this.sala.jogadores.length >= 2){
+      this.desabilitaBtn = false;
+    }
   }
 
   enviaStatus(): void {
-    //this.sala.status==jogando;
+    this.sala.status == 'JOGANDO';
     this.iniciaPartidaService.iniciaPartida(this.sala);
   }
 
   ngOnInit(): void {
-    
     this.mesaJogoService.getemitSalaObservable().subscribe((sala) => {
       this.sala = sala;
-      this.hash = this.sala.hash;
-      this.verificaQuantidadeJogadores(this.hash);
+      console.warn(this.sala.jogadores.length);
+      this.verificaQuantidadeJogadores();
     });
-    //TODO testar sem o mock
-    // this.mesaJogoService.getemitJogadorObservable().subscribe(jogador => this.jogadorPrincipal = jogador);
-    this.jogadorPrincipal = {
-      nome: 'Lila',
-      bonusCoracaoGra: 0,
-      bonusCoracaoPeq: 0,
-      coracaoGra: 0,
-      coracaoPeq: 2,
-      isHost: true,
-      listaDeCartas: [],
-      listaDeObjetivos: [],
-      pontos: 0,
-    };
+
+    
+    this.mesaJogoService
+      .getemitJogadorObservable()
+      .subscribe((jogador) => (this.jogadorPrincipal = jogador));
+    
   }
 }

@@ -1,8 +1,7 @@
 <div class="container">
-    <app-inicia-partida></app-inicia-partida>
     <header><app-area-jogadores></app-area-jogadores></header>
-    <!--<div *ngIf="sala.status=='jogando'"><app-inicia-partida></app-inicia-partida></div>
-    <div *ngIf="sala-status=='finalizado'">Final</div>-->
-    <nav><app-area-de-compra></app-area-de-compra></nav>
+    <nav *ngIf="sala.status=='AGUARDANDO'"><app-inicia-partida></app-inicia-partida></nav>
+    <nav *ngIf="sala.status =='JOGANDO' "><app-area-de-compra></app-area-de-compra></nav>
+    <nav *ngIf="sala.status=='FINALIZADO'">Final</nav>
     <footer><app-mao-jogador></app-mao-jogador></footer>
 </div>

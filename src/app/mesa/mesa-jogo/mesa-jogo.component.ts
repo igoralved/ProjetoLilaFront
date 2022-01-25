@@ -3,8 +3,6 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { RxStompService } from '@stomp/ng2-stompjs';
 import { Message } from '@stomp/stompjs';
 import { Subscription } from 'rxjs';
-import { Carta } from 'src/app/model/carta';
-import { Jogador } from 'src/app/model/jogador';
 import { Sala } from 'src/app/model/sala';
 import { MesaJogoService } from 'src/app/service/mesa-jogo.service';
 import { MesaService } from 'src/app/service/mesa.service';
@@ -19,14 +17,6 @@ export class MesaJogoComponent implements OnInit {
   private sala: Sala;
   private hash = '';
   private topicSubscription: Subscription = Subscription.EMPTY;
-  public listajogador: Array<Jogador> = [];
-  public listaCartas: Array<Carta> = [];
-  public jogador: Jogador = {
-    coracaoPeq: 2,
-    coracaoGra: 1,
-    bonusCoracaoPeq: 0,
-    bonusCoracaoGra: 0,
-  } as Jogador;
 
   constructor(
     private rxStompService: RxStompService,

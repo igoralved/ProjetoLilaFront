@@ -1,7 +1,7 @@
 import { Baralho } from "./baralho";
 
 export interface CartaObjetivo {
-    id: string;
+    id: number;
     baralho: Baralho[];
     classificacao: string;
     pontos: number;

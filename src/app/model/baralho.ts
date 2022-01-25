@@ -5,8 +5,8 @@ import { CartaObjetivo } from "./cartaObjetivo";
 export interface Baralho{
     id: string;
     codigo: string;
-    cartaDoJogo: CartaDoJogo[];
-    cartaObjetivo: CartaObjetivo[];
+    cartasDoJogo: CartaDoJogo[];
+    cartasObjetivo: CartaObjetivo[];
     cartaInicio: CartaInicio[];
     titulo: string;
     descricao: string;

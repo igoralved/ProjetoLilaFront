@@ -11,8 +11,6 @@ import { CriarMesaComponent } from './mesa/criar-mesa/criar-mesa.component';
 import { MesaCriadaComponent } from './mesa/mesa-criada/mesa-criada.component';
 import { MesaJogoComponent } from './mesa/mesa-jogo/mesa-jogo.component';
 import { MaoJogadorComponent } from './mesa/mao-jogador/mao-jogador.component';
-// import { Deserializer } from 'v8';
-
 
 const routes: Routes = [
   {
@@ -44,7 +42,6 @@ const routes: Routes = [
     path: 'mesa',
     component: CriarMesaComponent,
   },
-  
   {
     path:'mesa-criada/:hash',
     component: MesaCriadaComponent,

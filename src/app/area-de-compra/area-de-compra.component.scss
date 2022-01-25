@@ -38,19 +38,19 @@
           margin-top: 24px;
 
           .coracao {
-            width: 34px;
-            height: 34px;
-            border: 2px solid black;
+            width: 44px;
+            height: 44px;
+            border: 1px solid black;
             display: flex;
             align-items: center;
             justify-content: center;
             &-grande {
-              height: 20px;
-              width: 20px;
+              height: 30px;
+              width: 30px;
             }
             &-pequeno {
-              height: 14px;
-              width: 14px;
+              height: 20px;
+              width: 20px;
             }
             .coracao-bannerg {
               position: relative;
@@ -73,6 +73,19 @@
     }
   }
 
+  .btn {
+    //border: none;
+    color: #fff;
+  }
+
+  .btn-coracao {
+    cursor: pointer;
+  }
+
+  .btn-coracao:active {
+    position: relative;
+    box-shadow: none;
+  }
 
   .carta {
     border: 1.5px solid black;
@@ -80,7 +93,7 @@
     background: var(--input-backgroundColor);
     word-wrap: break-word;
     cursor: pointer;
-
+    
     &.desabilitar-carta {
       pointer-events: none;
       opacity: 0.2;
@@ -89,7 +102,6 @@
     &:not(:first-child) {
       margin-left: 24px;
     }
-
 
     &-baralho {
       display: flex;

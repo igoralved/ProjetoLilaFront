@@ -36,7 +36,6 @@ import { AreaJogadoresComponent } from './mesa/area-jogadores/area-jogadores.com
 import { MesaJogoService } from './service/mesa-jogo.service';
 import { AreaDeCompraComponent } from './area-de-compra/area-de-compra.component';
 
-
 @NgModule({
   declarations: [
     AppComponent,
@@ -53,8 +52,7 @@ import { AreaDeCompraComponent } from './area-de-compra/area-de-compra.component
     MesaJogoComponent,
     AreaJogadoresComponent,
     MaoJogadorComponent,
-    AreaDeCompraComponent,
-   
+    AreaDeCompraComponent
   ],
   imports: [
     BrowserModule,

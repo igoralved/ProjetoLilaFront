@@ -1,5 +1,4 @@
 export interface CartaDoJogo{
-    id: string;
     tipo: string;
     categoria: string;
     bonus: boolean;

@@ -95,7 +95,7 @@
     cursor: pointer;
     
     &.desabilitar-carta {
-      pointer-events: none;
+      cursor: not-allowed;
       opacity: 0.2;
     }
 

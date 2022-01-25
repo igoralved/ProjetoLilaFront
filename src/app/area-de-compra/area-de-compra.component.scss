@@ -44,6 +44,13 @@
             display: flex;
             align-items: center;
             justify-content: center;
+            cursor:pointer;
+
+            &.desabilitar-coracao{
+              cursor: not-allowed;;
+              opacity: 0.2;
+            }
+
             &-grande {
               height: 30px;
               width: 30px;
@@ -72,21 +79,7 @@
       }
     }
   }
-
-  .btn {
-    //border: none;
-    color: #fff;
-  }
-
-  .btn-coracao {
-    cursor: pointer;
-  }
-
-  .btn-coracao:active {
-    position: relative;
-    box-shadow: none;
-  }
-
+  
   .carta {
     border: 1.5px solid black;
     padding: 8px;

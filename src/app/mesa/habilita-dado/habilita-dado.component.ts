@@ -16,12 +16,12 @@ export class HabilitaDadoComponent implements OnInit {
   public sala: Sala = {} as Sala;
   public listaCartasMao: Array<CartaDoJogo> = [];
   constructor(private mesaJogoService: MesaJogoService) {}
-  number = this.gerarNumeroAleatorio(1,6).toString();
+  
   ngOnInit(): void {
     this.mesaJogoService
       .getemitSalaObservable()
       .subscribe((sala) => (this.sala = sala));
-      const number = this.gerarNumeroAleatorio(1,6).toString();
+      
   }
 
   rolarDado() {
@@ -30,8 +30,8 @@ export class HabilitaDadoComponent implements OnInit {
     //TODO: método para buscar do back
     // this.mesaJogoService.comprarCarta(this.sala).subscribe(sala => {this.sala = sala})
     // const number = this.sala.dado + '';
-    
-    console.warn(this.number)
+    const number = this.gerarNumeroAleatorio(1,6).toString();
+    console.warn(number)
     if (node instanceof HTMLElement) {
       this.trocarClasses(node);
       node.dataset['roll'] = this.number;

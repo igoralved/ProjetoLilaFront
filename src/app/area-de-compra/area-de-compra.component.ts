@@ -61,7 +61,8 @@ export class AreaDeCompraComponent implements OnInit {
       this.listaCartasMao.push(this.listaCartasDisponiveis[indice]);
       this.listaCartasDisponiveis.splice(indice, 1);
       this.setCartasDisponiveis();
-      this.verificaBonus();                
+      this.verificaBonus(); 
+      //TODO: aqui o método do back vai no habilita-dado.component.ts               
     } else {
       this.listaCartasMao.push(this.listaCartasDisponiveis[indice]);
       this.listaCartasDisponiveis.splice(indice, 1);

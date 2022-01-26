@@ -47,7 +47,7 @@ export class EntrarMesaComponent implements OnInit {
 
   conectar() {
     this.jogador.nome = this.nick;
-    this.jogadorservice.salvarJogador(this.jogador);
+    //this.jogadorservice.salvarJogador(this.jogador);
 
     let salarequest = {
       jogador: this.jogador,

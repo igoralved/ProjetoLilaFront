@@ -39,9 +39,8 @@ export class MesaJogoComponent implements OnInit {
     this.topicSubscription = this.rxStompService
       .watch(`/gameplay/game-update/${this.hash}`)
       .subscribe((msg: Message) => {
-        console.warn(msg.body);
-        this.sala = JSON.parse(msg.body);
-        this.receivedMessages.push(msg.body);
+        //recebe uma sala pelo websocket e envia para o mesa-jogo service..
+        this.mesaJogoService.getemitSalaSubject().next(JSON.parse(msg.body));
       });
   }
 

@@ -7,4 +7,5 @@ export interface Sala {
   baralho: Baralho;
   jogadores: Jogador[];
   dado: number;
+  status: string;
 }

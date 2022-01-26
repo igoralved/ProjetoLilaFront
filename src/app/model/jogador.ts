@@ -11,4 +11,6 @@ export interface Jogador {
   coracaoGra: number;
   bonusCoracaoPeq: number;
   bonusCoracaoGra: number;
+  ishost: boolean;
+  status: string;
 }

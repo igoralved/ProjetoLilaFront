@@ -30,8 +30,9 @@ body {
   grid-template-columns: repeat(auto-fit, minmax(8rem, 1fr));
   grid-template-rows: auto;
   padding: 10px;
-  perspective: 600px;
+  perspective: 600px;    
 }
+
 .die-list {
   display: grid;
   grid-template-columns: 1fr;

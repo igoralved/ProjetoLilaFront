@@ -37,6 +37,8 @@ export class CriarMesaComponent implements OnInit {
       coracaoGra: 0,
       bonusCoracaoPeq: 0,
       bonusCoracaoGra: 0,
+      ishost: false,
+      status:'ESPERANDO'
     };
 
     this.criarMesa();

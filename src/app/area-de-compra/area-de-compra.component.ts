@@ -3,6 +3,7 @@ import { Baralho } from '../model/baralho';
 import { CartaDoJogo } from '../model/cartaDoJogo';
 import { CartaInicio } from '../model/cartaInicio';
 import { CartaObjetivo } from '../model/cartaObjetivo';
+import { Jogador } from '../model/jogador';
 import { Sala } from '../model/sala';
 import { MesaJogoService } from '../service/mesa-jogo.service';
 
@@ -21,16 +22,15 @@ export class AreaDeCompraComponent implements OnInit {
   public listaCartasMaoObjetivo: Array<CartaObjetivo> = [];
   public baralho = {} as Baralho;
   public sala: Sala = {} as Sala;
+  public jogador: Jogador = {} as Jogador;
 
-  constructor(
-    private mesaJogoService: MesaJogoService
-  ) {}
+  constructor(private mesaJogoService: MesaJogoService) {}
 
   ngOnInit() {
     this.mesaJogoService.getemitSalaObservable().subscribe((sala) => {
-      this.baralho = sala.baralho;
-      this.listaCartas = this.baralho.cartasDoJogo;
-      this.listaCartasObjetivo = this.baralho.cartasObjetivo;      
+      this.sala = sala;
+      this.listaCartasDisponiveis = this.sala.baralho.cartasDoJogo;
+      this.listaCartasObjetivo = this.sala.baralho.cartasObjetivo;
       this.setCartasDisponiveis();
     });
   }
@@ -57,27 +57,28 @@ export class AreaDeCompraComponent implements OnInit {
   }
 
   public comprarCarta(indice: number): void {
-    if(this.listaCartasDisponiveis[indice].bonus){
+    if (this.listaCartasDisponiveis[indice].bonus) {
       this.listaCartasMao.push(this.listaCartasDisponiveis[indice]);
       this.listaCartasDisponiveis.splice(indice, 1);
       this.setCartasDisponiveis();
-      this.verificaBonus();
-    }else {
-    this.listaCartasMao.push(this.listaCartasDisponiveis[indice]);
-    this.listaCartasDisponiveis.splice(indice, 1);
-    this.setCartasDisponiveis();
-    this.verificaBonus();
-    this.mesaJogoService.comprarCarta(this.sala)
+      this.verificaBonus();                
+    } else {
+      this.listaCartasMao.push(this.listaCartasDisponiveis[indice]);
+      this.listaCartasDisponiveis.splice(indice, 1);
+      this.setCartasDisponiveis();
+      this.sala.baralho.cartasDoJogo = this.listaCartasDisponiveis;
+      //TODO: método para comprar a carta no back
+      // this.mesaJogoService.comprarCarta(this.sala).subscribe(sala => this.sala = sala);          
     }
   }
 
   public verificaBonus() {
     let existe = false;
     if (this.listaCartasMao.length > 0) {
-      let ultimaCarta = this.listaCartasMao.length - 1;     
+      let ultimaCarta = this.listaCartasMao.length - 1;
       if (this.listaCartasMao[ultimaCarta].bonus == true) {
-        return existe = true;       
-      }            
+        return (existe = true);
+      }
     }
     return existe;
   }

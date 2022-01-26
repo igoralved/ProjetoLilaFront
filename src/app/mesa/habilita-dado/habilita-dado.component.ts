@@ -34,7 +34,7 @@ export class HabilitaDadoComponent implements OnInit {
     console.warn(number)
     if (node instanceof HTMLElement) {
       this.trocarClasses(node);
-      node.dataset['roll'] = this.number;
+      node.dataset['roll'] = number;
     }
   }  
 

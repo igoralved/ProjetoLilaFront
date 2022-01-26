@@ -2,12 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Baralho } from '../model/baralho';
 import { CartaDoJogo } from '../model/cartaDoJogo';
-import { CartaInicio } from '../model/cartaInicio';
 import { CartaObjetivo } from '../model/cartaObjetivo';
 import { Sala } from '../model/sala';
-import { CartaService } from '../service/cartas.service';
 import { MesaJogoService } from '../service/mesa-jogo.service';
-import { MesaService } from '../service/mesa.service';
 
 @Component({
   selector: 'app-area-de-compra',
@@ -15,13 +12,10 @@ import { MesaService } from '../service/mesa.service';
   styleUrls: ['./area-de-compra.component.scss'],
 })
 export class AreaDeCompraComponent implements OnInit {
-  //add
   private hash = '';
   public sala: Sala = {} as Sala;
   public baralho: Baralho = {} as Baralho;
-
   public listaCartas: Array<CartaDoJogo> = [];
-  //public listaCartasInicio: Array<CartaInicio> = [];
   public listaCartasObjetivo: Array<CartaObjetivo> = [];
   public listaCartasDisponiveis: Array<CartaDoJogo> = [];
   public listaCartasDisponiveisObjetivo: Array<CartaObjetivo> = [];
@@ -29,13 +23,10 @@ export class AreaDeCompraComponent implements OnInit {
   public listaCartasMaoObjetivo: Array<CartaObjetivo> = [];
   public coracoes: Array<any> = [];
 
-  constructor(private cartaService: CartaService, 
-              private mesaService: MesaService, 
-              private mesaJogoService: MesaJogoService, 
+  constructor(private mesaJogoService: MesaJogoService, 
               private route: ActivatedRoute,) {}
 
   ngOnInit() {
-    //add
     this.hash = String(this.route.snapshot.paramMap.get('hash'));
     this.mesaJogoService.getemitSalaObservable().subscribe(sala => {
       this.baralho = sala.baralho;
@@ -45,9 +36,6 @@ export class AreaDeCompraComponent implements OnInit {
       console.warn(this.listaCartasObjetivo);
       this.setCartasDisponiveis();
     })
-    //this.getListarCartas();
-    //this.getListarCartasInicio();
-    //this.getListarCartasObjetivo();
   }
  
   public setCartasObjetivo(): void {
@@ -76,27 +64,4 @@ export class AreaDeCompraComponent implements OnInit {
     this.listaCartasDisponiveis.splice(indice, 1);
     this.setCartasDisponiveis();
   }
-
-  /* private getListarCartas(): void {
-    this.cartaService.getListarCarta().subscribe((listaCartas: Carta[]) => {
-      this.listaCartas = listaCartas;
-      this.setCartasDisponiveis();
-    });
-  } */
-
-  /* private getListarCartasInicio(): void {
-    this.cartaService
-      .getListarCartaInicio()
-      .subscribe((listaCartasInicio: CartaInicio[]) => {
-        this.listaCartasInicio = listaCartasInicio;
-      });
-  } */
-
-  /* private getListarCartasObjetivo(): void {
-    this.cartaService
-      .getListarCartaObjetivo()
-      .subscribe((listaCartasObjetivo: CartaObjetivo[]) => {
-        this.listaCartasObjetivo = listaCartasObjetivo;
-      });
-  } */
 }

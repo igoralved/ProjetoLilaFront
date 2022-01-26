@@ -25,36 +25,25 @@ export class IniciaPartidaComponent implements OnInit {
   }
 
   verificaQuantidadeJogadores() {
-    // this.iniciaPartidaService
-    //   .getQuantidadeJogadores(hash)
-    //   .subscribe((jogadores) => {
-    //     this.jogadores = jogadores;
-    //     if (this.jogadores >= 2) {
-    //       this.desabilitaBtn = false;
-    //     }
-    //   });
-
-    if(this.sala.jogadores.length >= 2){
+    if (this.sala.jogadores.length >= 2) {
       this.desabilitaBtn = false;
     }
   }
 
   enviaStatus(): void {
-    this.sala.status == 'JOGANDO';
-    this.iniciaPartidaService.iniciaPartida(this.sala);
+    this.sala.status = 'JOGANDO';
+    this.iniciaPartidaService
+      .iniciaPartida(this.sala);
   }
 
   ngOnInit(): void {
     this.mesaJogoService.getemitSalaObservable().subscribe((sala) => {
       this.sala = sala;
-      console.warn(this.sala.jogadores.length);
       this.verificaQuantidadeJogadores();
     });
 
-    
     this.mesaJogoService
       .getemitJogadorObservable()
       .subscribe((jogador) => (this.jogadorPrincipal = jogador));
-    
   }
 }

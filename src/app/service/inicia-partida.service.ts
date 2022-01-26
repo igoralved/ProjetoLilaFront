@@ -16,10 +16,7 @@ export class IniciaPartidaService {
     );
   }
 
-  iniciaPartida(sala: Sala): Observable<Sala> {
-    return this.http.post<Sala>(
-      `${environment.API_URL}api/iniciarPartida`,
-      sala
-    );
+  iniciaPartida(sala: Sala) {
+    this.http.put<Sala>(`${environment.API_URL}api/iniciarpartida`, sala);
   }
 }

@@ -1,11 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
 import { RxStompService } from '@stomp/ng2-stompjs';
 import { Message } from '@stomp/stompjs';
 import { Subscription } from 'rxjs';
 import { Sala } from 'src/app/model/sala';
 import { MesaJogoService } from 'src/app/service/mesa-jogo.service';
-import { MesaService } from 'src/app/service/mesa.service';
 
 @Component({
   selector: 'app-mesa-jogo',
@@ -20,7 +19,6 @@ export class MesaJogoComponent implements OnInit {
 
   constructor(
     private rxStompService: RxStompService,
-    private mesaService: MesaService,
     private mesaJogoService: MesaJogoService,
     private route: ActivatedRoute
   ) {
@@ -40,6 +38,7 @@ export class MesaJogoComponent implements OnInit {
       .watch(`/gameplay/game-update/${this.hash}`)
       .subscribe((msg: Message) => {
         //recebe uma sala pelo websocket e envia para o mesa-jogo service..
+        console.log(msg.body);
         this.mesaJogoService.getemitSalaSubject().next(JSON.parse(msg.body));
       });
   }

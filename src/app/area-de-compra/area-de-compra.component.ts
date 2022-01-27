@@ -7,6 +7,7 @@ import { CartaDoJogo } from '../model/cartaDoJogo';
 import { CartaInicio } from '../model/cartaInicio';
 import { CartaObjetivo } from '../model/cartaObjetivo';
 import { Sala } from '../model/sala';
+import { AreaDeCompraService } from '../service/area-de-compra.service';
 import { CartaService } from '../service/cartas.service';
 import { MesaJogoService } from '../service/mesa-jogo.service';
 import { MesaService } from '../service/mesa.service';
@@ -36,7 +37,8 @@ export class AreaDeCompraComponent implements OnInit {
     private mesaService: MesaService,
     private mesaJogoService: MesaJogoService,
     private maoJogador: MaoJogadorComponent,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private areaCompraService: AreaDeCompraService
   ) {}
 
   ngOnInit() {
@@ -51,8 +53,9 @@ export class AreaDeCompraComponent implements OnInit {
     //this.getListarCartas();
     //this.getListarCartasInicio();
     //this.getListarCartasObjetivo();
+    console.log(this.comprarCarta);
   }
-
+  
   public setCartasObjetivo(): void {
     const indiceRandomico: number = Math.round(
       Math.random() * (this.listaCartasObjetivo.length - 1 - 0) + 0
@@ -79,9 +82,10 @@ export class AreaDeCompraComponent implements OnInit {
   public comprarCarta(indice: number): void {
     this.listaCartasMao.push(this.listaCartasDisponiveis[indice]);
     this.listaCartasDisponiveis.splice(indice, 1);
+    this.areaCompraService.emitirCartaJogo.emit(this.listaCartasMao);
     this.setCartasDisponiveis();
   }
-
+  
   public desabilitarCoracoesPeq(): boolean {
     if (this.maoJogador.verificarCoracoesPeq()) {
       return true;
@@ -103,12 +107,7 @@ export class AreaDeCompraComponent implements OnInit {
   }
 
   public podeComprar(carta: Carta): boolean {
-    console.log(this.maoJogador.verificaCompra(carta));
-    if (this.maoJogador.verificaCompra(carta)) {
-
-      return false;
-    }
-    return true;
+    return this.maoJogador.verificaCompra(carta);
   }
 
   /* private getListarCartas(): void {

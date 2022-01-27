@@ -4,6 +4,7 @@ import { ConnectableObservable } from 'rxjs';
 import { Carta } from 'src/app/model/carta';
 import { Jogador } from 'src/app/model/jogador';
 import { Sala } from 'src/app/model/sala';
+import { AreaDeCompraService } from 'src/app/service/area-de-compra.service';
 import { CartaService } from 'src/app/service/cartas.service';
 import { MesaJogoService } from 'src/app/service/mesa-jogo.service';
 import { MesaService } from 'src/app/service/mesa.service';
@@ -22,11 +23,13 @@ export class MaoJogadorComponent implements OnInit {
   public sala: Sala = {} as Sala;
   public listaJogador: Jogador[] = [];
   public jogador: Jogador = {} as Jogador;
+  public listacartasMao: Array<Carta> = [];
 
   constructor(
     private mesaService: MesaService,
     private route: ActivatedRoute,
-    private mesaJogoService: MesaJogoService
+    private mesaJogoService: MesaJogoService,
+    private areaCompraService: AreaDeCompraService
   ) {}
 
   ngOnInit(): void {
@@ -37,8 +40,13 @@ export class MaoJogadorComponent implements OnInit {
     this.mesaService.findByHash(this.hash).subscribe((val) => {
       this.sala = val;
     });
+
+    this.escutaEventoCompra();
   }
-  
+
+  public escutaEventoCompra(): void {
+    this.areaCompraService.emitirCartaJogo.subscribe((listacartasMao: Carta[]) => this.listacartasMao = listacartasMao)
+  }
 
   public verificarCoracoesPeq(): Boolean{
     this.mesaJogoService.getemitJogadorObservable().subscribe((jogador) => this.jogador.coracaoPeq = jogador.coracaoPeq);

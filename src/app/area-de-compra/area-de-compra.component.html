@@ -1,5 +1,5 @@
 <ng-template let-carta="carta" let-index="index" #cartaTemplate>
-  <div [ngClass]="{'desabilitar-carta': podeComprar(carta)}" class="carta carta-vertical" (click)="comprarCarta(index)">
+  <div [ngClass]="{'desabilitar-carta': !podeComprar(carta)}" class="carta carta-vertical" (click)="podeComprar(carta) && comprarCarta(index)">
     <div class="cabecalho">
       <h2 class="titulo">{{ carta.tipo }}</h2>
       <div class="pontos">

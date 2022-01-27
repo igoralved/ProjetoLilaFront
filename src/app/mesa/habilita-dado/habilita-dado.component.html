@@ -1,4 +1,4 @@
-<div class="dice" >
+<div class="dice">
   <ol class="die-list" data-roll="1" #dice id="die-1">
     <li class="die-item" data-side="1">
       <span class="dot"></span>
@@ -33,8 +33,7 @@
       <span class="dot"></span>
       <span class="dot"></span>
     </li>
-  </ol> 
-  <button *ngIf="numero == 0"  class="botao" mat-raised-button (click)="rolarDado()">Rolar o dado</button>
+  </ol>
+  <button *ngIf="numero == 0" class="botao" mat-raised-button (click)="rolarDado()">Rolar o dado</button>
   <button *ngIf="numero != 0" class="botao" mat-raised-button (click)="resetarDado()">Resetar o dado</button>
 </div>
-

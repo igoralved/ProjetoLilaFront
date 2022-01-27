@@ -28,8 +28,9 @@ export class MesaJogoComponent implements OnInit {
   }
 
   ngOnInit(): void {
-
-    this.mesaJogoService.getemitSalaObservable().subscribe((sala) => {this.sala = sala;})
+    this.mesaJogoService.getemitSalaObservable().subscribe((sala) => {
+      this.sala = sala;
+    });
     //Salva o hash recebido por parâmetro
     this.hash = String(this.route.snapshot.paramMap.get('hash'));
 

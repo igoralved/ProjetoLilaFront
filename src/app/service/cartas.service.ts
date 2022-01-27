@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
-import { Carta } from '../model/carta';
+import { CartaDoJogo } from '../model/cartaDoJogo';
 import { CartaInicio } from '../model/cartaInicio';
 import { CartaObjetivo } from '../model/cartaObjetivo';
 
@@ -16,8 +16,8 @@ export class CartaService {
   private readonly URLCartaObjetivo: string = 'cartaobjetivo';
   private readonly URLCartaInicio: string = 'cartainicio';
 
-  getListarCarta(): Observable<Carta[]> {
-    return this.httpClient.get<Carta[]>(`${environment.API_URL}${this.URLCarta}`);
+  getListarCarta(): Observable<CartaDoJogo[]> {
+    return this.httpClient.get<CartaDoJogo[]>(`${environment.API_URL}${this.URLCarta}`);
     
   }
 

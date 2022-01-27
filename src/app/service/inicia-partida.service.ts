@@ -17,6 +17,6 @@ export class IniciaPartidaService {
   }
 
   iniciaPartida(sala: Sala) {
-    this.http.put<Sala>(`${environment.API_URL}api/iniciarpartida`, sala);
+    return this.http.put<Sala>(`${environment.API_URL}api/iniciarpartida`, sala);
   }
 }

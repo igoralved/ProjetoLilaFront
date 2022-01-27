@@ -31,9 +31,10 @@ export class IniciaPartidaComponent implements OnInit {
   }
 
   enviaStatus(): void {
-    this.sala.status = 'JOGANDO';
-    this.iniciaPartidaService
-      .iniciaPartida(this.sala);
+    let sendSala: Sala = this.sala;
+    sendSala.status = 'JOGANDO';
+    this.iniciaPartidaService.iniciaPartida(sendSala);
+    console.log('Sala enviada');
   }
 
   ngOnInit(): void {

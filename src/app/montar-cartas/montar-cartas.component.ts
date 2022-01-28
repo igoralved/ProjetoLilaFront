@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Carta } from '../model/carta';
+import { CartaDoJogo } from '../model/cartaDoJogo';
 import { CartaInicio } from '../model/cartaInicio';
 import { CartaObjetivo } from '../model/cartaObjetivo';
 import { CartaService } from '../service/cartas.service';
@@ -11,10 +11,10 @@ import { CartaService } from '../service/cartas.service';
   styleUrls: ['./montar-cartas.component.scss'],
 })
 export class MontarCartasComponent implements OnInit {
-  public listaCartas: Array<Carta> = [];
+  public listaCartas: Array<CartaDoJogo> = [];
   public listaCartasInicio: Array<CartaInicio> = [];
   public listaCartasObjetivo: Array<CartaObjetivo> = [];
-  public listaRandomicaCartas: Array<Carta> = [];
+  public listaRandomicaCartas: Array<CartaDoJogo> = [];
 
    
  
@@ -42,7 +42,7 @@ export class MontarCartasComponent implements OnInit {
   }
 
   private getListarCartas(): void {
-    this.cartaService.getListarCarta().subscribe((listaCartas: Carta[]) => {
+    this.cartaService.getListarCarta().subscribe((listaCartas: CartaDoJogo[]) => {
       this.listaCartas = listaCartas;
     });
   }

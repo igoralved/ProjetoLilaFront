@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
-import { environment } from 'src/environments/environment.prod';
+import { environment } from 'src/environments/environment';
 import { Jogador } from '../model/jogador';
 import { Sala } from '../model/sala';
 import { MesaService } from './mesa.service';
@@ -30,12 +30,7 @@ export class MesaJogoService {
     return this.emitJogador$;
   }
 
-  //TODO: metodo para chamar do back
-  getDadoJogada(): Observable<Sala>{
-    return this.http.get<Sala>(environment.API_URL + '/')
-  }
-
-  comprarCarta(sala: Sala): Observable<Sala>{
-    return this.http.put<Sala>(environment.API_URL + 'api/jogada/comprarcarta', sala)
+  comprarCartas(sala: Sala){
+    return this.http.put<Sala>(environment.API_URL+'api/jogada/comprarcarta',sala)
   }
 }

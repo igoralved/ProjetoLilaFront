@@ -33,7 +33,7 @@ import { myRxStompConfig } from './rx-stomp.config';
 import { MesaJogoComponent } from './mesa/mesa-jogo/mesa-jogo.component';
 import { AreaJogadoresComponent } from './mesa/area-jogadores/area-jogadores.component';
 import { MesaJogoService } from './service/mesa-jogo.service';
-import { AreaDeCompraComponent } from './area-de-compra/area-de-compra.component';
+import { AreaDeCompraComponent } from './mesa/area-de-compra/area-de-compra.component';
 import { HabilitaDadoComponent } from './mesa/habilita-dado/habilita-dado.component';
 
 @NgModule({

@@ -30,15 +30,15 @@ export class CriarMesaComponent implements OnInit {
   click() {
     this.jogador = {
       nome: this.nick,
-      listaDeCartas: [],
-      listaDeObjetivos: [],
+      cartasDoJogo: [],
+      cartasObjetivo: [],
       pontos: 0,
       coracaoPeq: 2,
       coracaoGra: 0,
       bonusCoracaoPeq: 0,
       bonusCoracaoGra: 0,
-      ishost: false,
-      status:'ESPERANDO'
+      ishost: true,
+      status: 'JOGANDO'
     };
 
     this.criarMesa();

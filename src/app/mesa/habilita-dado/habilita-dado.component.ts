@@ -23,10 +23,7 @@ export class HabilitaDadoComponent implements OnInit {
 
   rolarDado() {
     const node = this.dado.nativeElement;
-    this.numero = this.gerarNumeroAleatorio(1, 6);
-    //TODO: método para buscar do back
-    // this.mesaJogoService.comprarCarta(this.sala).subscribe(sala => {this.sala = sala})
-    // const number = this.sala.dado + '';
+     this.numero = this.sala.dado;
     console.warn(this.numero);
     if (node instanceof HTMLElement) {
       this.trocarClasses(node);

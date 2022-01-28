@@ -1,49 +1,51 @@
-import { TestBed, inject } from '@angular/core/testing';
-import {HttpClientTestingModule, HttpTestingController} from '@angular/common/http/testing';
-import { IniciaPartidaService } from './inicia-partida.service';
+import{HttpClientTestingModule, HttpTestingController} from '@angular/common/http/testing';
+import { TestBed, tick } from '@angular/core/testing';
+
 import { environment } from 'src/environments/environment';
 
 
-describe('IniciaPartidaServiceService', () => {
-  let httpTestingController: HttpTestingController;
-  let service: IniciaPartidaService;
-  let hash: string = 'eunaosei'
 
-  beforeEach(() => {
+import { Sala } from '../model/sala';
+import { IniciaPartidaService } from "./inicia-partida.service";
+import { JogadorService } from './jogador.service';
+
+describe(`#${IniciaPartidaService.name}`,()=>{
+
+  let iniciaPartidaService:IniciaPartidaService;
+  let httpMock: HttpTestingController;
+
+  const MockItem = {
+    
+    jogadores: ['andre', 'gabriel'],
+  }
+
+  beforeEach(()=> {
     TestBed.configureTestingModule({
       imports:[HttpClientTestingModule],
       providers:[IniciaPartidaService]
     });
-    httpTestingController = TestBed.get(HttpTestingController);
-    service = TestBed.get(IniciaPartidaService);
-    
+
+    iniciaPartidaService = TestBed.get(IniciaPartidaService);
+    httpMock = TestBed.get(HttpTestingController);
   });
 
-  it('deve ser capaz de criar um servico', inject([IniciaPartidaService], (service: IniciaPartidaService) => {
-
-    expect(service).toBeDefined();
-  }));
-
-
-describe('get quantidade de jogadores',() => {
-
-  it('deve chamar o get com URL válida',() => {
-    service.getQuantidadeJogadores(hash).subscribe(quantidade => 
-      expect(quantidade).toEqual(1));
-
-      
-  });
+  it(`#${IniciaPartidaService.prototype.getQuantidadeJogadores.name}
+  deve retorna quantidade de jogadores`,()=>{
+    iniciaPartidaService
+    .getQuantidadeJogadores('q1w2e3r4t5')
+    .subscribe((response:number)=>{
+        expect(response.toFixed(2)).toEqual('2');
+    });
+   const httpRequest = httpMock.expectOne('http://localhost:8080/sala/numeroJogadores/q1w2e3r4t5');
     
-    const req = httpTestingController.expectOne(`${environment.API_URL}sala/numeroJogadores/`+
-    hash);
+   expect(httpRequest.request.method).toEqual('GET');
+   expect(httpRequest.request.responseType).toEqual('json');
 
-    req.flush(1);
+   httpRequest.flush([MockItem]);
+  });
 
-    httpTestingController.verify();
-  })
-
-});
-
+          
+      })
 
 
 

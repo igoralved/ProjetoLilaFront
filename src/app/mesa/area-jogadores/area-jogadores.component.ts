@@ -31,7 +31,6 @@ export class AreaJogadoresComponent implements OnInit {
       });
     });
   }
-
   abrirModal() {
     this.modal.abrir('mao-jogador');
   }

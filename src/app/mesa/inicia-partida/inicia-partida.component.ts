@@ -33,8 +33,7 @@ export class IniciaPartidaComponent implements OnInit {
   enviaStatus(): void {
     let sendSala: Sala = this.sala;
     sendSala.status = 'JOGANDO';
-    this.iniciaPartidaService.iniciaPartida(sendSala);
-    console.log('Sala enviada');
+    this.iniciaPartidaService.iniciaPartida(sendSala).subscribe(sala => this.sala = sala);
   }
 
   ngOnInit(): void {
@@ -43,8 +42,9 @@ export class IniciaPartidaComponent implements OnInit {
       this.verificaQuantidadeJogadores();
     });
 
-    this.mesaJogoService
-      .getemitJogadorObservable()
-      .subscribe((jogador) => (this.jogadorPrincipal = jogador));
+    this.mesaJogoService.getemitJogadorObservable().subscribe((jogador) => {
+      this.jogadorPrincipal = jogador;
+      console.log(this.jogadorPrincipal);
+    });
   }
 }

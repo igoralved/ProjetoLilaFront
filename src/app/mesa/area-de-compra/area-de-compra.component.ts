@@ -4,15 +4,11 @@ import { MaoJogadorComponent } from '../mao-jogador/mao-jogador.component';
 import { Baralho } from '../../model/baralho';
 
 import { CartaDoJogo } from '../../model/cartaDoJogo';
-import { CartaInicio } from '../../model/cartaInicio';
 import { CartaObjetivo } from '../../model/cartaObjetivo';
 import { Jogador } from '../../model/jogador';
 import { Sala } from '../../model/sala';
 import { AreaDeCompraService } from '../../service/area-de-compra.service';
-import { CartaService } from '../../service/cartas.service';
 import { MesaJogoService } from '../../service/mesa-jogo.service';
-import { MesaService } from '../../service/mesa.service';
-import { HabilitaDadoComponent } from '../habilita-dado/habilita-dado.component';
 
 @Component({
   selector: 'app-area-de-compra',
@@ -20,13 +16,12 @@ import { HabilitaDadoComponent } from '../habilita-dado/habilita-dado.component'
   styleUrls: ['./area-de-compra.component.scss'],
 })
 export class AreaDeCompraComponent implements OnInit {
-  //add
   private hash = '';
   public sala: Sala = {} as Sala;
   public baralho: Baralho = {} as Baralho;
 
   public listaCartas: Array<CartaDoJogo> = [];
-  //public listaCartasInicio: Array<CartaInicio> = [];
+
   public listaCartasObjetivo: Array<CartaObjetivo> = [];
   public listaCartasDisponiveis: Array<CartaDoJogo> = [];
   public listaCartasDisponiveisObjetivo: Array<CartaObjetivo> = [];
@@ -34,10 +29,9 @@ export class AreaDeCompraComponent implements OnInit {
   public listaCartasMaoObjetivo: Array<CartaObjetivo> = [];
   public coracoes: Array<any> = [];
   public jogador: Jogador = {} as Jogador;
+  public bonus = false;
 
   constructor(
-    private cartaService: CartaService,
-    private mesaService: MesaService,
     private mesaJogoService: MesaJogoService,
     private maoJogador: MaoJogadorComponent,
     private route: ActivatedRoute,
@@ -52,10 +46,12 @@ export class AreaDeCompraComponent implements OnInit {
       this.listaCartasDisponiveis = sala.baralho.cartasDoJogo;
       this.listaCartasDisponiveisObjetivo = sala.baralho.cartasObjetivo;
       this.setCartasDisponiveis();
+      console.log(sala);
       this.jogador = {
         ...sala.jogadores.find((jogador) => jogador.status == 'JOGANDO'),
       } as Jogador;
     });
+
     //this.getListarCartas();
     //this.getListarCartasInicio();
     //this.getListarCartasObjetivo();
@@ -87,13 +83,13 @@ export class AreaDeCompraComponent implements OnInit {
 
   public comprarCarta(indice: number): void {
     this.jogador?.cartasDoJogo.push(this.listaCartasDisponiveis[indice]);
-
     this.listaCartasDisponiveis.splice(indice, 1);
     this.areaCompraService.emitirCartaJogo.emit(this.jogador?.cartasDoJogo);
     this.setCartasDisponiveis();
     this.mesaJogoService
       .comprarCartas(this.sala)
       .subscribe((sala) => (this.sala = sala));
+    this.bonus = this.verificaBonus();
   }
 
   public desabilitarCoracoesPeq(): boolean {
@@ -121,35 +117,12 @@ export class AreaDeCompraComponent implements OnInit {
   }
 
   public verificaBonus() {
-    let existe = false;
     if (this.jogador?.cartasDoJogo.length > 0) {
       let ultimaCarta = (this.jogador?.cartasDoJogo.length - 1) as number;
       if (this.jogador?.cartasDoJogo[ultimaCarta].bonus == true) {
-        return (existe = true);
+        return true;
       }
     }
-    return existe;
+    return false;
   }
-  /* private getListarCartas(): void {
-    this.cartaService.getListarCarta().subscribe((listaCartas: Carta[]) => {
-      this.listaCartas = listaCartas;
-      this.setCartasDisponiveis();
-    });
-  } */
-
-  /* private getListarCartasInicio(): void {
-    this.cartaService
-      .getListarCartaInicio()
-      .subscribe((listaCartasInicio: CartaInicio[]) => {
-        this.listaCartasInicio = listaCartasInicio;
-      });
-  } */
-
-  /* private getListarCartasObjetivo(): void {
-    this.cartaService
-      .getListarCartaObjetivo()
-      .subscribe((listaCartasObjetivo: CartaObjetivo[]) => {
-        this.listaCartasObjetivo = listaCartasObjetivo;
-      });
-  } */
 }

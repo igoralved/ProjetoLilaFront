@@ -37,6 +37,7 @@ import { MesaJogoService } from './service/mesa-jogo.service';
 import { AreaDeCompraComponent } from './area-de-compra/area-de-compra.component';
 import { GuiaRapidoComponent } from './mesa/guia-rapido/guia-rapido.component';
 import { RegrasJogoComponent } from './mesa/regras-jogo/regras-jogo.component';
+import { IniciaPartidaComponent } from './mesa/inicia-partida/inicia-partida.component';
 
 @NgModule({
   declarations: [
@@ -56,7 +57,8 @@ import { RegrasJogoComponent } from './mesa/regras-jogo/regras-jogo.component';
     MaoJogadorComponent,
     AreaDeCompraComponent,
     GuiaRapidoComponent,
-    RegrasJogoComponent
+    RegrasJogoComponent,
+    IniciaPartidaComponent
   ],
   imports: [
     BrowserModule,
@@ -75,6 +77,7 @@ import { RegrasJogoComponent } from './mesa/regras-jogo/regras-jogo.component';
     MatIconModule,
     HttpClientModule,
     ClipboardModule,
+    
   ],
   providers: [
     {

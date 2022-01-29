@@ -8,7 +8,7 @@ export const myRxStompConfig: InjectableRxStompConfig = {
   webSocketFactory: () => new SockJS(environment.API_URL+'gameplay'),
 
 
-  //TODO: Remover na produção
+  //DEBUG: Remover na produção
   // Will log diagnostics on console
   // It can be quite verbose, not recommended in production
   // Skip this key to stop logging to console

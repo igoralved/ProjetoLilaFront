@@ -4,13 +4,14 @@ import { AdminSenha } from '../model/adminSenha';
 import { Admin } from '../model/admin';
 import { Observable } from 'rxjs';
 import { Autenticacao } from '../model/autenticacao';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root',
 })
 export class AdminService {
 
-  URLApi: string = 'https://development-lila.herokuapp.com/';
+  URLApi: string = environment.API_URL;
   URLAdmin: string = this.URLApi + 'admin';
   URLLogin: string = this.URLApi + 'login';
 

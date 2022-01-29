@@ -30,7 +30,7 @@ export class MesaService {
    *
    */
   conectarNovoJogador(salaRequest: SalaRequest): Observable<SalaResponse> {
-    return this.http.post<SalaResponse>(
+    return this.http.put<SalaResponse>(
       `${environment.API_URL}api/conectar`,
       salaRequest
     );

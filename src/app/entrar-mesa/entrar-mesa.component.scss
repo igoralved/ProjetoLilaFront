@@ -5,7 +5,10 @@
   height: 100%;
   align-items: center;
 }
-
+.aviso{
+  font-size: var(--tamanhoFonte);
+  color:red;
+}
 
 .logo {
   display: flex;

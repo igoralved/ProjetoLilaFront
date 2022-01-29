@@ -1,11 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
 import { RxStompService } from '@stomp/ng2-stompjs';
 import { Message } from '@stomp/stompjs';
 import { Subscription } from 'rxjs';
 import { Sala } from 'src/app/model/sala';
 import { MesaJogoService } from 'src/app/service/mesa-jogo.service';
-import { MesaService } from 'src/app/service/mesa.service';
 
 @Component({
   selector: 'app-mesa-jogo',
@@ -14,13 +13,12 @@ import { MesaService } from 'src/app/service/mesa.service';
 })
 export class MesaJogoComponent implements OnInit {
   public receivedMessages: string[] = [];
-  private sala: Sala;
+  sala: Sala;
   private hash = '';
   private topicSubscription: Subscription = Subscription.EMPTY;
 
   constructor(
     private rxStompService: RxStompService,
-    private mesaService: MesaService,
     private mesaJogoService: MesaJogoService,
     private route: ActivatedRoute
   ) {
@@ -31,15 +29,20 @@ export class MesaJogoComponent implements OnInit {
     //Salva o hash recebido por parâmetro
     this.hash = String(this.route.snapshot.paramMap.get('hash'));
 
-    //Usa o hash para procurar a sala no back e salvar no componente
-    this.mesaService
-      .findByHash(this.hash)
-      .subscribe((sala) => (this.sala = sala));
-
+    //busca a sala no mesaJogo Service para receber a sala mais atualizada
+    this.mesaJogoService.getemitSalaObservable().subscribe((sala) => {
+      this.sala = sala;
+      if (this.sala.status == 'JOGANDO') {
+        console.log(this.sala);
+      }
+    });
+    //faz o subscribe no endereço do websocket
     this.topicSubscription = this.rxStompService
-      .watch(`/game-play/game-update/${this.hash}`)
+      .watch(`/gameplay/game-update/${this.hash}`)
       .subscribe((msg: Message) => {
-        this.receivedMessages.push(msg.body);
+        //recebe uma sala pelo websocket e envia para o mesa-jogo service..
+        //DEBUG: console.log(msg.body);
+        this.mesaJogoService.getemitSalaSubject().next(JSON.parse(msg.body));
       });
   }
 

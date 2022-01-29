@@ -162,7 +162,6 @@
         }
       }
       .corpo {
-
         margin-top: 5px;
 
         .definicao {
@@ -309,4 +308,16 @@
       }
     }
   }
+}
+
+.linha2 {
+  display: grid;
+  grid-template-rows: 60% 40%;
+  width: 17%;
+}
+
+.dado {
+  display: flex;
+  align-items: flex-start;
+  justify-content: left;
 }

@@ -1,5 +1,5 @@
 <ng-template let-carta="carta" let-index="index" #cartaTemplate>
-  <div [ngClass]="{'desabilitar-carta': podeComprar(carta)}" class="carta carta-vertical" (click)="comprarCarta(index)">
+  <div [ngClass]="{'desabilitar-carta': !podeComprar(carta)}" class="carta carta-vertical" (click)="podeComprar(carta) && comprarCarta(index)">
     <div class="cabecalho">
       <h2 class="titulo">{{ carta.tipo }}</h2>
       <div class="pontos">
@@ -41,10 +41,16 @@
 
 <div class="container">
   <div class="compra-container">
-    <div class="carta carta-baralho">
-      <img class="imagem-logo" src="assets/img/logoLilaSozinho.png" alt="logo">
-      <img class="imagem-lila" src="assets/img/lilaSozinha.png" alt="lila">
+    <div class="linha2">
+      <div  class="carta carta-baralho">
+        <img class="imagem-logo" src="assets/img/logoLilaSozinho.png" alt="logo">
+        <img class="imagem-lila" src="assets/img/lilaSozinha.png" alt="lila">
+      </div>
+      <div class="dado" *ngIf="bonus">
+        <app-habilita-dado></app-habilita-dado>
+      </div>
     </div>
+
     <div class="cartas-disponiveis">
       <div class="grupo-cartas">
         <ng-container *ngFor="let carta of listaCartasDisponiveis.slice(0, 3); let i = index">

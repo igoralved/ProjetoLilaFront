@@ -8,7 +8,6 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 
-
 import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -23,6 +22,15 @@ import { EntrarMesaComponent } from './entrar-mesa/entrar-mesa.component';
 import { MaoJogadorComponent } from './mesa/mao-jogador/mao-jogador.component';
 import { CriarMesaComponent } from './mesa/criar-mesa/criar-mesa.component';
 import { MesaCriadaComponent } from './mesa/mesa-criada/mesa-criada.component';
+import { AreaDeCompraComponent } from './mesa/area-de-compra/area-de-compra.component';
+import { HabilitaDadoComponent } from './mesa/habilita-dado/habilita-dado.component';
+import { GuiaRapidoComponent } from './mesa/guia-rapido/guia-rapido.component';
+import { RegrasJogoComponent } from './mesa/regras-jogo/regras-jogo.component';
+import { IniciaPartidaComponent } from './mesa/inicia-partida/inicia-partida.component';
+import { MesaJogoComponent } from './mesa/mesa-jogo/mesa-jogo.component';
+import { AreaJogadoresComponent } from './mesa/area-jogadores/area-jogadores.component';
+import { MesaJogoService } from './service/mesa-jogo.service';
+
 import { ClipboardModule } from '@angular/cdk/clipboard';
 import {
   InjectableRxStompConfig,
@@ -31,13 +39,9 @@ import {
 } from '@stomp/ng2-stompjs';
 
 import { myRxStompConfig } from './rx-stomp.config';
-import { MesaJogoComponent } from './mesa/mesa-jogo/mesa-jogo.component';
-import { AreaJogadoresComponent } from './mesa/area-jogadores/area-jogadores.component';
-import { MesaJogoService } from './service/mesa-jogo.service';
-import { AreaDeCompraComponent } from './area-de-compra/area-de-compra.component';
-import { GuiaRapidoComponent } from './mesa/guia-rapido/guia-rapido.component';
-import { RegrasJogoComponent } from './mesa/regras-jogo/regras-jogo.component';
-import { IniciaPartidaComponent } from './mesa/inicia-partida/inicia-partida.component';
+
+
+
 
 @NgModule({
   declarations: [
@@ -58,7 +62,8 @@ import { IniciaPartidaComponent } from './mesa/inicia-partida/inicia-partida.com
     AreaDeCompraComponent,
     GuiaRapidoComponent,
     RegrasJogoComponent,
-    IniciaPartidaComponent
+    IniciaPartidaComponent,
+    HabilitaDadoComponent
   ],
   imports: [
     BrowserModule,

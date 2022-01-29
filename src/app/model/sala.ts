@@ -6,6 +6,6 @@ export interface Sala {
   hash: string;
   baralho: Baralho;
   jogadores: Jogador[];
+  dado: number;
   status: string;
-  host: Jogador;
 }

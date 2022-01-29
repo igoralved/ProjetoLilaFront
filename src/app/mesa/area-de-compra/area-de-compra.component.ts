@@ -1,15 +1,14 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { MaoJogadorComponent } from '../mesa/mao-jogador/mao-jogador.component';
-import { Baralho } from '../model/baralho';
-import { Carta } from '../model/carta';
-import { CartaDoJogo } from '../model/cartaDoJogo';
-import { CartaInicio } from '../model/cartaInicio';
-import { CartaObjetivo } from '../model/cartaObjetivo';
-import { Sala } from '../model/sala';
-import { CartaService } from '../service/cartas.service';
-import { MesaJogoService } from '../service/mesa-jogo.service';
-import { MesaService } from '../service/mesa.service';
+import { MaoJogadorComponent } from '../mao-jogador/mao-jogador.component';
+import { Baralho } from '../../model/baralho';
+
+import { CartaDoJogo } from '../../model/cartaDoJogo';
+import { CartaObjetivo } from '../../model/cartaObjetivo';
+import { Jogador } from '../../model/jogador';
+import { Sala } from '../../model/sala';
+import { AreaDeCompraService } from '../../service/area-de-compra.service';
+import { MesaJogoService } from '../../service/mesa-jogo.service';
 
 @Component({
   selector: 'app-area-de-compra',
@@ -17,40 +16,46 @@ import { MesaService } from '../service/mesa.service';
   styleUrls: ['./area-de-compra.component.scss'],
 })
 export class AreaDeCompraComponent implements OnInit {
-  //add
   private hash = '';
   public sala: Sala = {} as Sala;
   public baralho: Baralho = {} as Baralho;
 
   public listaCartas: Array<CartaDoJogo> = [];
-  //public listaCartasInicio: Array<CartaInicio> = [];
+
   public listaCartasObjetivo: Array<CartaObjetivo> = [];
   public listaCartasDisponiveis: Array<CartaDoJogo> = [];
   public listaCartasDisponiveisObjetivo: Array<CartaObjetivo> = [];
   public listaCartasMao: Array<CartaDoJogo> = [];
   public listaCartasMaoObjetivo: Array<CartaObjetivo> = [];
   public coracoes: Array<any> = [];
+  public jogador: Jogador = {} as Jogador;
+  public bonus = false;
 
   constructor(
-    private cartaService: CartaService,
-    private mesaService: MesaService,
     private mesaJogoService: MesaJogoService,
     private maoJogador: MaoJogadorComponent,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private areaCompraService: AreaDeCompraService
   ) {}
 
   ngOnInit() {
     //add
     this.hash = String(this.route.snapshot.paramMap.get('hash'));
     this.mesaJogoService.getemitSalaObservable().subscribe((sala) => {
-      this.baralho = sala.baralho;
-      this.listaCartas = this.baralho.cartasDoJogo;
-      this.listaCartasObjetivo = this.baralho.cartasObjetivo;
+      this.sala = sala;
+      this.listaCartasDisponiveis = sala.baralho.cartasDoJogo;
+      this.listaCartasDisponiveisObjetivo = sala.baralho.cartasObjetivo;
       this.setCartasDisponiveis();
+      console.log(sala);
+      this.jogador = {
+        ...sala.jogadores.find((jogador) => jogador.status == 'JOGANDO'),
+      } as Jogador;
     });
+
     //this.getListarCartas();
     //this.getListarCartasInicio();
     //this.getListarCartasObjetivo();
+    //console.log(this.comprarCarta);
   }
 
   public setCartasObjetivo(): void {
@@ -76,9 +81,14 @@ export class AreaDeCompraComponent implements OnInit {
   }
 
   public comprarCarta(indice: number): void {
-    this.listaCartasMao.push(this.listaCartasDisponiveis[indice]);
+    this.jogador?.cartasDoJogo.push(this.listaCartasDisponiveis[indice]);
     this.listaCartasDisponiveis.splice(indice, 1);
+    this.areaCompraService.emitirCartaJogo.emit(this.jogador?.cartasDoJogo);
     this.setCartasDisponiveis();
+    this.mesaJogoService
+      .comprarCartas(this.sala)
+      .subscribe((sala) => (this.sala = sala));
+    this.bonus = this.verificaBonus();
   }
 
   public desabilitarCoracoesPeq(): boolean {
@@ -101,35 +111,17 @@ export class AreaDeCompraComponent implements OnInit {
     return false;
   }
 
-  public podeComprar(carta: Carta): boolean {
-    console.log(this.maoJogador.verificaCompra(carta));
-    if (this.maoJogador.verificaCompra(carta)) {
-
-      return false;
-    }
-    return true;
+  public podeComprar(carta: CartaDoJogo): boolean {
+    return this.maoJogador.verificaCompra(carta);
   }
 
-  /* private getListarCartas(): void {
-    this.cartaService.getListarCarta().subscribe((listaCartas: Carta[]) => {
-      this.listaCartas = listaCartas;
-      this.setCartasDisponiveis();
-    });
-  } */
-
-  /* private getListarCartasInicio(): void {
-    this.cartaService
-      .getListarCartaInicio()
-      .subscribe((listaCartasInicio: CartaInicio[]) => {
-        this.listaCartasInicio = listaCartasInicio;
-      });
-  } */
-
-  /* private getListarCartasObjetivo(): void {
-    this.cartaService
-      .getListarCartaObjetivo()
-      .subscribe((listaCartasObjetivo: CartaObjetivo[]) => {
-        this.listaCartasObjetivo = listaCartasObjetivo;
-      });
-  } */
+  public verificaBonus() {
+    if (this.jogador?.cartasDoJogo.length > 0) {
+      let ultimaCarta = (this.jogador?.cartasDoJogo.length - 1) as number;
+      if (this.jogador?.cartasDoJogo[ultimaCarta].bonus == true) {
+        return true;
+      }
+    }
+    return false;
+  }
 }

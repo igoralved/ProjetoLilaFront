@@ -26,6 +26,7 @@
     "@angular/platform-browser-dynamic": "~13.1.0",
     "@angular/router": "~13.1.0",
     "@stomp/ng2-stompjs": "^8.0.0",
+    "dice-roller-3d": "^1.0.4",
     "express": "^4.17.2",
     "net": "^1.0.2",
     "rxjs": "~7.4.0",

@@ -26,6 +26,9 @@ export class MesaJogoComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.mesaJogoService.getemitSalaObservable().subscribe((sala) => {
+      this.sala = sala;
+    });
     //Salva o hash recebido por parâmetro
     this.hash = String(this.route.snapshot.paramMap.get('hash'));
 
@@ -40,8 +43,7 @@ export class MesaJogoComponent implements OnInit {
     this.topicSubscription = this.rxStompService
       .watch(`/gameplay/game-update/${this.hash}`)
       .subscribe((msg: Message) => {
-        //recebe uma sala pelo websocket e envia para o mesa-jogo service..
-        //DEBUG: console.log(msg.body);
+        //recebe uma sala pelo websocket e envia para o mesa-jogo service..      
         this.mesaJogoService.getemitSalaSubject().next(JSON.parse(msg.body));
       });
   }

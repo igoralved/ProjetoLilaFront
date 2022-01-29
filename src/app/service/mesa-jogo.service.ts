@@ -1,5 +1,7 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
+import { environment } from 'src/environments/environment';
 import { Jogador } from '../model/jogador';
 import { Sala } from '../model/sala';
 @Injectable({
@@ -9,7 +11,7 @@ export class MesaJogoService {
   private emitSala$ = new BehaviorSubject<Sala>({} as Sala);
   private emitJogador$ = new BehaviorSubject<Jogador>({} as Jogador);
 
-  constructor() {}
+  constructor(private http: HttpClient) {}
 
   getemitSalaObservable(): Observable<Sala> {
     return this.emitSala$.asObservable();
@@ -25,5 +27,9 @@ export class MesaJogoService {
 
   getemitJogadorSubject() {
     return this.emitJogador$;
+  }
+
+  comprarCartas(sala: Sala){
+    return this.http.put<Sala>(environment.API_URL+'api/jogada/comprarcarta',sala)
   }
 }

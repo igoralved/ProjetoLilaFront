@@ -4,9 +4,9 @@
 
 export const environment = {
   production: false,
-  API_URL: 'http://localhost:8081/',
+  API_URL: 'http://localhost:8080/',
   CLIENT_URL: 'http://localhost:4200/',
-  WEBSOCKET_URL: 'ws://localhost:8081/',
+  WEBSOCKET_URL: 'ws://localhost:8080/',
   MAO:'https://61e85b54e32cd90017acc202.mockapi.io/mao/hash/numCoracoes'
 };
 

@@ -39,6 +39,7 @@ export class MaoJogadorComponent implements OnInit {
         this.sala = sala;
         this.jogador = jogador;
         this.escutaEventoCompra();
+        this.mesaJogoService.setJogadorAtualNaMesa(this.jogador);
       });
     });
 
@@ -47,6 +48,9 @@ export class MaoJogadorComponent implements OnInit {
     });
   }
 
+
+
+
   public escutaEventoCompra(): void {
     this.areaCompraService.emitirCartaJogo.subscribe(
       (listacartasMao: CartaDoJogo[]) =>
@@ -54,9 +58,8 @@ export class MaoJogadorComponent implements OnInit {
     );
 
     this.mesaJogoService.getemitSalaObservable().subscribe((sala) => {
-      this.jogador = { ...this.sala.jogadores.find((jogador) => jogador.id == this.jogador.id),
-    } as Jogador;
-
+      this.jogador = this.sala.jogadores.find((jogador) => jogador.id == this.jogador.id) as Jogador;
+      console.warn('JOGADOR NOME: '+this.jogador.nome)
     });
     //this.areaCompraService.emitirCartaJogo.subscribe((listacartasMao: CartaDoJogo[]) => this.listacartasMao = listacartasMao)
   }

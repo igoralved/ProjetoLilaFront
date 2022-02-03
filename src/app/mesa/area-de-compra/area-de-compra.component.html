@@ -1,5 +1,5 @@
 <ng-template let-carta="carta" let-index="index" #cartaTemplate>
-  <div [ngClass]="{'desabilitar-carta': !podeComprar(carta)}" class="carta carta-vertical" (click)="podeComprar(carta) && comprarCarta(index)">
+  <div [ngClass]="{'desabilitar-carta': !podeComprar(carta), 'desabilitar-acao': !podeJogar()}" class="carta carta-vertical" (click)="podeComprar(carta) && comprarCarta(index)">
     <div class="cabecalho">
       <h2 class="titulo">{{ carta.tipo }}</h2>
       <div class="pontos">
@@ -46,9 +46,9 @@
         <img class="imagem-logo" src="assets/img/logoLilaSozinho.png" alt="logo">
         <img class="imagem-lila" src="assets/img/lilaSozinha.png" alt="lila">
       </div>
-      <div class="dado" *ngIf="bonus">
+      <!-- <div class="dado" *ngIf="bonus">
         <app-habilita-dado></app-habilita-dado>
-      </div>
+      </div> -->
     </div>
 
     <div class="cartas-disponiveis">

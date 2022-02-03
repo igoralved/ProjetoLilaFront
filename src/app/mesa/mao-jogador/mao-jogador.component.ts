@@ -39,6 +39,7 @@ export class MaoJogadorComponent implements OnInit {
         this.sala = sala;
         this.jogador = jogador;
         this.escutaEventoCompra();
+        this.mesaJogoService.setJogadorAtualNaMesa(this.jogador);
       });
     });
 
@@ -52,7 +53,10 @@ export class MaoJogadorComponent implements OnInit {
       (listacartasMao: CartaDoJogo[]) =>
         (this.jogador.cartasDoJogo = listacartasMao)
     );
-    //this.areaCompraService.emitirCartaJogo.subscribe((listacartasMao: CartaDoJogo[]) => this.listacartasMao = listacartasMao)
+    this.mesaJogoService.getemitSalaObservable().subscribe((sala) => {
+      this.jogador = this.sala.jogadores.find((jogador) => jogador.id == this.jogador.id) as Jogador;
+      console.warn('JOGADOR NOME: '+this.jogador.nome)
+    });   
   }
 
   public verificarCoracoesPeq(): Boolean {

@@ -99,6 +99,11 @@
       opacity: 0.2;
     }
 
+    &.desabilitar-acao {
+      cursor: not-allowed;
+      opacity: 0.5;
+    }
+
     &:not(:first-child) {
       margin-left: 24px;
     }

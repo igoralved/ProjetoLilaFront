@@ -45,17 +45,11 @@ export class AreaDeCompraComponent implements OnInit {
       this.sala = sala;
       this.listaCartasDisponiveis = sala.baralho.cartasDoJogo;
       this.listaCartasDisponiveisObjetivo = sala.baralho.cartasObjetivo;
-      this.setCartasDisponiveis();
-      console.log(sala);
-      this.jogador = {
-        ...sala.jogadores.find((jogador) => jogador.status == 'JOGANDO'),
-      } as Jogador;
-    });
-
-    //this.getListarCartas();
-    //this.getListarCartasInicio();
-    //this.getListarCartasObjetivo();
-    //console.log(this.comprarCarta);
+      this.setCartasDisponiveis();     
+      this.jogador = this.mesaJogoService.getJogadorAtualNaMesa();
+      this.bonus = this.podeJogar();
+      console.log(this.bonus)
+    });    
   }
 
   public setCartasObjetivo(): void {
@@ -121,6 +115,13 @@ export class AreaDeCompraComponent implements OnInit {
       if (this.jogador?.cartasDoJogo[ultimaCarta].bonus == true) {
         return true;
       }
+    }
+    return false;
+  }
+
+  public podeJogar(){
+    if(this.jogador.status == 'JOGANDO'){
+      return true
     }
     return false;
   }

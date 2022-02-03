@@ -10,8 +10,17 @@ import { Sala } from '../model/sala';
 export class MesaJogoService {
   private emitSala$ = new BehaviorSubject<Sala>({} as Sala);
   private emitJogador$ = new BehaviorSubject<Jogador>({} as Jogador);
+  private emitJogadorAtual : Jogador = {} as Jogador
 
   constructor(private http: HttpClient) {}
+
+  setJogadorAtualNaMesa(jogador : Jogador){
+    this.emitJogadorAtual = jogador
+  }
+  
+  getJogadorAtualNaMesa():Jogador{
+    return this.emitJogadorAtual 
+  }
 
   getemitSalaObservable(): Observable<Sala> {
     return this.emitSala$.asObservable();

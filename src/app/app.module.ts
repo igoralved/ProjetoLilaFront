@@ -39,6 +39,7 @@ import {
 } from '@stomp/ng2-stompjs';
 
 import { myRxStompConfig } from './rx-stomp.config';
+import { TelaErroComponent } from './tela-erro/tela-erro.component';
 
 
 
@@ -63,7 +64,8 @@ import { myRxStompConfig } from './rx-stomp.config';
     GuiaRapidoComponent,
     RegrasJogoComponent,
     IniciaPartidaComponent,
-    HabilitaDadoComponent
+    HabilitaDadoComponent,
+    TelaErroComponent
   ],
   imports: [
     BrowserModule,

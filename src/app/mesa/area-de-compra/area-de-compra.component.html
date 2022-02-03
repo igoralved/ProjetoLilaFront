@@ -73,12 +73,12 @@
       </div>
       <div class="coracoes">
         <div class="grupo-coracoes">
-          <button class="btn btn-coracao" [disabled]="desabilitarCoracoesGra() || desabilitarCoracoes()">
+          <button class="btn btn-coracao" (click)="comprarCoracaoG()">
           <div class="coracao grande">
             <img class="coracao-grande" src="assets/svg/icone-coracao.svg" alt="coracao grande">
           </div>
         </button>
-          <button class="btn btn-coracao" [disabled]="desabilitarCoracoesPeq() || desabilitarCoracoes()">
+          <button class="btn btn-coracao" (click)="comprarCoracaoP()">
           <div class="coracao pequeno">
             <img class="coracao-pequeno" src="assets/svg/icone-coracao.svg" alt="coracao pequeno">
           </div>

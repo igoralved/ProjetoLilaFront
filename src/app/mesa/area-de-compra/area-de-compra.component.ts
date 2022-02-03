@@ -39,17 +39,16 @@ export class AreaDeCompraComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    //add
     this.hash = String(this.route.snapshot.paramMap.get('hash'));
     this.mesaJogoService.getemitSalaObservable().subscribe((sala) => {
       this.sala = sala;
       this.listaCartasDisponiveis = sala.baralho.cartasDoJogo;
       this.listaCartasDisponiveisObjetivo = sala.baralho.cartasObjetivo;
-      this.setCartasDisponiveis();     
+      this.setCartasDisponiveis();
       this.jogador = this.mesaJogoService.getJogadorAtualNaMesa();
       this.bonus = this.podeJogar();
-      console.log(this.bonus)
-    });    
+      console.log(this.bonus);
+    });
   }
 
   public setCartasObjetivo(): void {
@@ -75,14 +74,16 @@ export class AreaDeCompraComponent implements OnInit {
   }
 
   public comprarCarta(indice: number): void {
-    this.jogador?.cartasDoJogo.push(this.listaCartasDisponiveis[indice]);
-    this.listaCartasDisponiveis.splice(indice, 1);
-    this.areaCompraService.emitirCartaJogo.emit(this.jogador?.cartasDoJogo);
-    this.setCartasDisponiveis();
-    this.mesaJogoService
-      .comprarCartas(this.sala)
-      .subscribe((sala) => (this.sala = sala));
-    this.bonus = this.verificaBonus();
+    if (this.jogador.status == 'JOGANDO') {
+      this.jogador?.cartasDoJogo.push(this.listaCartasDisponiveis[indice]);
+      this.listaCartasDisponiveis.splice(indice, 1);
+      this.areaCompraService.emitirCartaJogo.emit(this.jogador?.cartasDoJogo);
+      this.setCartasDisponiveis();
+      this.mesaJogoService
+        .comprarCartas(this.sala)
+        .subscribe((sala) => (this.sala = sala));
+      this.bonus = this.verificaBonus();
+    }
   }
 
   public desabilitarCoracoesPeq(): boolean {
@@ -119,9 +120,9 @@ export class AreaDeCompraComponent implements OnInit {
     return false;
   }
 
-  public podeJogar(){
-    if(this.jogador.status == 'JOGANDO'){
-      return true
+  public podeJogar() {
+    if (this.jogador.status == 'JOGANDO') {
+      return true;
     }
     return false;
   }

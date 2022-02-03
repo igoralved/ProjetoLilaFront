@@ -40,8 +40,20 @@ export class CriarMesaComponent implements OnInit {
       bonusCoracaoGra: 0,      
       status: 'JOGANDO'
     };
+    if(this.nomeValido()){
+      this.criarMesa();
+    }
+  }
 
-    this.criarMesa();
+  getNomeJogador(){
+    return this.jogador.nome;
+  }
+
+  nomeValido(): boolean{
+    if(this.jogador.nome == null){
+      return false;
+    }
+    return this.jogador.nome.length >= 2;
   }
 
   criarMesa() {

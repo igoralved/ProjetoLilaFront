@@ -23,6 +23,7 @@ export class AreaDeCompraComponent implements OnInit {
   public listaCartasDisponiveisObjetivo: Array<CartaObjetivo> = [];
   public listaCartasMao: Array<CartaDoJogo> = [];
   public listaCartasMaoObjetivo: Array<CartaObjetivo> = [];
+  public coracoes: Array<any> = [];
   public jogador: Jogador = {} as Jogador;
   public bonus = false;
 

@@ -9,6 +9,9 @@
     <input [(ngModel)]='nick' matInput type="text">
     </mat-form-field>
 
+    <div>
+      Nome deve ter pelo menos 2 caracteres
+    </div>
   <div *ngIf="!salaCheia">
     <button mat-raised-button (click)='conectar()' >Entrar na mesa</button>
   </div>

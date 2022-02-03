@@ -20,7 +20,7 @@ export class EntrarMesaComponent implements OnInit {
     private router: Router,
     private mesaService: MesaService,
     private jogadorservice: JogadorService,
-    private iniciaPartidaService: IniciaPartidaService,
+    private iniciaPartidaService: IniciaPartidaService
   ) {
     this.sala = {} as Sala;
     this.jogador = {} as Jogador;
@@ -35,7 +35,6 @@ export class EntrarMesaComponent implements OnInit {
       .subscribe((sala) => (this.sala = sala));
 
     this.verificaSalaCheia(this.hash);
-
   }
 
   hash = '';
@@ -53,13 +52,16 @@ export class EntrarMesaComponent implements OnInit {
       jogador: this.jogador,
       hash: this.hash,
     } as SalaRequest;
-
-    this.mesaService.conectarNovoJogador(salarequest).subscribe((salaResp) => {
-      this.sala = salaResp.sala;
-      this.jogadorPrincipal = salaResp.jogador;
-      this.emit();
-    });
-    this.roteamento();
+    if (this.nomeValido()) {
+      this.mesaService
+        .conectarNovoJogador(salarequest)
+        .subscribe((salaResp) => {
+          this.sala = salaResp.sala;
+          this.jogadorPrincipal = salaResp.jogador;
+          this.emit();
+        });
+      this.roteamento();
+    }
   }
 
   roteamento() {
@@ -72,13 +74,23 @@ export class EntrarMesaComponent implements OnInit {
   }
 
   verificaSalaCheia(hash: string) {
-    this.iniciaPartidaService.getQuantidadeJogadores(hash)
-      .subscribe(jogadores => {
+    this.iniciaPartidaService
+      .getQuantidadeJogadores(hash)
+      .subscribe((jogadores) => {
         if (jogadores >= 6) {
           this.salaCheia = true;
         }
       });
+  }
 
+  getNomeJogador() {
+    return this.jogador.nome;
+  }
 
+  nomeValido(): boolean {
+    if (this.jogador.nome == null) {
+      return false;
+    }
+    return this.jogador.nome.length >= 2;
   }
 }

@@ -1,5 +1,4 @@
 import { CartaDoJogo } from './cartaDoJogo';
-import { CartaInicio } from './cartaInicio';
 import { CartaObjetivo } from './cartaObjetivo';
 
 export interface Jogador {

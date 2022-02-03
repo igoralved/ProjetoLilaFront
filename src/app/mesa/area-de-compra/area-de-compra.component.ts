@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { MaoJogadorComponent } from '../mao-jogador/mao-jogador.component';
 import { Baralho } from '../../model/baralho';
-
 import { CartaDoJogo } from '../../model/cartaDoJogo';
 import { CartaObjetivo } from '../../model/cartaObjetivo';
 import { Jogador } from '../../model/jogador';
@@ -19,9 +18,7 @@ export class AreaDeCompraComponent implements OnInit {
   private hash = '';
   public sala: Sala = {} as Sala;
   public baralho: Baralho = {} as Baralho;
-
   public listaCartas: Array<CartaDoJogo> = [];
-
   public listaCartasObjetivo: Array<CartaObjetivo> = [];
   public listaCartasDisponiveis: Array<CartaDoJogo> = [];
   public listaCartasDisponiveisObjetivo: Array<CartaObjetivo> = [];
@@ -47,6 +44,7 @@ export class AreaDeCompraComponent implements OnInit {
       this.setCartasDisponiveis();
       this.jogador = this.mesaJogoService.getJogadorAtualNaMesa();
       this.bonus = this.podeJogar();
+      console.log(this.jogador);   
     });
   }
 
@@ -72,15 +70,15 @@ export class AreaDeCompraComponent implements OnInit {
     }
   }
 
-  public comprarCarta(indice: number): void {
-    if (this.jogador.status == 'JOGANDO') {
+  public comprarCarta(indice: number): void {   
+     if (this.jogador.status == 'JOGANDO') {
       this.jogador?.cartasDoJogo.push(this.listaCartasDisponiveis[indice]);
       this.listaCartasDisponiveis.splice(indice, 1);
       this.areaCompraService.emitirCartaJogo.emit(this.jogador?.cartasDoJogo);
       this.setCartasDisponiveis();
       this.mesaJogoService
         .comprarCartas(this.sala)
-        .subscribe((sala) => (this.sala = sala));
+        .subscribe((sala) => (this.sala = sala));             
       this.bonus = this.verificaBonus();
     }
   }
@@ -105,14 +103,23 @@ export class AreaDeCompraComponent implements OnInit {
     return false;
   }
 
-  public podeComprar(carta: CartaDoJogo): boolean {
-    return this.maoJogador.verificaCompra(carta);
+  public podeComprar({
+    valorCorPequeno,
+    valorCorGrande,
+  }: Partial<CartaDoJogo>): boolean {
+    let coracaoP = 0;
+    let coracaoG = 0;
+    this.mesaJogoService.getemitJogadorObservable().subscribe((jogador) => {
+      coracaoP = this.jogador.coracaoPeq + this.jogador.bonusCoracaoPeq;
+      coracaoG = this.jogador.coracaoGra + this.jogador.bonusCoracaoGra;
+    });
+    return valorCorPequeno! <= coracaoP && valorCorGrande! <= coracaoG;
   }
 
   public verificaBonus() {
     if (this.jogador?.cartasDoJogo.length > 0) {
       let ultimaCarta = (this.jogador?.cartasDoJogo.length - 1) as number;
-      if (this.jogador?.cartasDoJogo[ultimaCarta].bonus == true) {
+      if (this.jogador?.cartasDoJogo[ultimaCarta].bonus) {
         return true;
       }
     }

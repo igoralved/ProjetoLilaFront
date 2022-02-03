@@ -39,7 +39,7 @@ export class MaoJogadorComponent implements OnInit {
         this.sala = sala;
         this.jogador = jogador;
         this.escutaEventoCompra();
-        this.mesaJogoService.setJogadorAtualNaMesa(this.jogador);
+        this.mesaJogoService.setJogadorAtualNaMesa(this.jogador);        
       });
     });
 
@@ -47,15 +47,14 @@ export class MaoJogadorComponent implements OnInit {
       this.sala = val;
     });
   }
-
+  
   public escutaEventoCompra(): void {
     this.areaCompraService.emitirCartaJogo.subscribe(
       (listacartasMao: CartaDoJogo[]) =>
         (this.jogador.cartasDoJogo = listacartasMao)
     );
     this.mesaJogoService.getemitSalaObservable().subscribe((sala) => {
-      this.jogador = this.sala.jogadores.find((jogador) => jogador.id == this.jogador.id) as Jogador;
-      console.warn('JOGADOR NOME: '+this.jogador.nome)
+      this.jogador = this.sala.jogadores.find((jogador) => jogador.id == this.jogador.id) as Jogador;      
     });   
   }
 
@@ -89,16 +88,4 @@ export class MaoJogadorComponent implements OnInit {
     return coracoes >= 5;
   }
 
-  public verificaCompra({
-    valorCorPequeno,
-    valorCorGrande,
-  }: Partial<CartaDoJogo>): boolean {
-    let coracaoP = 0;
-    let coracaoG = 0;
-    this.mesaJogoService.getemitJogadorObservable().subscribe((jogador) => {
-      coracaoP = jogador.coracaoPeq + jogador.bonusCoracaoPeq;
-      coracaoG = jogador.coracaoGra + jogador.bonusCoracaoGra;
-    });
-    return valorCorPequeno! <= coracaoP && valorCorGrande! <= coracaoG;
-  }
 }

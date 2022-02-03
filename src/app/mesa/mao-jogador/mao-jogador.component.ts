@@ -50,6 +50,12 @@ export class MaoJogadorComponent implements OnInit {
       (listacartasMao: CartaDoJogo[]) =>
         (this.jogador.cartasDoJogo = listacartasMao)
     );
+
+    this.mesaJogoService.getemitSalaObservable().subscribe((sala) => {
+      this.jogador = { ...this.sala.jogadores.find((jogador) => jogador.id == this.jogador.id),
+    } as Jogador;
+
+    });
     //this.areaCompraService.emitirCartaJogo.subscribe((listacartasMao: CartaDoJogo[]) => this.listacartasMao = listacartasMao)
   }
 

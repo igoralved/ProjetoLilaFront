@@ -1,8 +1,14 @@
 <div class="mao">
     <div class="linha-3">
         <div class="centro">
-            <button class="botao-sair" mat-raised-button [routerLink]="['/']">Sair</button>
+           <!--<button class="botao-sair" mat-raised-button [routerLink]="['/']">Sair</button>-->
         </div>
+        <app-indicador-de-jogada
+            *ngIf="sala.status=='JOGANDO' && jogador.status == 'JOGANDO'" mensagem="Jogando"
+        ></app-indicador-de-jogada>
+        <app-indicador-de-jogada
+        *ngIf="sala.status=='JOGANDO' && jogador.status == 'ESPERANDO'" mensagem="Aguarde sua vez de jogar"
+        ></app-indicador-de-jogada>
         <div class="centro"><img class="avatar" src="../../../assets/avatar" alt=""></div>
         <div class="centro">{{jogador.nome}}
         </div>

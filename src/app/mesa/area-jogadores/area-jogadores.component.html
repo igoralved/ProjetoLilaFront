@@ -1,6 +1,10 @@
 <div class="container">
     <div class="area-jogadores">
         <li class="lista-jogadores" *ngFor="let jogador of jogadores">
+            <app-indicador-de-jogada
+            *ngIf="sala.status=='JOGANDO' && jogador.status == 'JOGANDO'" mensagem="Jogando"
+        ></app-indicador-de-jogada>
+        
             <button class="btn-jogadores"(click)="abrirModal()">
             <img class="avatar" src="assets/blank-profile-picture-gb56d1b702_1280.png">
             <p>Nick: {{jogador.nome}}</p>

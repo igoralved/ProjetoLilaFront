@@ -11,7 +11,7 @@ import { MesaJogoService } from 'src/app/service/mesa-jogo.service';
 })
 export class IniciaPartidaComponent implements OnInit {
   jogadores: number = 0;
-  desabilitaBtn = false;
+  desabilitaBtn = true;
   sala: Sala;
   jogadorPrincipal: Jogador;
   hash = '';

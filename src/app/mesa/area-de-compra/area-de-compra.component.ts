@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component,OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { MaoJogadorComponent } from '../mao-jogador/mao-jogador.component';
 import { Baralho } from '../../model/baralho';
@@ -8,7 +8,6 @@ import { Jogador } from '../../model/jogador';
 import { Sala } from '../../model/sala';
 import { AreaDeCompraService } from '../../service/area-de-compra.service';
 import { MesaJogoService } from '../../service/mesa-jogo.service';
-
 @Component({
   selector: 'app-area-de-compra',
   templateUrl: './area-de-compra.component.html',
@@ -24,7 +23,6 @@ export class AreaDeCompraComponent implements OnInit {
   public listaCartasDisponiveisObjetivo: Array<CartaObjetivo> = [];
   public listaCartasMao: Array<CartaDoJogo> = [];
   public listaCartasMaoObjetivo: Array<CartaObjetivo> = [];
-  public coracoes: Array<any> = [];
   public jogador: Jogador = {} as Jogador;
   public bonus = false;
 
@@ -83,6 +81,14 @@ export class AreaDeCompraComponent implements OnInit {
     }
   }
 
+  public comprarCoracaoP(){
+      this.mesaJogoService.comprarCoracaoP(this.sala).subscribe((sala) => (this.sala = sala));
+  }
+
+  public comprarCoracaoG(){
+    this.mesaJogoService.comprarCoracaoG(this.sala).subscribe((sala) => (this.sala = sala));
+  }
+
   public desabilitarCoracoesPeq(): boolean {
     if (this.maoJogador.verificarCoracoesPeq()) {
       return true;
@@ -91,6 +97,7 @@ export class AreaDeCompraComponent implements OnInit {
   }
   public desabilitarCoracoesGra(): boolean {
     if (this.maoJogador.verificarCoracoesGra()) {
+      this.mesaJogoService.comprarCoracaoP(this.sala).subscribe((sala) => (this.sala = sala));
       return true;
     }
     return false;

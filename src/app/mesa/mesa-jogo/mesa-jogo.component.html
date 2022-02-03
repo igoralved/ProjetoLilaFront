@@ -1,0 +1,13 @@
+<div class="centro">
+    <div class="btn-superior">
+        <app-guia-rapido></app-guia-rapido>
+        <app-regras-jogo></app-regras-jogo>
+    </div>
+</div>
+<div class="container">
+    <header><app-area-jogadores></app-area-jogadores></header>
+    <nav *ngIf="sala.status=='AGUARDANDO'"><app-inicia-partida></app-inicia-partida></nav>
+    <nav *ngIf="sala.status =='JOGANDO' "><app-area-de-compra></app-area-de-compra></nav>
+    <nav *ngIf="sala.status=='FINALIZADO'">Final</nav>
+    <footer><app-mao-jogador></app-mao-jogador></footer>
+</div>

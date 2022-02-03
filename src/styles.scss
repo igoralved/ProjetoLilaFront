@@ -54,6 +54,7 @@ body {
 :root {
   --background: #f2f2f2;
   --font-color: #59184f;
+  --font-color-aguarde:#59184f;
   --tamanhoFonte:20px;
   --btn-width:300px;
   --btn-height:auto;
@@ -65,10 +66,12 @@ body {
 .contraste:root {
   --background: black;
   --font-color: rgb(8, 8, 8);
+  --font-color-aguarde:white;
   --btn-bg: #d9f009;
   --input-fontColor: white;
   --input-backgroundColor:#e5e4e2;
 }
+
 
 .fonteMaior:root {
   --tamanhoFonte: 25pt;

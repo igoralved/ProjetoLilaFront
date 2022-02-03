@@ -1,0 +1,15 @@
+<div class="container">
+    <div class="area-jogadores">
+        <li class="lista-jogadores" *ngFor="let jogador of jogadores">
+            <button class="btn-jogadores"(click)="abrirModal()">
+            <img class="avatar" src="assets/blank-profile-picture-gb56d1b702_1280.png">
+            <p>Nick: {{jogador.nome}}</p>
+            </button>
+        </li>
+    </div>
+</div>
+
+<jw-modal id="mao-jogador">
+    <app-mao-jogador></app-mao-jogador>
+    <button (click)="fecharModal()">Fechar</button>
+</jw-modal>

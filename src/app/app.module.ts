@@ -17,6 +17,31 @@ import { PrimeiroAcessoComponent } from './administrador/primeiro-acesso/primeir
 import { AcessibilidadeComponent } from './acessibilidade/acessibilidade.component';
 import { TelaSenhaComponent } from './administrador/tela-senha/tela-senha.component';
 import { MenuDoAdminComponent } from './administrador/menu-do-admin/menu-do-admin.component';
+import { MontarCartasComponent } from './montar-cartas/montar-cartas.component';
+import { EntrarMesaComponent } from './entrar-mesa/entrar-mesa.component';
+import { MaoJogadorComponent } from './mesa/mao-jogador/mao-jogador.component';
+import { CriarMesaComponent } from './mesa/criar-mesa/criar-mesa.component';
+import { MesaCriadaComponent } from './mesa/mesa-criada/mesa-criada.component';
+import { AreaDeCompraComponent } from './mesa/area-de-compra/area-de-compra.component';
+import { HabilitaDadoComponent } from './mesa/habilita-dado/habilita-dado.component';
+import { GuiaRapidoComponent } from './mesa/guia-rapido/guia-rapido.component';
+import { RegrasJogoComponent } from './mesa/regras-jogo/regras-jogo.component';
+import { IniciaPartidaComponent } from './mesa/inicia-partida/inicia-partida.component';
+import { MesaJogoComponent } from './mesa/mesa-jogo/mesa-jogo.component';
+import { AreaJogadoresComponent } from './mesa/area-jogadores/area-jogadores.component';
+import { MesaJogoService } from './service/mesa-jogo.service';
+
+import { ClipboardModule } from '@angular/cdk/clipboard';
+import {
+  InjectableRxStompConfig,
+  RxStompService,
+  rxStompServiceFactory,
+} from '@stomp/ng2-stompjs';
+
+import { myRxStompConfig } from './rx-stomp.config';
+
+
+
 
 @NgModule({
   declarations: [
@@ -26,7 +51,19 @@ import { MenuDoAdminComponent } from './administrador/menu-do-admin/menu-do-admi
     AcessibilidadeComponent,
     TelaSenhaComponent,
     ModalComponent,
-    MenuDoAdminComponent
+    MenuDoAdminComponent,
+    MontarCartasComponent,
+    EntrarMesaComponent,
+    CriarMesaComponent,
+    MesaCriadaComponent,
+    MesaJogoComponent,
+    AreaJogadoresComponent,
+    MaoJogadorComponent,
+    AreaDeCompraComponent,
+    GuiaRapidoComponent,
+    RegrasJogoComponent,
+    IniciaPartidaComponent,
+    HabilitaDadoComponent
   ],
   imports: [
     BrowserModule,
@@ -43,9 +80,22 @@ import { MenuDoAdminComponent } from './administrador/menu-do-admin/menu-do-admi
     MatInputModule,
     MatButtonModule,
     MatIconModule,
-    HttpClientModule
+    HttpClientModule,
+    ClipboardModule,
+    
   ],
-  providers: [],
+  providers: [
+    {
+      provide: InjectableRxStompConfig,
+      useValue: myRxStompConfig,
+    },
+    {
+      provide: RxStompService,
+      useFactory: rxStompServiceFactory,
+      deps: [InjectableRxStompConfig],
+    },
+    MesaJogoService,
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

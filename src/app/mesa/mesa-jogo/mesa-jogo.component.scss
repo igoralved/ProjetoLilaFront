@@ -1,0 +1,38 @@
+.container {
+  height: 89%;
+  width: 100%;
+  display: grid;
+  grid-template-rows: 15% auto 30%;
+  grid-gap: 10px;
+}
+
+
+body {
+ height: calc(80% - 20px);
+ margin: 10px;
+ display: grid;
+ font-family: Arial;
+ grid-template-columns: 90px auto 90px;
+ grid-template-rows: 15% auto 30%;
+ grid-column-gap: 10px;
+ grid-row-gap: 10px;
+}
+header, nav, footer { 
+  text-align: center 
+}
+header, nav:first-of-type, footer { 
+  grid-column-start: 1; 
+  grid-column-end: 4; 
+}
+
+.btn-superior{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: row;  
+}
+.centro{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

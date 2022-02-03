@@ -86,7 +86,7 @@ export class AreaDeCompraComponent implements OnInit {
     this.mesaJogoService
       .comprarCartas(this.sala)
       .subscribe((sala) => (this.sala = sala));
-    this.bonus = this.verificaBonus();
+   // this.bonus = this.verificaBonus();
   }
 
   public desabilitarCoracoesPeq(): boolean {
@@ -109,14 +109,25 @@ export class AreaDeCompraComponent implements OnInit {
     return false;
   }
 
-  public podeComprar(carta: CartaDoJogo): boolean {
-    return this.maoJogador.verificaCompra(carta);
+
+  public podeComprar({
+    valorCorPequeno,
+    valorCorGrande,
+  }: Partial<CartaDoJogo>): boolean {
+    let coracaoP = 0;
+    let coracaoG = 0;
+    this.mesaJogoService.getemitJogadorObservable().subscribe((jogador) => {
+      coracaoP = this.jogador.coracaoPeq + this.jogador.bonusCoracaoPeq;
+      coracaoG = this.jogador.coracaoGra + this.jogador.bonusCoracaoGra;
+    });
+    return valorCorPequeno! <= coracaoP && valorCorGrande! <= coracaoG;
   }
+
 
   public verificaBonus() {
     if (this.jogador?.cartasDoJogo.length > 0) {
       let ultimaCarta = (this.jogador?.cartasDoJogo.length - 1) as number;
-      if (this.jogador?.cartasDoJogo[ultimaCarta].bonus == true) {
+      if (this.jogador?.cartasDoJogo[ultimaCarta].bonus) {
         return true;
       }
     }

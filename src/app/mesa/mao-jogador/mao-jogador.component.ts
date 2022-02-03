@@ -94,16 +94,4 @@ export class MaoJogadorComponent implements OnInit {
     return coracoes >= 5;
   }
 
-  public verificaCompra({
-    valorCorPequeno,
-    valorCorGrande,
-  }: Partial<CartaDoJogo>): boolean {
-    let coracaoP = 0;
-    let coracaoG = 0;
-    this.mesaJogoService.getemitJogadorObservable().subscribe((jogador) => {
-      coracaoP = jogador.coracaoPeq + jogador.bonusCoracaoPeq;
-      coracaoG = jogador.coracaoGra + jogador.bonusCoracaoGra;
-    });
-    return valorCorPequeno! <= coracaoP && valorCorGrande! <= coracaoG;
-  }
 }

@@ -69,9 +69,12 @@ const routes: Routes = [
   },
 
   {
-    path:'telaErro',
+    path:'**',
     component:TelaErroComponent,
   }
+
+  
+
 ];
 
 @NgModule({

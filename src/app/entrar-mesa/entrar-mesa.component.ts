@@ -63,8 +63,8 @@ export class EntrarMesaComponent implements OnInit {
   }
 
   roteamento() {
-    if(this.hash!= this.sala.hash || !this.hash){
-      this.router.navigate(['telaErro']);
+    if(this.hash!= this.sala.hash){
+      this.router.navigate(['**']);
     }else{
     this.router.navigate(['/jogo', this.sala.hash]);
     }

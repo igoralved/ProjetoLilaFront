@@ -1,5 +1,6 @@
 <ng-template let-carta="carta" let-index="index" #cartaTemplate>
-  <div [ngClass]="{'desabilitar-carta': !podeComprar(carta)}" class="carta carta-vertical" (click)="podeComprar(carta) && comprarCarta(index)">
+  <div [ngClass]="{'desabilitar-carta': !podeComprar(carta)}" class="carta carta-vertical"
+    (click)="podeComprar(carta) && comprarCarta(index)">
     <div class="cabecalho">
       <h2 class="titulo">{{ carta.tipo }}</h2>
       <div class="pontos">
@@ -42,7 +43,7 @@
 <div class="container">
   <div class="compra-container">
     <div class="linha2">
-      <div  class="carta carta-baralho">
+      <div class="carta carta-baralho">
         <img class="imagem-logo" src="assets/img/logoLilaSozinho.png" alt="logo">
         <img class="imagem-lila" src="assets/img/lilaSozinha.png" alt="lila">
       </div>
@@ -73,16 +74,14 @@
       </div>
       <div class="coracoes">
         <div class="grupo-coracoes">
-          <button class="btn btn-coracao" (click)="comprarCoracaoG()">
-          <div class="coracao grande">
+          <div [ngClass]="{'desabilitar-coracao': desabilitarCoracoesGra() || desabilitarCoracoes()}"
+            class="coracao grande" (click)="comprarCoracaoG()">
             <img class="coracao-grande" src="assets/svg/icone-coracao.svg" alt="coracao grande">
           </div>
-        </button>
-          <button class="btn btn-coracao" (click)="comprarCoracaoP()">
-          <div class="coracao pequeno">
+          <div [ngClass]="{'desabilitar-coracao': desabilitarCoracoesPeq() || desabilitarCoracoes()}"
+            class="coracao pequeno" (click)="comprarCoracaoP()">
             <img class="coracao-pequeno" src="assets/svg/icone-coracao.svg" alt="coracao pequeno">
           </div>
-          </button>
         </div>
       </div>
     </div>

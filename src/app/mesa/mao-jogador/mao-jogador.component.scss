@@ -9,8 +9,7 @@
   margin: 15px;
 }
 
-
-.botao-sair{
+.botao-sair {
   color: var(--font-color);
   background-color: var(--btn-bg);
   font-size: calc(var(--tamanhoFonte) - 3px);
@@ -18,17 +17,17 @@
   height: 35px;
 }
 
-.centro{
+.centro {
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
-.centraliza{
+.centraliza {
   text-align: center;
 }
 
-.linha-3{
+.linha-3 {
   display: grid;
   grid-template-rows: 20% 60% 20%;
   align-items: center;
@@ -43,7 +42,6 @@
 }
 
 .cartas-container {
-
   padding-bottom: 10px;
   &-scroll {
     display: flex;
@@ -60,9 +58,9 @@
       }
     }
 
-     .carta {
+    .carta {
       border: 2px solid black;
-      margin-left:5px;
+      margin-left: 5px;
       padding: 10px;
       background: var(--input-backgroundColor);
       word-wrap: break-word;
@@ -210,10 +208,6 @@
       }
     }
   }
-
-
-
-
 }
 .cor-texto {
   color: #ffab40;
@@ -235,7 +229,6 @@
   flex-direction: row;
   flex-wrap: wrap;
 
-
   .carta-coracao {
     width: 40%;
     height: 50px;
@@ -253,6 +246,24 @@
       height: 55%;
       width: 55%;
     }
+  }
 
+  .carta-coracao-bonus{
+    width: 40%;
+    height: 50px;
+    border: 2px solid black;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 2px;
+
+    &-grande {
+      height: 100%;
+      width: 100%;
+    }
+    &-pequeno {
+      height: 60%;
+      width: 60%;
+    }
   }
 }

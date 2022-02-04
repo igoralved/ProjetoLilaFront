@@ -20,16 +20,16 @@
     
         <div class="carta-coracoes">
             <div class="carta-coracao" *ngFor="let i of [].constructor(jogadorModal.coracaoGra)">
-                <img class="carta-coracao-grande" src="assets/svg/icone-coracao.svg" alt="Ícone coração">
+                <img class="carta-coracao-grande" src="../../../assets/svg/icone-coracao.svg" alt="Ícone coração">
             </div>
             <div class="carta-coracao" *ngFor="let i of [].constructor(jogadorModal.bonusCoracaoGra)">
-                <img class="carta-coracao-grande" src="assets/svg/icone-coracao.svg" alt="Ícone coração">
+                <img class="carta-coracao-bonus-grande" src="../../../assets/svg/coracaoBonus.svg" alt="Ícone coração">
             </div>
             <div class="carta-coracao" *ngFor="let i of [].constructor(jogadorModal.bonusCoracaoPeq)">
-                <img class="carta-coracao-pequeno" src="assets/svg/icone-coracao.svg" alt="Ícone coração">
+                <img class="carta-coracao-bonus-pequeno" src="../../../assets/svg/coracaoBonus.svg" alt="Ícone coração">
             </div>
             <div class="carta-coracao" *ngFor="let i of [].constructor(jogadorModal.coracaoPeq)">
-                <img class="carta-coracao-pequeno" src="assets/svg/icone-coracao.svg" alt="Ícone coração">
+                <img class="carta-coracao-pequeno" src="../../../assets/svg/icone-coracao.svg" alt="Ícone coração">
             </div>
         </div>
     
@@ -96,5 +96,5 @@
         </div>
     </div>
     
-    <button (click)="fecharModal()">Fechar</button>
+    <button class="botao" mat-raised-button (click)="fecharModal()">Fechar</button>
 </jw-modal>

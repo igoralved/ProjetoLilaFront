@@ -40,43 +40,17 @@ export class AreaDeCompraComponent implements OnInit {
       this.sala = sala;
       this.listaCartasDisponiveis = sala.baralho.cartasDoJogo;
       this.listaCartasDisponiveisObjetivo = sala.baralho.cartasObjetivo;
-      // this.setCartasDisponiveis();
       this.jogador = this.mesaJogoService.getJogadorAtualNaMesa();
       this.bonus = this.podeJogar();
       console.log(this.jogador);   
     });
   }
 
-  public setCartasObjetivo(): void {
-    const indiceRandomico: number = Math.round(
-      Math.random() * (this.listaCartasObjetivo.length - 1 - 0) + 0
-    );
-    this.listaCartasDisponiveisObjetivo.push(
-      this.listaCartasObjetivo[indiceRandomico]
-    );
-    this.listaCartasObjetivo.splice(indiceRandomico, 1);
-  }
-
-  // public setCartasDisponiveis(): void {
-  //   const cartasFaltantes: number = 6 - this.listaCartasDisponiveis.length;
-
-  //   for (let i = 0; i < cartasFaltantes; i++) {
-  //     const indiceRandomico: number = Math.round(
-  //       Math.random() * (this.listaCartas.length - 1 - 0) + 0
-  //     );
-  //     this.listaCartasDisponiveis.push(this.listaCartas[indiceRandomico]);
-  //     this.listaCartas.splice(indiceRandomico, 1);
-  //   }
-  // }
-
-
-
   public comprarCarta(indice: number): void {   
      if (this.jogador.status == 'JOGANDO') {
       this.jogador?.cartasDoJogo.push(this.listaCartasDisponiveis[indice]);
       this.listaCartasDisponiveis.splice(indice, 1);
       this.areaCompraService.emitirCartaJogo.emit(this.jogador?.cartasDoJogo);
-      // this.setCartasDisponiveis();
       this.mesaJogoService
         .comprarCartas(this.sala)
         .subscribe((sala) => (this.sala = sala));             

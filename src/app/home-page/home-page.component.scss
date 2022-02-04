@@ -1,9 +1,9 @@
-.container{
+.container {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  height: 90%;     
+  height: 70%;
 }
 
 #logo {
@@ -26,13 +26,28 @@ img {
   font-size: var(--tamanhoFonte);
 }
 
-input{
-    background-color: var(--bg-input);
+input {
+  background-color: var(--bg-input);
 }
 
-@media(max-width:600px) {
-    .btn{
-        font-size: calc(var(--tamanhoFonte) - 32%);
-        width: var(--btn-width);
-    }
+@media (max-width: 600px) {
+  .btn {
+    font-size: calc(var(--tamanhoFonte) - 32%);
+    width: var(--btn-width);
+  }
+}
+
+.patrocinio {
+  float: right;
+  text-align: center;
+  margin: 2rem 0 0 0;
+}
+.texto-patrocinio {
+  font-weight: lighter;
+  margin: 0;
+  font-size: calc(var(--tamanhoFonte) * 0.75);
+}
+
+.dblogo {
+  height: 70px;
 }

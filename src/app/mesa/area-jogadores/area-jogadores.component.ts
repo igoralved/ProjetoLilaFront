@@ -13,6 +13,7 @@ export class AreaJogadoresComponent implements OnInit {
   jogadores: Jogador[] = new Array();
   sala: Sala = {} as Sala;
   jogadorPrincipal: Jogador = {} as Jogador;
+  public jogadorModal: Jogador = {} as Jogador;
 
   constructor(
     private modal: ModalService,
@@ -31,7 +32,8 @@ export class AreaJogadoresComponent implements OnInit {
       });
     });
   }
-  abrirModal() {
+  abrirModal(jogador: Jogador) {
+    this.jogadorModal = jogador;
     this.modal.abrir('mao-jogador');
   }
 

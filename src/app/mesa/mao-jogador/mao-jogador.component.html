@@ -6,6 +6,12 @@
         </div> -->
         <div class="centro"><img class="avatar" src="../../../assets/avatar" alt=""></div>
         <div class="centro">{{jogador.nome}}
+            <app-indica-jogador
+                *ngIf="sala.status == 'JOGANDO' && jogador.status=='JOGANDO'" mensagem="Jogando"
+            ></app-indica-jogador>
+            <app-indica-jogador
+                *ngIf="sala.status == 'JOGANDO' && jogador.status=='ESPERANDO'" mensagem="Aguarde sua vez"
+            ></app-indica-jogador>
         </div>
     </div>
 

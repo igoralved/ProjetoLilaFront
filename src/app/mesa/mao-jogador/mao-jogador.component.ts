@@ -21,7 +21,7 @@ export class MaoJogadorComponent implements OnInit {
   public listaJogador: Jogador[] = [];
   public jogador: Jogador = {} as Jogador;
   public listacartasMao: Array<CartaDoJogo> = [];
-
+  
   constructor(
     private mesaService: MesaService,
     private route: ActivatedRoute,

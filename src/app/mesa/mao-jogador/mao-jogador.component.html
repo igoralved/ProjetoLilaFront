@@ -1,11 +1,19 @@
 <div class="mao">
     <div class="linha-3">
-      <div><app-indica-jogador
-        *ngIf="sala.status == 'JOGANDO' && jogador.status=='JOGANDO'" mensagem="Jogando"
+          
+        <div>
+          
+    <app-indica-jogador 
+        *ngIf="sala.status == 'JOGANDO' && jogador.status=='JOGANDO'" 
+        mensagem="Jogando"
     ></app-indica-jogador>
-    <app-indica-jogador
-        *ngIf="sala.status == 'JOGANDO' && jogador.status=='ESPERANDO'" mensagem="Aguarde sua vez"
-    ></app-indica-jogador></div>
+    
+    <app-indica-jogador 
+        *ngIf="sala.status == 'JOGANDO' && jogador.status=='ESPERANDO'" 
+         mensagem="Aguarde sua vez" 
+    ></app-indica-jogador>
+    
+    </div>
         <!-- <div class="centro">
             <button class="botao-sair" mat-raised-button [routerLink]="['/']">Sair</button>
         </div> -->

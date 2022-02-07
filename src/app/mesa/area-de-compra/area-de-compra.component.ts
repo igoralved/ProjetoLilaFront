@@ -46,16 +46,22 @@ export class AreaDeCompraComponent implements OnInit {
     });
   }
 
-  public comprarCarta(indice: number): void {
-    if (this.jogador.status == 'JOGANDO') {
+  public comprarCarta(indice: number): void {  
+    if (this.jogador.status == 'JOGANDO'){
+    if(this.listaCartasDisponiveis[indice].bonus){
+      this.jogador?.cartasDoJogo.push(this.listaCartasDisponiveis[indice]);
+      this.listaCartasDisponiveis.splice(indice, 1);
+      this.areaCompraService.emitirCartaJogo.emit(this.jogador?.cartasDoJogo);
+    }else{      
       this.jogador?.cartasDoJogo.push(this.listaCartasDisponiveis[indice]);
       this.listaCartasDisponiveis.splice(indice, 1);
       this.areaCompraService.emitirCartaJogo.emit(this.jogador?.cartasDoJogo);
       this.mesaJogoService
         .comprarCartas(this.sala)
-        .subscribe((sala) => (this.sala = sala));
-      // this.bonus = this.verificaBonus();
+        .subscribe((sala) => (this.sala = sala));             
+     
     }
+  }
   }
 
   public comprarCoracaoP() {

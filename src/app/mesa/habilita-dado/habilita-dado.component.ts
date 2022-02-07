@@ -22,13 +22,15 @@ export class HabilitaDadoComponent implements OnInit {
   }
 
   rolarDado() {
-    const node = this.dado.nativeElement;
-     this.numero = this.sala.dado;
-    console.warn(this.numero);
-    if (node instanceof HTMLElement) {
-      this.trocarClasses(node);
-      node.dataset['roll'] = this.numero.toString();
-    }
+    this.mesaJogoService.comprarCartas(this.sala).subscribe((sala) => {
+      this.sala = sala;
+      const node = this.dado.nativeElement;
+      this.numero = this.sala.dado;
+      if (node instanceof HTMLElement) {
+        this.trocarClasses(node);
+        node.dataset['roll'] = this.numero.toString();
+      }
+    });
   }
 
   resetarDado() {

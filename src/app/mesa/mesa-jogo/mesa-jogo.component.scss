@@ -6,6 +6,10 @@
   grid-gap: 10px;
 }
 
+.ultimaRodada {
+  font-size: 36px;
+  color:blueviolet;
+}
 
 body {
  height: calc(80% - 20px);
@@ -17,19 +21,19 @@ body {
  grid-column-gap: 10px;
  grid-row-gap: 10px;
 }
-header, nav, footer { 
-  text-align: center 
+header, nav, footer {
+  text-align: center
 }
-header, nav:first-of-type, footer { 
-  grid-column-start: 1; 
-  grid-column-end: 4; 
+header, nav:first-of-type, footer {
+  grid-column-start: 1;
+  grid-column-end: 4;
 }
 
 .btn-superior{
   display: flex;
   align-items: center;
   justify-content: center;
-  flex-direction: row;  
+  flex-direction: row;
 }
 .centro{
   display: flex;

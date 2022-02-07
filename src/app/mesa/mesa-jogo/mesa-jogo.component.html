@@ -8,6 +8,10 @@
     <header><app-area-jogadores></app-area-jogadores></header>
     <nav *ngIf="sala.status=='AGUARDANDO'"><app-inicia-partida></app-inicia-partida></nav>
     <nav *ngIf="sala.status =='JOGANDO' "><app-area-de-compra></app-area-de-compra></nav>
+    <nav *ngIf="sala.status =='ULTIMA_JOGADA' ">
+      <p class="ultimaRodada">Ultima rodada</p>
+      <app-area-de-compra></app-area-de-compra>
+    </nav>
     <nav *ngIf="sala.status=='FINALIZADO'">Final</nav>
     <footer><app-mao-jogador></app-mao-jogador></footer>
 </div>

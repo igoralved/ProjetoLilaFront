@@ -11,8 +11,10 @@
     </mat-form-field>
   </div>
 
-  <div>
+  <div *ngIf="!isvalid">
+    <p class="aviso">
     Nome deve ter pelo menos 2 caracteres
+    </p>
   </div>
 
   <div>

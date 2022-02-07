@@ -48,11 +48,11 @@
                         </div>
                         <div class="presentes">
                             <div class="presente-acao">
-                                <div class="presente-acao" *ngIf="cartas.tipo === 'Informação'">
+                                <div class="presente-acao" *ngIf="cartas.tipo === 'Informação' && cartas.bonus == true">
                                     <img class="presente" src="assets/svg/icone-presente.svg" alt="presente">
                                     <img class="presenteInfoAcoes" src="assets/svg/icone-usuario.svg" alt="acao">
                                 </div>
-                                <div class="presente-info" *ngIf="cartas.tipo === 'Ação'">
+                                <div class="presente-info" *ngIf="cartas.tipo === 'Ação' && cartas.bonus == true">
                                     <img class="presente" src="assets/svg/icone-presente.svg" alt="presente">
                                     <img class="presenteInfoAcoes" src="assets/svg/icone-info.svg" alt="info">
                                 </div>

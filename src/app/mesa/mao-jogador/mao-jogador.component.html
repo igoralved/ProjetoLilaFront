@@ -4,12 +4,12 @@
         <div>
           
     <app-indica-jogador 
-        *ngIf="sala.status == 'JOGANDO' && jogador.status=='JOGANDO'" 
+        *ngIf="sala.status == 'JOGANDO' || sala.status == 'ULTIMA_RODADA' && jogador.status=='JOGANDO'" 
         mensagem="Jogando"
     ></app-indica-jogador>
     
     <app-indica-jogador 
-        *ngIf="sala.status == 'JOGANDO' && jogador.status=='ESPERANDO'" 
+        *ngIf="sala.status == 'JOGANDO' || sala.status == 'ULTIMA_RODADA' && jogador.status=='ESPERANDO'" 
          mensagem="Aguarde sua vez" 
     ></app-indica-jogador>
     

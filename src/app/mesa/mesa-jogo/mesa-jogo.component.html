@@ -9,7 +9,18 @@
     <nav *ngIf="sala.status=='AGUARDANDO'"><app-inicia-partida></app-inicia-partida></nav>
     <nav *ngIf="sala.status =='JOGANDO' "><app-area-de-compra></app-area-de-compra></nav>
     <nav *ngIf="sala.status =='ULTIMA_JOGADA' ">
-      <p class="ultimaRodada">Ultima rodada</p>
+      <div class="modal" id="modal-one" aria-hidden="true" [hidden] = "isShow">
+        <div class="modal-dialog">
+            <div class="modal-header">
+                 <h2>Última jogada!</h2>
+            </div>
+            <div class="modal-body">
+                <p>8 Pontos alcançados! :D</p>
+            </div>
+            <div class="modal-footer"> <button class="btn" (click) = fecharModal()>Fechar</button>
+            </div>
+        </div>
+    </div>
       <app-area-de-compra></app-area-de-compra>
     </nav>
     <nav *ngIf="sala.status=='FINALIZADO'">Final</nav>

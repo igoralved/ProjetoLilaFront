@@ -1,8 +1,15 @@
 <div class="container">
     <div class="area-jogadores">
         <li class="lista-jogadores" *ngFor="let jogador of jogadores">
+            
             <button class="btn-jogadores"(click)="abrirModal(jogador)">
-            <img class="avatar" src="assets/blank-profile-picture-gb56d1b702_1280.png">
+                <app-indica-jogador
+                *ngIf="sala.status == 'JOGANDO' && jogador.status=='JOGANDO'" mensagem="Jogando"
+                ></app-indica-jogador>
+                <app-indica-jogador
+                *ngIf="sala.status == 'JOGANDO' && jogador.status=='ESPERANDO'" mensagem="Aguardando"
+                ></app-indica-jogador>
+                <img class="avatar" src="assets/blank-profile-picture-gb56d1b702_1280.png">
             <p>Nick: {{jogador.nome}}</p>
             </button>
         </li>

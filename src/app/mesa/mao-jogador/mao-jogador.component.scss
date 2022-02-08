@@ -41,6 +41,10 @@
   width: 50%;
 }
 
+.nome{
+  color:var(--font-color-aguarde);
+}
+
 .cartas-container {
   padding-bottom: 10px;
   &-scroll {

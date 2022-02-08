@@ -22,6 +22,7 @@ export class HabilitaDadoComponent implements OnInit {
   }
 
   rolarDado() {
+    this.resetarDado();
     this.mesaJogoService.comprarCartas(this.sala).subscribe((sala) => {
       this.sala = sala;
       const node = this.dado.nativeElement;

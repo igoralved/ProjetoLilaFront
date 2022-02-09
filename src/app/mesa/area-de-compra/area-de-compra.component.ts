@@ -47,6 +47,7 @@ export class AreaDeCompraComponent implements OnInit {
   }
 
   public comprarCarta(indice: number): void {  
+    this.sala.dado = 0;
     if (this.jogador.status == 'JOGANDO'){
     if(this.listaCartasDisponiveis[indice].bonus){
       this.jogador?.cartasDoJogo.push(this.listaCartasDisponiveis[indice]);
@@ -66,6 +67,7 @@ export class AreaDeCompraComponent implements OnInit {
 
   public comprarCoracaoP() {
     if(this.jogador.status == 'JOGANDO'){
+      this.sala.dado = 0;
       this.mesaJogoService
       .comprarCoracaoP(this.sala)
       .subscribe((sala) => (this.sala = sala));
@@ -75,6 +77,7 @@ export class AreaDeCompraComponent implements OnInit {
 
   public comprarCoracaoG() {
     if(this.jogador.status == 'JOGANDO'){
+      this.sala.dado = 0;
       this.mesaJogoService
       .comprarCoracaoG(this.sala)
       .subscribe((sala) => (this.sala = sala));

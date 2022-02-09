@@ -1,5 +1,4 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
-import { DOCUMENT } from '@angular/common';
 import { Sala } from 'src/app/model/sala';
 import { MesaJogoService } from 'src/app/service/mesa-jogo.service';
 
@@ -44,6 +43,7 @@ export class HabilitaDadoComponent implements OnInit {
     if (node instanceof HTMLElement) {
       this.resetarClasse(node);
     }
+    this.numero = 0;
   }
 
   trocarClasses(die: HTMLElement) {

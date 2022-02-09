@@ -39,12 +39,12 @@ header, nav:first-of-type, footer {
 
 
 .btn {
-  background: #3a0453;
-  border: #3a0453 solid 1px;
+  background: #f4dc6d;
+  border: #f4dc6d solid 1px;
   border-radius: 3px;
-  color: #fff;
+  color: #59184f;
   display: inline-block;
-  font-size: 14px;
+  font-size: 17px;
   padding: 8px 15px;
   text-decoration: none;
   text-align: center;
@@ -54,7 +54,7 @@ header, nav:first-of-type, footer {
   cursor: pointer;
 }
 .btn:hover {
-  background: blueviolet;
+  background: #f0c400;
 }
 .btn.btn-big {
   font-size: 18px;
@@ -62,7 +62,7 @@ header, nav:first-of-type, footer {
   min-width: 100px;
 }
 .btn-close {
-  color: #3a0453;
+  color: #f4dc6d;
   font-size: 30px;
   text-decoration: none;
   position: absolute;
@@ -126,4 +126,15 @@ header, nav:first-of-type, footer {
 .modal-footer {
   border-top: #eeeeee solid 1px;
   text-align: right;
+}
+
+button {
+  margin-top: 10%;
+  color: var(--font-color);
+  background-color: var(--btn-bg);
+  border-radius: 30px;
+  width: var(--btn-width);
+  height: var(----btn-height);
+  margin: 10px;
+  font-size: var(--tamanhoFonte) ;
 }

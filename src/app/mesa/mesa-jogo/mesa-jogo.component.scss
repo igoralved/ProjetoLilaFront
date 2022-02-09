@@ -4,6 +4,7 @@
   display: grid;
   grid-template-rows: 15% auto 30%;
   grid-gap: 10px;
+ 
 }
 
 
@@ -18,7 +19,8 @@ body {
  grid-row-gap: 10px;
 }
 header, nav, footer { 
-  text-align: center 
+  text-align: center;
+  border: 3px dashed red;
 }
 header, nav:first-of-type, footer { 
   grid-column-start: 1; 

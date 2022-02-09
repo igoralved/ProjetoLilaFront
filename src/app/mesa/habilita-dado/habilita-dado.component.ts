@@ -16,22 +16,27 @@ export class HabilitaDadoComponent implements OnInit {
   constructor(private mesaJogoService: MesaJogoService) {}
 
   ngOnInit(): void {
-    this.mesaJogoService
-      .getemitSalaObservable()
-      .subscribe((sala) => (this.sala = sala));
-  }
-
-  rolarDado() {
-    this.resetarDado();
-    this.mesaJogoService.comprarCartas(this.sala).subscribe((sala) => {
+    this.mesaJogoService.getemitSalaObservable().subscribe((sala) => {
       this.sala = sala;
-      const node = this.dado.nativeElement;
-      this.numero = this.sala.dado;
-      if (node instanceof HTMLElement) {
-        this.trocarClasses(node);
-        node.dataset['roll'] = this.numero.toString();
+      if (this.sala.dado != 0) {
+        this.animaDado();
       }
     });
+  }
+
+  compraCarta() {
+    this.mesaJogoService.comprarCartas(this.sala).subscribe((sala) => {
+      this.mesaJogoService.getemitSalaSubject().next(sala);
+    });
+  }
+
+  animaDado() {
+    const node = this.dado.nativeElement;
+    this.numero = this.sala.dado;
+    if (node instanceof HTMLElement) {
+      this.trocarClasses(node);
+      node.dataset['roll'] = this.numero.toString();
+    }
   }
 
   resetarDado() {
@@ -39,7 +44,6 @@ export class HabilitaDadoComponent implements OnInit {
     if (node instanceof HTMLElement) {
       this.resetarClasse(node);
     }
-    this.numero = 0;
   }
 
   trocarClasses(die: HTMLElement) {
@@ -48,11 +52,5 @@ export class HabilitaDadoComponent implements OnInit {
 
   resetarClasse(die: HTMLElement) {
     die.classList.remove('even-roll');
-  }
-
-  gerarNumeroAleatorio(min: number, max: number) {
-    min = Math.ceil(min);
-    max = Math.floor(max);
-    return Math.floor(Math.random() * (max - min + 1)) + min;
   }
 }

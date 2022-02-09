@@ -2,8 +2,8 @@
     <h2>
         Ranking
     </h2>
-    <ul>
-        <li *ngFor="let jogador of jogadores" >
+    <ul *ngFor="let jogador of jogadores">
+        <li>
             {{jogador.nome}} : {{jogador.pontos}} Pontos
         </li>
     </ul>

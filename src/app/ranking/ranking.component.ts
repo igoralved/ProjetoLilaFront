@@ -20,6 +20,7 @@ export class RankingComponent implements OnInit {
         this.jogadores.sort((JogadorA, JogadorB) => {
           return JogadorA.pontos - JogadorB.pontos
         });
+        console.log(this.jogadores);
       });
     }
 }

@@ -27,6 +27,8 @@ export class EntrarMesaComponent implements OnInit {
     this.jogadorPrincipal = {} as Jogador;
   }
 
+  isvalid = true;
+
   ngOnInit(): void {
     this.hash = String(this.route.snapshot.paramMap.get('hash'));
 
@@ -53,6 +55,7 @@ export class EntrarMesaComponent implements OnInit {
       hash: this.hash,
     } as SalaRequest;
     if (this.nomeValido()) {
+      this.isvalid = true;
       this.mesaService
         .conectarNovoJogador(salarequest)
         .subscribe((salaResp) => {
@@ -61,6 +64,8 @@ export class EntrarMesaComponent implements OnInit {
           this.emit();
         });
       this.roteamento();
+    }else{
+      this.isvalid = false;
     }
   }
 

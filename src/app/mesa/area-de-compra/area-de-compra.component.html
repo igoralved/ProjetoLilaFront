@@ -1,5 +1,6 @@
 <ng-template let-carta="carta" let-index="index" #cartaTemplate>
-  <div [ngClass]="{'desabilitar-carta': !podeComprar(carta), 'desabilitar-acao': !podeJogar()}" class="carta carta-vertical" (click)="podeComprar(carta) && comprarCarta(index)">
+  <div [ngClass]="{'desabilitar-carta': !podeComprar(carta), 'desabilitar-acao': !podeJogar()}"
+    class="carta carta-vertical" (click)="podeComprar(carta) && comprarCarta(index)">
     <div class="cabecalho">
       <h2 class="titulo">{{ carta.tipo }}</h2>
       <div class="pontos">
@@ -13,21 +14,21 @@
       <div class="icones">
         <div class="coracoes">
           <div class="coracao" *ngFor="let i of [].constructor(carta.valorCorGrande)">
-            <img class="coracao-grande" src="assets/svg/icone-coracao.svg" alt="Ícone coração">
+            <img class="coracao-grande" src="../../../assets/svg/icone-coracao.svg" alt="Ícone coração">
           </div>
           <div class="coracao" *ngFor="let i of [].constructor(carta.valorCorPequeno)">
-            <img class="coracao-pequeno" src="assets/svg/icone-coracao.svg" alt="Ícone coração">
+            <img class="coracao-pequeno" src="../../../assets/svg/icone-coracao.svg" alt="Ícone coração">
           </div>
         </div>
         <div class="presentes">
           <div class="presente-acao">
             <div class="presente-acao" *ngIf="carta.tipo === 'Informação' && carta.bonus == true">
-              <img class="presente" src="assets/svg/icone-presente.svg" alt="presente">
-              <img class="presenteInfoAcoes" src="assets/svg/icone-usuario.svg" alt="acao">
+              <img class="presente" src="../../../assets/svg/icone-presente.svg" alt="presente">
+              <img class="presenteInfoAcoes" src="../../../assets/svg/icone-usuario.svg" alt="acao">
             </div>
             <div class="presente-info" *ngIf="carta.tipo === 'Ação' && carta.bonus == true">
-              <img class="presente" src="assets/svg/icone-presente.svg" alt="presente">
-              <img class="presenteInfoAcoes" src="assets/svg/icone-info.svg" alt="info">
+              <img class="presente" src="../../../assets/svg/icone-presente.svg" alt="presente">
+              <img class="presenteInfoAcoes" src="../../../assets/svg/icone-info.svg" alt="info">
             </div>
           </div>
         </div>
@@ -42,13 +43,13 @@
 <div class="container">
   <div class="compra-container">
     <div class="linha2">
-      <div  class="carta carta-baralho">
-        <img class="imagem-logo" src="assets/img/logoLilaSozinho.png" alt="logo">
-        <img class="imagem-lila" src="assets/img/lilaSozinha.png" alt="lila">
+      <div class="carta carta-baralho">
+        <img class="imagem-logo" src="../../../assets/img/logoLilaSozinho.png" alt="logo">
+        <img class="imagem-lila" src="../../../assets/img/lilaSozinha.png" alt="lila">
       </div>
-      <!-- <div class="dado" *ngIf="bonus">
+      <div class="dado">
         <app-habilita-dado></app-habilita-dado>
-      </div> -->
+      </div>
     </div>
 
     <div class="cartas-disponiveis">
@@ -66,23 +67,21 @@
     <div class="informacoes-gerais">
       <div class="carta carta-objetivo">
         <div class="carta-logotexto">
-          <img class="imagem-logo" src="assets/img/logoLilaSozinho.png" alt="logo">
+          <img class="imagem-logo" src="../../../assets/img/logoLilaSozinho.png" alt="logo">
           <p class="texto">Compre 1 carta por 1 coração de qualquer tamanho</p>
         </div>
-        <img class="imagem-lila" src="assets/img/lilaSozinha.png" alt="lila">
+        <img class="imagem-lila" src="../../../assets/img/lilaSozinha.png" alt="lila">
       </div>
       <div class="coracoes">
         <div class="grupo-coracoes">
-          <button class="btn btn-coracao" (click)="comprarCoracaoG()">
-          <div class="coracao grande">
+          <div [ngClass]="{'desabilitar-coracao': bloquearCompraCoracaoGrande()}" class="coracao grande"
+            (click)="comprarCoracaoG()">
             <img class="coracao-grande" src="assets/svg/icone-coracao.svg" alt="coracao grande">
           </div>
-        </button>
-          <button class="btn btn-coracao" (click)="comprarCoracaoP()">
-          <div class="coracao pequeno">
+          <div [ngClass]="{'desabilitar-coracao': bloquearCompraCoracaoPequeno()}" class="coracao pequeno"
+            (click)="comprarCoracaoP()">
             <img class="coracao-pequeno" src="assets/svg/icone-coracao.svg" alt="coracao pequeno">
           </div>
-          </button>
         </div>
       </div>
     </div>

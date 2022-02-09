@@ -1,4 +1,4 @@
-import { Component,OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { MaoJogadorComponent } from '../mao-jogador/mao-jogador.component';
 import { Baralho } from '../../model/baralho';
@@ -40,76 +40,48 @@ export class AreaDeCompraComponent implements OnInit {
       this.sala = sala;
       this.listaCartasDisponiveis = sala.baralho.cartasDoJogo;
       this.listaCartasDisponiveisObjetivo = sala.baralho.cartasObjetivo;
-      this.setCartasDisponiveis();
       this.jogador = this.mesaJogoService.getJogadorAtualNaMesa();
       this.bonus = this.podeJogar();
-      console.log(this.jogador);   
+      console.log(this.jogador);
     });
   }
 
-  public setCartasObjetivo(): void {
-    const indiceRandomico: number = Math.round(
-      Math.random() * (this.listaCartasObjetivo.length - 1 - 0) + 0
-    );
-    this.listaCartasDisponiveisObjetivo.push(
-      this.listaCartasObjetivo[indiceRandomico]
-    );
-    this.listaCartasObjetivo.splice(indiceRandomico, 1);
-  }
-
-  public setCartasDisponiveis(): void {
-    const cartasFaltantes: number = 6 - this.listaCartasDisponiveis.length;
-
-    for (let i = 0; i < cartasFaltantes; i++) {
-      const indiceRandomico: number = Math.round(
-        Math.random() * (this.listaCartas.length - 1 - 0) + 0
-      );
-      this.listaCartasDisponiveis.push(this.listaCartas[indiceRandomico]);
-      this.listaCartas.splice(indiceRandomico, 1);
-    }
-  }
-
-  public comprarCarta(indice: number): void {   
-     if (this.jogador.status == 'JOGANDO') {
+  public comprarCarta(indice: number): void {  
+    if (this.jogador.status == 'JOGANDO'){
+    if(this.listaCartasDisponiveis[indice].bonus){
       this.jogador?.cartasDoJogo.push(this.listaCartasDisponiveis[indice]);
       this.listaCartasDisponiveis.splice(indice, 1);
       this.areaCompraService.emitirCartaJogo.emit(this.jogador?.cartasDoJogo);
-      this.setCartasDisponiveis();
+    }else{      
+      this.jogador?.cartasDoJogo.push(this.listaCartasDisponiveis[indice]);
+      this.listaCartasDisponiveis.splice(indice, 1);
+      this.areaCompraService.emitirCartaJogo.emit(this.jogador?.cartasDoJogo);
       this.mesaJogoService
         .comprarCartas(this.sala)
         .subscribe((sala) => (this.sala = sala));             
-      this.bonus = this.verificaBonus();
+     
+    }
+  }
+  }
+
+  public comprarCoracaoP() {
+    if(this.jogador.status == 'JOGANDO'){
+      this.mesaJogoService
+      .comprarCoracaoP(this.sala)
+      .subscribe((sala) => (this.sala = sala));
+    }
+    
+  }
+
+  public comprarCoracaoG() {
+    if(this.jogador.status == 'JOGANDO'){
+      this.mesaJogoService
+      .comprarCoracaoG(this.sala)
+      .subscribe((sala) => (this.sala = sala));
     }
   }
 
-  public comprarCoracaoP(){
-      this.mesaJogoService.comprarCoracaoP(this.sala).subscribe((sala) => (this.sala = sala));
-  }
-
-  public comprarCoracaoG(){
-    this.mesaJogoService.comprarCoracaoG(this.sala).subscribe((sala) => (this.sala = sala));
-  }
-
-  public desabilitarCoracoesPeq(): boolean {
-    if (this.maoJogador.verificarCoracoesPeq()) {
-      return true;
-    }
-    return false;
-  }
-  public desabilitarCoracoesGra(): boolean {
-    if (this.maoJogador.verificarCoracoesGra()) {
-      this.mesaJogoService.comprarCoracaoP(this.sala).subscribe((sala) => (this.sala = sala));
-      return true;
-    }
-    return false;
-  }
-
-  public desabilitarCoracoes(): boolean {
-    if (this.maoJogador.verificarCoracoesQualquerTamanho()) {
-      return true;
-    }
-    return false;
-  }
+  
 
   public podeComprar({
     valorCorPequeno,
@@ -139,5 +111,36 @@ export class AreaDeCompraComponent implements OnInit {
       return true;
     }
     return false;
+  }
+
+  public bloquearCompraCoracaoPequeno(){
+    if (this.jogador.status == 'JOGANDO' && this.verificarCoracoesQualquerTamanho() && this.desabilitarCoracoesPeq()) {
+      return false;
+    }
+    return true;
+  }
+  public bloquearCompraCoracaoGrande(){
+    if (this.jogador.status == 'JOGANDO' && this.verificarCoracoesQualquerTamanho()  && this.verificarCoracoesGra()) {
+      return false;
+    }
+    return true;
+  }  
+
+  public verificarCoracoesQualquerTamanho(): Boolean {
+    if (
+      this.jogador.coracaoGra +
+        this.jogador.coracaoPeq +
+        this.jogador.bonusCoracaoGra +
+        this.jogador.bonusCoracaoPeq < 5){
+      return true;
+    }
+    return false;
+  }
+  public desabilitarCoracoesPeq(): Boolean {
+    return this.jogador.coracaoPeq + this.jogador.coracaoGra < 4;
+  }
+
+  public verificarCoracoesGra(): Boolean {
+    return this.jogador.coracaoGra + this.jogador.coracaoPeq < 5;
   }
 }

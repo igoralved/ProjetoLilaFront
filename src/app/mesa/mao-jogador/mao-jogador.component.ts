@@ -21,7 +21,7 @@ export class MaoJogadorComponent implements OnInit {
   public listaJogador: Jogador[] = [];
   public jogador: Jogador = {} as Jogador;
   public listacartasMao: Array<CartaDoJogo> = [];
-
+  
   constructor(
     private mesaService: MesaService,
     private route: ActivatedRoute,
@@ -37,7 +37,7 @@ export class MaoJogadorComponent implements OnInit {
         this.sala = sala;
         this.jogador = jogador;
         this.escutaEventoCompra();
-        this.mesaJogoService.setJogadorAtualNaMesa(this.jogador);        
+        this.mesaJogoService.setJogadorAtualNaMesa(this.jogador);
       });
     });
 
@@ -45,45 +45,17 @@ export class MaoJogadorComponent implements OnInit {
       this.sala = val;
     });
   }
-  
+
   public escutaEventoCompra(): void {
     this.areaCompraService.emitirCartaJogo.subscribe(
       (listacartasMao: CartaDoJogo[]) =>
         (this.jogador.cartasDoJogo = listacartasMao)
     );
     this.mesaJogoService.getemitSalaObservable().subscribe((sala) => {
-      this.jogador = this.sala.jogadores.find((jogador) => jogador.id == this.jogador.id) as Jogador;      
-    });   
-  }
-
-  public verificarCoracoesPeq(): Boolean {
-    this.mesaJogoService
-      .getemitJogadorObservable()
-      .subscribe((jogador) => (this.jogador.coracaoPeq = jogador.coracaoPeq));
-    return this.jogador.coracaoPeq >= 4;
-  }
-
-  public verificarCoracoesGra(): Boolean {
-    this.mesaJogoService
-      .getemitJogadorObservable()
-      .subscribe((jogador) => (this.jogador.coracaoGra = jogador.coracaoGra));
-    return this.jogador.coracaoGra >= 4;
-  }
-
-  public verificarCoracoesQualquerTamanho(): Boolean {
-    let coracoes = 0;
-
-    this.mesaJogoService
-      .getemitJogadorObservable()
-      .subscribe(
-        (jogador) =>
-          (coracoes =
-            jogador.coracaoGra +
-            jogador.coracaoPeq +
-            jogador.bonusCoracaoGra +
-            jogador.bonusCoracaoPeq)
-      );
-    return coracoes >= 5;
+      this.jogador = this.sala.jogadores.find(
+        (jogador) => jogador.id == this.jogador.id
+      ) as Jogador;
+    });
   }
 
   public verificaCompra({
@@ -98,5 +70,4 @@ export class MaoJogadorComponent implements OnInit {
     });
     return valorCorPequeno! <= coracaoP && valorCorGrande! <= coracaoG;
   }
- 
 }

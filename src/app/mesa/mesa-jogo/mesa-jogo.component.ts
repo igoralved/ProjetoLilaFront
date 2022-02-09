@@ -43,7 +43,7 @@ export class MesaJogoComponent implements OnInit {
     this.topicSubscription = this.rxStompService
       .watch(`/gameplay/game-update/${this.hash}`)
       .subscribe((msg: Message) => {
-        //recebe uma sala pelo websocket e envia para o mesa-jogo service..      
+        //recebe uma sala pelo websocket e envia para o mesa-jogo service..
         this.mesaJogoService.getemitSalaSubject().next(JSON.parse(msg.body));
       });
   }
@@ -61,5 +61,10 @@ export class MesaJogoComponent implements OnInit {
       destination: '/game-app/play-card',
       body: JSON.stringify(message),
     });
+  }
+
+  isShow = false;
+  fecharModal() {
+    this.isShow = !this.isShow;
   }
 }

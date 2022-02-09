@@ -16,6 +16,8 @@ export class CriarMesaComponent implements OnInit {
   private jogadorPrincipal: Jogador;
   nick: string;
 
+  isvalid = true;
+
   constructor(
     private mesaService: MesaService,
     private router: Router,
@@ -41,7 +43,10 @@ export class CriarMesaComponent implements OnInit {
       status: 'JOGANDO'
     };
     if(this.nomeValido()){
+      this.isvalid = true;
       this.criarMesa();
+    }else{
+      this.isvalid = false;
     }
   }
 

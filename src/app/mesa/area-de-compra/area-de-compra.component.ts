@@ -26,7 +26,6 @@ export class AreaDeCompraComponent implements OnInit {
   public coracoes: Array<any> = [];
   public jogador: Jogador = {} as Jogador;
   public bonus = false;
-  public desabilitar = false;
 
   constructor(
     private mesaJogoService: MesaJogoService,
@@ -43,13 +42,12 @@ export class AreaDeCompraComponent implements OnInit {
       this.listaCartasDisponiveisObjetivo = sala.baralho.cartasObjetivo;
       this.jogador = this.mesaJogoService.getJogadorAtualNaMesa();
       this.bonus = this.podeJogar();
-      this.desabilitar = false;
+      console.log(this.jogador);
     });
   }
 
   public comprarCarta(indice: number): void {  
     this.sala.dado = 0;
-    this.desabilitar = true;
     if (this.jogador.status == 'JOGANDO'){
     if(this.listaCartasDisponiveis[indice].bonus){
       this.jogador?.cartasDoJogo.push(this.listaCartasDisponiveis[indice]);
@@ -68,7 +66,6 @@ export class AreaDeCompraComponent implements OnInit {
   }
 
   public comprarCoracaoP() {
-    this.desabilitar = true;
     if(this.jogador.status == 'JOGANDO'){
       this.sala.dado = 0;
       this.mesaJogoService
@@ -79,7 +76,6 @@ export class AreaDeCompraComponent implements OnInit {
   }
 
   public comprarCoracaoG() {
-    this.desabilitar = true;
     if(this.jogador.status == 'JOGANDO'){
       this.sala.dado = 0;
       this.mesaJogoService

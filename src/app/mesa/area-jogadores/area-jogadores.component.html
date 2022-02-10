@@ -4,11 +4,21 @@
             
             <button class="btn-jogadores"(click)="abrirModal()">
                 <app-indica-jogador
-                *ngIf="sala.status == 'JOGANDO' || sala.status == 'ULTIMA_RODADA' && jogador.status=='JOGANDO'" mensagem="Jogando"
+                *ngIf="sala.status == 'JOGANDO' && jogador.status=='JOGANDO'" mensagem="Jogando"
                 ></app-indica-jogador>
+
                 <app-indica-jogador
-                *ngIf="sala.status == 'JOGANDO' || sala.status == 'ULTIMA_RODADA' && jogador.status=='ESPERANDO'" mensagem="Aguardando"
+                *ngIf="sala.status == 'ULTIMA_JOGADA' && jogador.status=='JOGANDO'" mensagem="Jogando"
                 ></app-indica-jogador>
+
+                <app-indica-jogador
+                *ngIf="sala.status == 'JOGANDO' && jogador.status=='ESPERANDO'" mensagem="Aguardando"
+                ></app-indica-jogador>
+
+                <app-indica-jogador
+                *ngIf="sala.status == 'ULTIMA_JOGADA' && jogador.status=='ESPERANDO'" mensagem="Aguardando"
+                ></app-indica-jogador>
+
                 <img class="avatar" src="assets/blank-profile-picture-gb56d1b702_1280.png">
             <p>Nick: {{jogador.nome}}</p>
             </button>

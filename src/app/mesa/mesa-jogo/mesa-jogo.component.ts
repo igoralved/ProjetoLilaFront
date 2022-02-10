@@ -35,9 +35,7 @@ export class MesaJogoComponent implements OnInit {
     //busca a sala no mesaJogo Service para receber a sala mais atualizada
     this.mesaJogoService.getemitSalaObservable().subscribe((sala) => {
       this.sala = sala;
-      if (this.sala.status == 'JOGANDO') {
-        console.log(this.sala);
-      }
+    
     });
     //faz o subscribe no endereço do websocket
     this.topicSubscription = this.rxStompService

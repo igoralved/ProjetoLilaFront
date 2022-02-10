@@ -9,7 +9,7 @@
     ></app-indica-jogador>
     
     <app-indica-jogador 
-        *ngIf="sala.status == 'ULTIMA_JOGADA' && jogador.status=='JOGANDO'" 
+        *ngIf="sala.status == 'ULTIMA_RODADA' && jogador.status=='JOGANDO'" 
         mensagem="Jogando"
     ></app-indica-jogador>
 
@@ -19,8 +19,8 @@
     ></app-indica-jogador>
 
     <app-indica-jogador 
-        *ngIf="sala.status == 'ULTIMA_JOGADA' && jogador.status=='JOGANDO'" 
-        mensagem="ULTIMA_JOGADA"
+        *ngIf="sala.status == 'ULTIMA_RODADA' && jogador.status=='JOGANDO'" 
+        mensagem="Aguarde sua vez"
     ></app-indica-jogador>
     
     </div>

@@ -68,6 +68,7 @@ export class AreaDeCompraComponent implements OnInit {
   }
 
   public comprarCoracaoP() {
+    this.desabilitar = true;
     if(this.jogador.status == 'JOGANDO'){
       this.sala.dado = 0;
       this.mesaJogoService
@@ -78,6 +79,7 @@ export class AreaDeCompraComponent implements OnInit {
   }
 
   public comprarCoracaoG() {
+    this.desabilitar = true;
     if(this.jogador.status == 'JOGANDO'){
       this.sala.dado = 0;
       this.mesaJogoService

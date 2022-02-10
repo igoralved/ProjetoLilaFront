@@ -72,7 +72,7 @@
         </div>
         <img class="imagem-lila" src="../../../assets/img/lilaSozinha.png" alt="lila">
       </div>
-      <div class="coracoes">
+      <div class="coracoes" [ngClass]="{'desabilitar-coracao': desabilitar}">
         <div class="grupo-coracoes">
           <div [ngClass]="{'desabilitar-coracao': bloquearCompraCoracaoGrande()}" class="coracao grande"
             (click)="comprarCoracaoG()">

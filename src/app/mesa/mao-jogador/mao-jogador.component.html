@@ -1,25 +1,27 @@
 <div class="mao">
     <div class="linha-3">
-          
+
         <div>
-          
-    <app-indica-jogador 
-        *ngIf="sala.status == 'JOGANDO' && jogador.status=='JOGANDO'" 
-        mensagem="Jogando"
-    ></app-indica-jogador>
-    
-    <app-indica-jogador 
-        *ngIf="sala.status == 'JOGANDO' && jogador.status=='ESPERANDO'" 
-         mensagem="Aguarde sua vez" 
-    ></app-indica-jogador>
-    
-    </div>
+
+            <app-indica-jogador *ngIf="sala.status == 'JOGANDO' && jogador.status=='JOGANDO'" mensagem="Jogando">
+            </app-indica-jogador>
+
+            <app-indica-jogador *ngIf="sala.status == 'ULTIMA_RODADA' && jogador.status=='JOGANDO'" mensagem="Jogando">
+            </app-indica-jogador>
+
+            <app-indica-jogador *ngIf="sala.status == 'JOGANDO' && jogador.status=='ESPERANDO'"
+                mensagem="Aguarde sua vez"></app-indica-jogador>
+
+            <app-indica-jogador *ngIf="sala.status == 'ULTIMA_RODADA' && jogador.status=='JOGANDO'"
+                mensagem="ULTIMA_JOGADA"></app-indica-jogador>
+
+        </div>
         <!-- <div class="centro">
             <button class="botao-sair" mat-raised-button [routerLink]="['/']">Sair</button>
         </div> -->
         <div class="centro"><img class="avatar" src="../../../assets/avatar" alt=""></div>
         <div class="centro nome">{{jogador.nome}}
-            
+
         </div>
     </div>
 

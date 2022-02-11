@@ -44,7 +44,6 @@ export class IniciaPartidaComponent implements OnInit {
 
     this.mesaJogoService.getemitJogadorObservable().subscribe((jogador) => {
       this.jogadorPrincipal = jogador;
-      console.log(this.jogadorPrincipal);
     });
   }
 }

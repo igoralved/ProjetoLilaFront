@@ -42,25 +42,24 @@ export class AreaDeCompraComponent implements OnInit {
       this.listaCartasDisponiveisObjetivo = sala.baralho.cartasObjetivo;
       this.jogador = this.mesaJogoService.getJogadorAtualNaMesa();
       this.bonus = this.podeJogar();
-      console.log(this.jogador);
     });
   }
 
-  public comprarCarta(indice: number): void {  
+  public comprarCarta(indice: number): void {
     this.sala.dado = 0;
     if (this.jogador.status == 'JOGANDO'){
     if(this.listaCartasDisponiveis[indice].bonus){
       this.jogador?.cartasDoJogo.push(this.listaCartasDisponiveis[indice]);
       this.listaCartasDisponiveis.splice(indice, 1);
       this.areaCompraService.emitirCartaJogo.emit(this.jogador?.cartasDoJogo);
-    }else{      
+    }else{
       this.jogador?.cartasDoJogo.push(this.listaCartasDisponiveis[indice]);
       this.listaCartasDisponiveis.splice(indice, 1);
       this.areaCompraService.emitirCartaJogo.emit(this.jogador?.cartasDoJogo);
       this.mesaJogoService
         .comprarCartas(this.sala)
-        .subscribe((sala) => (this.sala = sala));             
-     
+        .subscribe((sala) => (this.sala = sala));
+
     }
   }
   }
@@ -72,7 +71,7 @@ export class AreaDeCompraComponent implements OnInit {
       .comprarCoracaoP(this.sala)
       .subscribe((sala) => (this.sala = sala));
     }
-    
+
   }
 
   public comprarCoracaoG() {
@@ -84,7 +83,7 @@ export class AreaDeCompraComponent implements OnInit {
     }
   }
 
-  
+
 
   public podeComprar({
     valorCorPequeno,
@@ -127,7 +126,7 @@ export class AreaDeCompraComponent implements OnInit {
       return false;
     }
     return true;
-  }  
+  }
 
   public verificarCoracoesQualquerTamanho(): Boolean {
     if (
